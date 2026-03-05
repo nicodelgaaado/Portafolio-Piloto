@@ -39,38 +39,41 @@ export default function Projects() {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-20">
-      <div className="mb-12">
-        <h1 className="text-5xl font-bold mb-4 border-b-4 border-black inline-block pb-2">
+    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-20">
+      <div className="mb-10 sm:mb-12">
+        <h1 className="text-4xl font-bold sm:text-5xl">
           Projects
         </h1>
-        <p className="font-mono text-lg mt-6">
+        <p className="mt-6 font-mono text-base sm:text-lg">
           A collection of my work showcasing various technologies and problem-solving approaches
         </p>
       </div>
 
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
         {projects.map((project, index) => (
-          <div key={index} className="border-2 border-black p-6 hover:bg-black hover:text-white transition-colors group">
-            <div className="flex justify-between items-start mb-4">
-              <h3 className="font-bold text-xl">{project.title}</h3>
-              <div className="border-2 border-black group-hover:border-white px-3 py-1 text-xs font-mono">
+          <div
+            key={index}
+            className="border-2 border-black p-5 transition-colors sm:p-6"
+          >
+            <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <h3 className="text-lg font-bold sm:text-xl">{project.title}</h3>
+              <div className="w-fit border-2 border-black px-3 py-1 font-mono text-xs">
                 {project.status}
               </div>
             </div>
-            <div className="font-mono text-sm mb-4 opacity-70">{project.tech}</div>
-            <p className="font-mono text-sm leading-relaxed mb-6">{project.description}</p>
-            
+            <div className="mb-4 font-mono text-sm opacity-70">{project.tech}</div>
+            <p className="mb-6 font-mono text-sm leading-relaxed">{project.description}</p>
+
             {/* Placeholder for project image */}
-            <div className="border-2 border-black group-hover:border-white h-40 flex items-center justify-center mb-4">
+            <div className="mb-4 flex h-36 items-center justify-center border-2 border-black sm:h-40">
               <span className="font-mono text-xs">[Project Screenshot]</span>
             </div>
 
-            <div className="flex gap-4">
-              <div className="border-2 border-black group-hover:border-white px-4 py-2 font-mono text-xs uppercase flex-1 text-center cursor-pointer">
+            <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
+              <div className="flex-1 cursor-pointer border-2 border-black px-4 py-2 text-center font-mono text-xs uppercase">
                 View Code
               </div>
-              <div className="border-2 border-black group-hover:border-white px-4 py-2 font-mono text-xs uppercase flex-1 text-center cursor-pointer">
+              <div className="flex-1 cursor-pointer border-2 border-black px-4 py-2 text-center font-mono text-xs uppercase">
                 Live Demo
               </div>
             </div>
@@ -79,14 +82,14 @@ export default function Projects() {
       </div>
 
       {/* Filter/Sort Section */}
-      <div className="mt-12 border-2 border-black p-6">
-        <div className="flex items-center justify-between">
-          <span className="font-mono uppercase text-sm">Filter Projects</span>
-          <div className="flex gap-4">
+      <div className="mt-10 border-2 border-black p-4 sm:mt-12 sm:p-6">
+        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <span className="font-mono text-sm uppercase">Filter Projects</span>
+          <div className="flex flex-wrap gap-2 sm:gap-4">
             {["All", "Web", "Mobile", "ML/AI", "Blockchain"].map((filter) => (
               <div
                 key={filter}
-                className="border-2 border-black px-4 py-2 font-mono text-xs uppercase cursor-pointer hover:bg-black hover:text-white transition-colors"
+                className="cursor-pointer border-2 border-black px-3 py-2 font-mono text-[10px] uppercase transition-colors hover:bg-black hover:text-white sm:px-4 sm:text-xs"
               >
                 {filter}
               </div>
