@@ -2,16 +2,13 @@ export default function Contact() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-20">
       <div className="mb-10 sm:mb-12">
-        <h1 className="text-4xl font-bold sm:text-5xl">
-          Get In Touch
-        </h1>
+        <h1 className="text-4xl font-bold sm:text-5xl">Get In Touch</h1>
         <p className="mt-6 font-mono text-base sm:text-lg">
           Let&apos;s collaborate on your next project or discuss opportunities
         </p>
       </div>
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
-        {/* Contact Form */}
         <div className="border-2 border-black p-5 sm:p-8">
           <h2 className="mb-6 font-mono text-xl font-bold uppercase sm:text-2xl">Send a Message</h2>
           <form className="space-y-6">
@@ -36,7 +33,7 @@ export default function Contact() {
               <input
                 type="text"
                 className="w-full border-2 border-black p-3 font-mono focus:outline-none focus:ring-2 focus:ring-black"
-                placeholder="What&apos;s this about?"
+                placeholder="What's this about?"
               />
             </div>
             <div>
@@ -56,9 +53,7 @@ export default function Contact() {
           </form>
         </div>
 
-        {/* Contact Information */}
         <div className="space-y-6 sm:space-y-8">
-          {/* Contact Details */}
           <div className="border-2 border-black p-5 sm:p-8">
             <h2 className="mb-6 font-mono text-xl font-bold uppercase sm:text-2xl">Contact Info</h2>
             <div className="space-y-4">
@@ -76,7 +71,6 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Social Links */}
           <div className="border-2 border-black p-5 sm:p-8">
             <h2 className="mb-6 font-mono text-xl font-bold uppercase sm:text-2xl">Connect</h2>
             <div className="space-y-3">
@@ -97,7 +91,6 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Resume Download */}
           <div className="border-2 border-black p-5 text-center sm:p-8">
             <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center border-2 border-black sm:h-20 sm:w-20">
               <span className="text-lg font-bold">DL</span>

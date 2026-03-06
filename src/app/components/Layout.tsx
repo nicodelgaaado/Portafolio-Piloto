@@ -1,18 +1,27 @@
-import { Link, Outlet, useLocation } from "react-router";
+"use client";
 
-export default function Layout() {
-  const location = useLocation();
+import type { ReactNode } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-  const navItems = [
-    { path: "/", label: "Home" },
-    { path: "/projects", label: "Projects" },
-    { path: "/skills", label: "Skills" },
-    { path: "/contact", label: "Contact" },
-  ];
+const navItems = [
+  { path: "/", label: "Home" },
+  { path: "/projects", label: "Projects" },
+  { path: "/skills", label: "Skills" },
+  { path: "/contact", label: "Contact" },
+];
+
+const socialItems = ["Github", "LinkedIn", "Twitter"];
+
+type LayoutProps = {
+  children: ReactNode;
+};
+
+export default function Layout({ children }: LayoutProps) {
+  const pathname = usePathname();
 
   return (
     <div className="min-h-screen bg-white text-black">
-      {/* Header */}
       <header className="border-b-2 border-black">
         <div className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -26,9 +35,9 @@ export default function Layout() {
                 {navItems.map((item) => (
                   <li key={item.path}>
                     <Link
-                      to={item.path}
+                      href={item.path}
                       className={`font-mono text-xs uppercase tracking-wide sm:text-sm ${
-                        location.pathname === item.path
+                        pathname === item.path
                           ? "font-bold"
                           : "opacity-80 transition-opacity hover:opacity-100"
                       }`}
@@ -43,18 +52,14 @@ export default function Layout() {
         </div>
       </header>
 
-      {/* Main Content */}
-      <main>
-        <Outlet />
-      </main>
+      <main>{children}</main>
 
-      {/* Footer */}
       <footer className="mt-20 border-t-2 border-black">
         <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
           <div className="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
             <p className="font-mono text-sm">(C) 2026 Software Engineering Student</p>
             <div className="flex gap-4">
-              {["Github", "LinkedIn", "Twitter"].map((social) => (
+              {socialItems.map((social) => (
                 <div
                   key={social}
                   className="flex h-8 w-8 items-center justify-center border-2 border-black"

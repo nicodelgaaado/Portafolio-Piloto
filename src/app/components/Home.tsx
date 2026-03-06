@@ -1,9 +1,8 @@
-import { Link } from "react-router";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6">
-      {/* Hero Section */}
       <section className="border-b-2 border-black py-12 sm:py-20">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
           <div className="flex flex-col gap-8 lg:min-h-96 lg:justify-between">
@@ -21,13 +20,13 @@ export default function Home() {
             </div>
             <div className="flex flex-col gap-3 pt-4 sm:flex-row sm:gap-4">
               <Link
-                to="/projects"
+                href="/projects"
                 className="border-2 border-black px-6 py-3 text-center font-mono text-sm uppercase transition-colors hover:bg-black hover:text-white"
               >
                 View Projects
               </Link>
               <Link
-                to="/contact"
+                href="/contact"
                 className="border-2 border-black px-6 py-3 text-center font-mono text-sm uppercase transition-colors hover:bg-black hover:text-white"
               >
                 Get in Touch
@@ -43,7 +42,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section */}
       <section className="border-b-2 border-black py-12 sm:py-20">
         <h2 className="mb-8 font-mono text-2xl font-bold uppercase sm:text-3xl">About Me</h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
@@ -69,7 +67,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quick Stats */}
       <section className="py-12 sm:py-20">
         <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4 lg:gap-8">
           {[

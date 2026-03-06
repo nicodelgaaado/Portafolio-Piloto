@@ -1,11 +1,28 @@
+## Portfolio
 
-  # Portfolio Wireframes
+This project is now a Next.js App Router application bootstrapped in the current directory and rebuilt from the original portfolio wireframes while keeping the existing visual design.
 
-  This is a code bundle for Portfolio Wireframes. The original project is available at https://www.figma.com/design/lpSQ6JthpHJ8S9BpIybdM7/Portfolio-Wireframes.
+## Getting Started
 
-  ## Running the code
+Install dependencies:
 
-  Run `npm i` to install the dependencies.
+```bash
+npm install
+```
 
-  Run `npm run dev` to start the development server.
-  
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+## Available Scripts
+
+```bash
+npm run dev
+npm run build
+npm run start
+npm run lint
+```
