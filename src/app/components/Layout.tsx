@@ -11,7 +11,7 @@ const navItems = [
   { path: "/contact", label: "Contact" },
 ];
 
-const socialItems = ["Github", "LinkedIn", "Twitter"];
+const socialItems = ["Mail", "Github", "LinkedIn"];
 
 type LayoutProps = {
   children: ReactNode;
@@ -25,8 +25,7 @@ export default function Layout({ children }: LayoutProps) {
       <header className="border-b-2 border-black">
         <div className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-3 sm:gap-4">
-              <div className="h-10 w-10 border-2 border-black sm:h-12 sm:w-12"></div>
+            <div className="flex items-center">
               <span className="font-mono uppercase tracking-wider">Portfolio</span>
             </div>
 
@@ -57,7 +56,7 @@ export default function Layout({ children }: LayoutProps) {
       <footer className="mt-20 border-t-2 border-black">
         <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
           <div className="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
-            <p className="font-mono text-sm">(C) 2026 Software Engineering Student</p>
+            <p className="font-mono text-sm">(C) 2026 Nicolas Delgado</p>
             <div className="flex gap-4">
               {socialItems.map((social) => (
                 <div

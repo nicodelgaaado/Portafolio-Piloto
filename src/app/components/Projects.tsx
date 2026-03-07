@@ -1,42 +1,57 @@
+"use client";
+
+import { useState } from "react";
+
+type ProjectCategory = "Data Analysis" | "Full Stack" | "Frontend";
+
+type Project = {
+  title: string;
+  tech: string;
+  description: string;
+  status: string;
+  category: ProjectCategory;
+};
+
 export default function Projects() {
   const projects = [
     {
-      title: "E-Commerce Platform",
-      tech: "React, Node.js, MongoDB",
-      description: "Full-stack e-commerce solution with payment integration and admin dashboard",
+      title: "Statistical Analysis of AI Tool Usage",
+      tech: "R, tidyverse, ggplot2, dplyr, corrplot, Monte Carlo simulation",
+      description: "Statistical analysis project focused on AI tool usage patterns through descriptive statistics, inferential methods, probability models, regression, and Monte Carlo simulation.",
       status: "Completed",
+      category: "Data Analysis",
     },
     {
-      title: "Task Management App",
-      tech: "Vue.js, Firebase, Tailwind CSS",
-      description: "Real-time collaborative task manager with team features",
-      status: "In Progress",
+      title: "Solar Panel Sizing Web App",
+      tech: "Python, FastAPI, React, Vite, JavaScript, CSS",
+      description: "Full-stack web application that estimates photovoltaic system size, installation cost, projected savings, and return on investment from monthly energy consumption.",
+      status: "Deployed",
+      category: "Full Stack",
     },
     {
-      title: "Machine Learning Image Classifier",
-      tech: "Python, TensorFlow, Flask",
-      description: "CNN-based image classification API with 94% accuracy",
+      title: "ProduSoft Workflow",
+      tech: "Next.js, TypeScript, Spring Boot, PostgreSQL, LangChain, Ollama",
+      description: "Production workflow platform for industrial work orders with operator and supervisor dashboards, AI-assisted support, transactional tracking, and serverless deployment.",
+      status: "Deployed",
+      category: "Full Stack",
+    },
+    {
+      title: "Music Player",
+      tech: "TypeScript, SCSS, HTML, JavaScript, audio controls, UI components",
+      description: "Frontend music player project with a dedicated playback interface, custom styling, and a browser-based listening experience.",
       status: "Completed",
+      category: "Frontend",
     },
-    {
-      title: "Social Media Analytics Dashboard",
-      tech: "React, D3.js, Express",
-      description: "Analytics platform for tracking social media metrics and engagement",
-      status: "Completed",
-    },
-    {
-      title: "Mobile Weather App",
-      tech: "React Native, OpenWeather API",
-      description: "Cross-platform weather application with location-based forecasts",
-      status: "In Progress",
-    },
-    {
-      title: "Blockchain Voting System",
-      tech: "Solidity, Web3.js, React",
-      description: "Decentralized voting platform ensuring transparency and security",
-      status: "Completed",
-    },
-  ];
+  ] satisfies Project[];
+
+  const [selectedFilter, setSelectedFilter] = useState<"All" | ProjectCategory>("All");
+
+  const filters = ["All", ...new Set(projects.map((project) => project.category))] as Array<"All" | ProjectCategory>;
+
+  const visibleProjects =
+    selectedFilter === "All"
+      ? projects
+      : projects.filter((project) => project.category === selectedFilter);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-20">
@@ -50,9 +65,9 @@ export default function Projects() {
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
-        {projects.map((project, index) => (
+        {visibleProjects.map((project) => (
           <div
-            key={index}
+            key={project.title}
             className="border-2 border-black p-5 transition-colors sm:p-6"
           >
             <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
@@ -86,13 +101,17 @@ export default function Projects() {
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <span className="font-mono text-sm uppercase">Filter Projects</span>
           <div className="flex flex-wrap gap-2 sm:gap-4">
-            {["All", "Web", "Mobile", "ML/AI", "Blockchain"].map((filter) => (
-              <div
+            {filters.map((filter) => (
+              <button
                 key={filter}
-                className="cursor-pointer border-2 border-black px-3 py-2 font-mono text-[10px] uppercase transition-colors hover:bg-black hover:text-white sm:px-4 sm:text-xs"
+                type="button"
+                onClick={() => setSelectedFilter(filter)}
+                className={`border-2 border-black px-3 py-2 font-mono text-[10px] uppercase transition-colors sm:px-4 sm:text-xs ${
+                  selectedFilter === filter ? "bg-black text-white" : "cursor-pointer hover:bg-black hover:text-white"
+                }`}
               >
                 {filter}
-              </div>
+              </button>
             ))}
           </div>
         </div>
