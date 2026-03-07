@@ -13,6 +13,23 @@ export default function Home() {
               <h1 className="whitespace-nowrap text-4xl font-bold leading-none sm:text-5xl lg:text-6xl">
                 Nicolas Delgado
               </h1>
+              {/* Location sits directly under the name as a lightweight metadata line */}
+              <p className="flex items-center gap-1.5 font-mono text-sm text-black/50">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-3.5 w-3.5 shrink-0"
+                >
+                  <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                Pasto, Nariño, Colombia
+              </p>
               <p className="max-w-3xl font-mono text-base leading-relaxed sm:text-lg">
                 Building innovative solutions through code. Passionate about clean architecture,
                 scalable systems, and user-centric design.
@@ -42,7 +59,8 @@ export default function Home() {
           {[
             {
               title: "Education",
-              content: "Computer Science, B.S. Expected Graduation: 2027",
+              // University name added as the natural home for institutional info
+              content: "Universidad Cooperativa de Colombia\nComputer Science, B.S. — Expected Graduation: 2027",
             },
             {
               title: "Focus Areas",
@@ -55,7 +73,7 @@ export default function Home() {
           ].map((item, index) => (
             <div key={index} className="border-2 border-black p-5 sm:p-6">
               <h3 className="mb-4 font-mono text-lg font-bold uppercase">{item.title}</h3>
-              <p className="font-mono text-sm">{item.content}</p>
+              <p className="whitespace-pre-line font-mono text-sm">{item.content}</p>
             </div>
           ))}
         </div>
