@@ -1,15 +1,40 @@
 import Link from "next/link";
 
 export default function Home() {
+  const actionItems = [
+    {
+      href: "mailto:nicolas.delgadop@campusucc.edu.co",
+      label: "Email Me",
+      className: "bg-black text-white hover:bg-white hover:text-black",
+    },
+    {
+      href: "/projects",
+      label: "Projects",
+      className: "hover:bg-black hover:text-white",
+    },
+    {
+      href: "https://github.com/nicolasdelgado",
+      label: "GitHub",
+      className: "hover:bg-black hover:text-white",
+      external: true,
+    },
+    {
+      href: "https://www.linkedin.com/in/nicolasdelgado/",
+      label: "LinkedIn",
+      className: "hover:bg-black hover:text-white",
+      external: true,
+    },
+  ];
+
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6">
       <section className="border-b-2 border-black py-12 sm:py-20">
-        <div className="flex flex-col gap-8 lg:gap-12">
+        <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-8 lg:gap-10">
             <div className="flex h-36 w-36 shrink-0 items-center justify-center rounded-full border-2 border-black sm:h-48 sm:w-48 lg:h-56 lg:w-56">
               <span className="font-mono text-sm uppercase text-black/40 sm:text-base">[profile picture]</span>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-5">
               <h1 className="whitespace-nowrap text-4xl font-bold leading-none sm:text-5xl lg:text-6xl">
                 Nicolas Delgado
               </h1>
@@ -50,21 +75,37 @@ export default function Home() {
                   Open to opportunities
                 </p>
               </div>
+              <div className="flex flex-wrap gap-3 pt-1 sm:gap-4">
+                {actionItems.map((item) => {
+                  const sharedClassName =
+                    "border-2 border-black px-4 py-2 text-center font-mono text-xs uppercase transition-colors sm:px-5";
+
+                  if (item.external) {
+                    return (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={`${sharedClassName} ${item.className}`}
+                      >
+                        {item.label}
+                      </a>
+                    );
+                  }
+
+                  return (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      className={`${sharedClassName} ${item.className}`}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-          <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:gap-4">
-            <Link
-              href="/projects"
-              className="border-2 border-black px-6 py-3 text-center font-mono text-sm uppercase transition-colors hover:bg-black hover:text-white"
-            >
-              View Projects
-            </Link>
-            <Link
-              href="/contact"
-              className="border-2 border-black px-6 py-3 text-center font-mono text-sm uppercase transition-colors hover:bg-black hover:text-white"
-            >
-              Get in Touch
-            </Link>
           </div>
         </div>
       </section>
