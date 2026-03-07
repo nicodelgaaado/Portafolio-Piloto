@@ -9,31 +9,47 @@ export default function Home() {
             <div className="flex h-36 w-36 shrink-0 items-center justify-center rounded-full border-2 border-black sm:h-48 sm:w-48 lg:h-56 lg:w-56">
               <span className="font-mono text-sm uppercase text-black/40 sm:text-base">[profile picture]</span>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-4">
               <h1 className="whitespace-nowrap text-4xl font-bold leading-none sm:text-5xl lg:text-6xl">
                 Nicolas Delgado
               </h1>
-              {/* Location sits directly under the name as a lightweight metadata line */}
-              <p className="flex items-center gap-1.5 font-mono text-sm text-black/50">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-3.5 w-3.5 shrink-0"
-                >
-                  <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z" />
-                  <circle cx="12" cy="10" r="3" />
-                </svg>
-                Pasto, Nariño, Colombia
-              </p>
               <p className="max-w-3xl font-mono text-base leading-relaxed sm:text-lg">
-                Building innovative solutions through code. Passionate about clean architecture,
-                scalable systems, and user-centric design.
+                CS Student at Universidad Cooperativa de Colombia
               </p>
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-sm text-black/50">
+                <p className="flex items-center gap-1.5">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-3.5 w-3.5 shrink-0"
+                  >
+                    <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                  Pasto, Colombia
+                </p>
+                <p className="flex items-center gap-1.5">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-3.5 w-3.5 shrink-0"
+                  >
+                    <path d="m12 3 1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3Z" />
+                    <path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15Z" />
+                  </svg>
+                  Open to opportunities
+                </p>
+              </div>
             </div>
           </div>
           <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:gap-4">
@@ -59,8 +75,7 @@ export default function Home() {
           {[
             {
               title: "Education",
-              // University name added as the natural home for institutional info
-              content: "Universidad Cooperativa de Colombia\nComputer Science, B.S. — Expected Graduation: 2027",
+              content: "Universidad Cooperativa de Colombia\nComputer Science, B.S. - Expected Graduation: 2027",
             },
             {
               title: "Focus Areas",
