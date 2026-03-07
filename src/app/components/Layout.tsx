@@ -11,7 +11,7 @@ const navItems = [
   { path: "/contact", label: "Contact" },
 ];
 
-const socialItems = ["Github", "LinkedIn", "Twitter"];
+const socialItems = ["Mail", "Github", "LinkedIn"];
 
 type LayoutProps = {
   children: ReactNode;
