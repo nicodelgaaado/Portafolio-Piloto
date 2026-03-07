@@ -1,28 +1,20 @@
-import Link from "next/link";
-
 export default function Home() {
   const actionItems = [
     {
-      href: "mailto:nicolas.delgadop@campusucc.edu.co",
       label: "Email Me",
       className: "bg-black text-white hover:bg-white hover:text-black",
     },
     {
-      href: "/projects",
       label: "Projects",
       className: "hover:bg-black hover:text-white",
     },
     {
-      href: "https://github.com/nicolasdelgado",
       label: "GitHub",
       className: "hover:bg-black hover:text-white",
-      external: true,
     },
     {
-      href: "https://www.linkedin.com/in/nicolasdelgado/",
       label: "LinkedIn",
       className: "hover:bg-black hover:text-white",
-      external: true,
     },
   ];
   const interests = ["Formula 1", "Tennis", "Music", "Traveling"];
@@ -81,28 +73,14 @@ export default function Home() {
                   const sharedClassName =
                     "border-2 border-black px-4 py-2 text-center font-mono text-xs uppercase transition-colors sm:px-5";
 
-                  if (item.external) {
-                    return (
-                      <a
-                        key={item.label}
-                        href={item.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className={`${sharedClassName} ${item.className}`}
-                      >
-                        {item.label}
-                      </a>
-                    );
-                  }
-
                   return (
-                    <Link
+                    <button
                       key={item.label}
-                      href={item.href}
+                      type="button"
                       className={`${sharedClassName} ${item.className}`}
                     >
                       {item.label}
-                    </Link>
+                    </button>
                   );
                 })}
               </div>
