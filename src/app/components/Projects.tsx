@@ -1,8 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
-type ProjectCategory = "Web" | "ML/AI";
+type ProjectCategory = "Data Analysis" | "Full Stack" | "Frontend";
 
 type Project = {
   title: string;
@@ -15,41 +15,38 @@ type Project = {
 export default function Projects() {
   const projects = [
     {
-      title: "E-Commerce Platform",
-      tech: "React, Node.js, MongoDB",
-      description: "Full-stack e-commerce solution with payment integration and admin dashboard",
+      title: "Statistical Analysis of AI Tool Usage",
+      tech: "R, tidyverse, ggplot2, dplyr, corrplot, Monte Carlo simulation",
+      description: "Statistical analysis project focused on AI tool usage patterns through descriptive statistics, inferential methods, probability models, regression, and Monte Carlo simulation.",
       status: "Completed",
-      category: "Web",
+      category: "Data Analysis",
     },
     {
-      title: "Task Management App",
-      tech: "Vue.js, Firebase, Tailwind CSS",
-      description: "Real-time collaborative task manager with team features",
-      status: "In Progress",
-      category: "Web",
+      title: "Solar Panel Sizing Web App",
+      tech: "Python, FastAPI, React, Vite, JavaScript, CSS",
+      description: "Full-stack web application that estimates photovoltaic system size, installation cost, projected savings, and return on investment from monthly energy consumption.",
+      status: "Deployed",
+      category: "Full Stack",
     },
     {
-      title: "Machine Learning Image Classifier",
-      tech: "Python, TensorFlow, Flask",
-      description: "CNN-based image classification API with 94% accuracy",
-      status: "Completed",
-      category: "ML/AI",
+      title: "ProduSoft Workflow",
+      tech: "Next.js, TypeScript, Spring Boot, PostgreSQL, LangChain, Ollama",
+      description: "Production workflow platform for industrial work orders with operator and supervisor dashboards, AI-assisted support, transactional tracking, and serverless deployment.",
+      status: "Deployed",
+      category: "Full Stack",
     },
     {
-      title: "Social Media Analytics Dashboard",
-      tech: "React, D3.js, Express",
-      description: "Analytics platform for tracking social media metrics and engagement",
+      title: "Music Player",
+      tech: "TypeScript, SCSS, HTML, JavaScript, audio controls, UI components",
+      description: "Frontend music player project with a dedicated playback interface, custom styling, and a browser-based listening experience.",
       status: "Completed",
-      category: "Web",
+      category: "Frontend",
     },
   ] satisfies Project[];
 
   const [selectedFilter, setSelectedFilter] = useState<"All" | ProjectCategory>("All");
 
-  const filters = useMemo(
-    () => ["All", ...new Set(projects.map((project) => project.category))] as Array<"All" | ProjectCategory>,
-    [projects],
-  );
+  const filters = ["All", ...new Set(projects.map((project) => project.category))] as Array<"All" | ProjectCategory>;
 
   const visibleProjects =
     selectedFilter === "All"
