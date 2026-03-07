@@ -25,8 +25,7 @@ export default function Layout({ children }: LayoutProps) {
       <header className="border-b-2 border-black">
         <div className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-3 sm:gap-4">
-              <div className="h-10 w-10 border-2 border-black sm:h-12 sm:w-12"></div>
+            <div className="flex items-center">
               <span className="font-mono uppercase tracking-wider">Portfolio</span>
             </div>
 
