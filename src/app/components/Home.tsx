@@ -25,6 +25,7 @@ export default function Home() {
       external: true,
     },
   ];
+  const interests = ["Formula 1", "Tennis", "Music", "Traveling"];
 
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -146,6 +147,19 @@ export default function Home() {
             <div key={index} className="border-2 border-black p-5 text-center sm:p-8">
               <div className="mb-2 text-3xl font-bold sm:text-4xl">{stat.number}</div>
               <div className="font-mono text-xs uppercase sm:text-sm">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-t-2 border-black py-12 sm:py-20">
+        <h2 className="mb-8 font-mono text-2xl font-bold uppercase sm:text-3xl">Interests</h2>
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+          {interests.map((interest) => (
+            <div key={interest} className="border-2 border-black px-3 py-4 text-center sm:px-4 sm:py-5">
+              <div className="whitespace-nowrap font-mono text-[11px] font-bold uppercase sm:text-xs">
+                {interest}
+              </div>
             </div>
           ))}
         </div>
