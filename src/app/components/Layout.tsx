@@ -57,7 +57,7 @@ export default function Layout({ children }: LayoutProps) {
       <footer className="mt-20 border-t-2 border-black">
         <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
           <div className="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
-            <p className="font-mono text-sm">(C) 2026 Software Engineering Student</p>
+            <p className="font-mono text-sm">(C) 2026 Nicolas Delgado</p>
             <div className="flex gap-4">
               {socialItems.map((social) => (
                 <div
