@@ -6,10 +6,10 @@ export default function Home() {
       <section className="border-b-2 border-black py-12 sm:py-20">
         <div className="flex flex-col gap-8 lg:gap-12">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-8 lg:gap-10">
-            <div className="flex h-28 w-28 shrink-0 items-center justify-center rounded-full border-2 border-black sm:h-36 sm:w-36 lg:h-44 lg:w-44">
-              <span className="font-mono text-xl uppercase sm:text-2xl lg:text-3xl">ND</span>
+            <div className="flex h-36 w-36 shrink-0 items-center justify-center rounded-full border-2 border-black sm:h-48 sm:w-48 lg:h-56 lg:w-56">
+              <span className="font-mono text-sm uppercase text-black/40 sm:text-base">[profile picture]</span>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-3">
               <h1 className="whitespace-nowrap text-4xl font-bold leading-none sm:text-5xl lg:text-6xl">
                 Nicolas Delgado
               </h1>
