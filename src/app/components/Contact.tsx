@@ -8,7 +8,7 @@ export default function Contact() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-stretch lg:gap-12">
         <div className="border-2 border-black p-5 sm:p-8">
           <h2 className="mb-6 font-mono text-xl font-bold uppercase sm:text-2xl">Send a Message</h2>
           <form className="space-y-6">
@@ -53,14 +53,14 @@ export default function Contact() {
           </form>
         </div>
 
-        <div className="space-y-6 sm:space-y-8">
-          <div className="border-2 border-black p-5 sm:p-8">
+        <div className="flex flex-col gap-6 sm:gap-8 lg:h-full">
+          <div className="border-2 border-black p-5 sm:p-8 lg:flex-1">
             <h2 className="mb-6 font-mono text-xl font-bold uppercase sm:text-2xl">Contact Info</h2>
             <div className="space-y-4">
               {[
-                { label: "Email", value: "john.doe@email.com" },
-                { label: "Phone", value: "+1 (555) 123-4567" },
-                { label: "Location", value: "San Francisco, CA" },
+                { label: "Email", value: "nicolas.delgadop@campusucc.edu.co" },
+                { label: "Phone", value: "+57 (032) 123-4567" },
+                { label: "Location", value: "Pasto, Nariño, CO" },
                 { label: "Availability", value: "Open to Opportunities" },
               ].map((item, index) => (
                 <div key={index} className="border-b-2 border-black pb-3 last:border-b-0">
@@ -71,14 +71,14 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="border-2 border-black p-5 sm:p-8">
+          <div className="border-2 border-black p-5 sm:p-8 lg:flex-1">
             <h2 className="mb-6 font-mono text-xl font-bold uppercase sm:text-2xl">Connect</h2>
             <div className="space-y-3">
               {[
-                { platform: "GitHub", handle: "@johndoe" },
-                { platform: "LinkedIn", handle: "john-doe-dev" },
-                { platform: "Twitter", handle: "@johndoe_dev" },
-                { platform: "CodePen", handle: "johndoe" },
+                { platform: "GitHub", handle: "@nicolasdelgado" },
+                { platform: "LinkedIn", handle: "@nicolasdelgado" },
+                { platform: "LeetCode", handle: "@nicolasdelgado" },
+                { platform: "HackerRank", handle: "@nicolasdelgado" },
               ].map((social, index) => (
                 <div
                   key={index}
@@ -89,17 +89,6 @@ export default function Contact() {
                 </div>
               ))}
             </div>
-          </div>
-
-          <div className="border-2 border-black p-5 text-center sm:p-8">
-            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center border-2 border-black sm:h-20 sm:w-20">
-              <span className="text-lg font-bold">DL</span>
-            </div>
-            <h3 className="mb-2 font-mono font-bold uppercase">Download Resume</h3>
-            <p className="mb-4 font-mono text-sm">PDF | 245 KB</p>
-            <button className="w-full border-2 border-black px-6 py-3 font-mono text-sm uppercase transition-colors hover:bg-black hover:text-white sm:w-auto">
-              Download CV
-            </button>
           </div>
         </div>
       </div>
