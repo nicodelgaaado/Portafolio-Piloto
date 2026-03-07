@@ -43,7 +43,7 @@ export default function Home() {
                 CS Student at Universidad Cooperativa de Colombia
               </p>
               <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-sm text-black/50">
-                <p className="flex items-center gap-1.5">
+                <p className="flex items-center gap-1.5 text-black">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
