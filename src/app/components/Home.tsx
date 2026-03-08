@@ -12,10 +12,6 @@ export default function Home() {
       label: "GitHub",
       className: "hover:bg-black hover:text-white",
     },
-    {
-      label: "LinkedIn",
-      className: "hover:bg-black hover:text-white",
-    },
   ];
   const interests = ["Formula 1", "Tennis", "Music", "Traveling"];
 
