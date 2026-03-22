@@ -42,9 +42,9 @@ export default function Skills() {
     },
   ];
   const certifications = [
-    { title: "AWS Certified Developer", year: "2025" },
-    { title: "Google Cloud Professional", year: "2025" },
-    { title: "MongoDB Certified Developer", year: "2024" },
+    { title: "Professional Certificate 1", issueDate: "2026" },
+    { title: "Professional Certificate 2", issueDate: "2026" },
+    { title: "Professional Certificate 3", issueDate: "2026" },
   ];
   const experiences = [
     {
@@ -115,8 +115,8 @@ export default function Skills() {
           <h2 className="mb-5 text-xl font-bold sm:mb-6 sm:text-2xl">Certifications</h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
             {certifications.map((certification, index) => (
-              <article key={index} className="border-2 border-black p-4 text-center sm:p-5">
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full border-2 border-black sm:h-16 sm:w-16">
+              <article key={index} className="border-2 border-black p-4 sm:p-5">
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full border-2 border-black sm:h-16 sm:w-16">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -130,12 +130,31 @@ export default function Skills() {
                     <path d="m5 13 4 4L19 7" />
                   </svg>
                 </div>
-                <h3 className="mb-2 font-mono text-sm font-bold uppercase sm:text-[15px]">
+                <h3 className="mb-3 font-mono text-sm font-bold uppercase sm:text-[15px]">
                   {certification.title}
                 </h3>
-                <p className="font-mono text-xs uppercase text-black/70 sm:text-sm">
-                  {certification.year}
+                <p className="mb-4 font-mono text-xs uppercase text-black/70 sm:text-sm">
+                  Issued {certification.issueDate}
                 </p>
+                <button
+                  type="button"
+                  className="inline-flex items-center gap-2 rounded-full border-2 border-black px-4 py-2 font-mono text-xs uppercase transition-colors hover:bg-black hover:text-white sm:text-sm"
+                >
+                  Show credential
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-4 w-4"
+                  >
+                    <path d="M7 17 17 7" />
+                    <path d="M7 7h10v10" />
+                  </svg>
+                </button>
               </article>
             ))}
           </div>
