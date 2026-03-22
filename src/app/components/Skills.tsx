@@ -51,19 +51,22 @@ export default function Skills() {
       role: "Software Engineering Undergraduate",
       company: "Universidad Cooperativa de Colombia",
       period: "2023 - Present",
-      description: "Developed features for customer-facing web applications.",
+      description:
+        "Pursuing undergraduate studies in software engineering while building a strong foundation in programming, software architecture, databases, and user-centered development.",
+    },
+    {
+      role: "Independent Software Consultant",
+      company: "Various Companies",
+      period: "2024 - Present",
+      description:
+        "Advising on software solutions, system structure, and implementation strategy for independent projects, helping translate requirements into practical and scalable technical outcomes.",
     },
     {
       role: "Freelance Full-Stack Developer",
       company: "Various Clients",
       period: "2023 - Present",
-      description: "Built RESTful APIs and responsive frontend components.",
-    },
-    {
-      role: "Research Assistant",
-      company: "University Lab",
-      period: "2024 - Present",
-      description: "Worked on natural language processing research and experimentation.",
+      description:
+        "Designing and developing responsive web applications for independent clients, handling both frontend interfaces and backend functionality to deliver practical digital solutions.",
     },
   ];
 
