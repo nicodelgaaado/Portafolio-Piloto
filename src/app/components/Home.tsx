@@ -2,14 +2,23 @@ export default function Home() {
   const actionItems = [
     {
       label: "Email Me",
+      href: "mailto:nicolasfedericodelgado@gmail.com",
       className: "bg-black text-white hover:bg-white hover:text-black",
     },
     {
-      label: "Projects",
+      label: "LinkedIn",
       className: "hover:bg-black hover:text-white",
     },
     {
       label: "GitHub",
+      href: "https://github.com/nicodelgaaado",
+      target: "_blank",
+      className: "hover:bg-black hover:text-white",
+    },
+    {
+      label: "Resume",
+      href: "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/resume-nicolasdelgado.pdf",
+      target: "_blank",
       className: "hover:bg-black hover:text-white",
     },
   ];
@@ -68,6 +77,20 @@ export default function Home() {
                 {actionItems.map((item) => {
                   const sharedClassName =
                     "border-2 border-black px-4 py-2 text-center font-mono text-xs uppercase transition-colors sm:px-5";
+
+                  if (item.href) {
+                    return (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        target={item.target}
+                        rel={item.target === "_blank" ? "noreferrer" : undefined}
+                        className={`${sharedClassName} ${item.className}`}
+                      >
+                        {item.label}
+                      </a>
+                    );
+                  }
 
                   return (
                     <button
