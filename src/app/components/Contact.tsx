@@ -74,10 +74,10 @@ export default function Contact() {
             <h2 className="mb-6 font-mono text-xl font-bold uppercase sm:text-2xl">Connect</h2>
             <div className="space-y-3">
               {[
-                { platform: "GitHub", handle: "@nicodelgaado" },
-                { platform: "LinkedIn", handle: "@nicodelgaado" },
-                { platform: "LeetCode", handle: "@nicodelgaado" },
-                { platform: "HackerRank", handle: "@nicodelgaado" },
+                { platform: "GitHub", handle: "@nicodelgaaado" },
+                { platform: "LinkedIn", handle: "@nicodelgaaado" },
+                { platform: "LeetCode", handle: "@nicodelgaaado" },
+                { platform: "HackerRank", handle: "@nicodelgaaado" },
               ].map((social, index) => (
                 <div
                   key={index}
