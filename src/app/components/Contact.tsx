@@ -58,8 +58,7 @@ export default function Contact() {
             <h2 className="mb-6 font-mono text-xl font-bold uppercase sm:text-2xl">Contact Info</h2>
             <div className="space-y-4">
               {[
-                { label: "Email", value: "nicolas.delgadop@campusucc.edu.co" },
-                { label: "Phone", value: "+57 (032) 123-4567" },
+                { label: "Email", value: "nicolasfedericodelgado@gmail.com" },
                 { label: "Location", value: "Pasto, Nariño, CO" },
                 { label: "Availability", value: "Open to Opportunities" },
               ].map((item, index) => (
@@ -75,10 +74,10 @@ export default function Contact() {
             <h2 className="mb-6 font-mono text-xl font-bold uppercase sm:text-2xl">Connect</h2>
             <div className="space-y-3">
               {[
-                { platform: "GitHub", handle: "@nicolasdelgado" },
-                { platform: "LinkedIn", handle: "@nicolasdelgado" },
-                { platform: "LeetCode", handle: "@nicolasdelgado" },
-                { platform: "HackerRank", handle: "@nicolasdelgado" },
+                { platform: "GitHub", handle: "@nicodelgaaado" },
+                { platform: "LinkedIn", handle: "@nicodelgaaado" },
+                { platform: "LeetCode", handle: "@nicodelgaaado" },
+                { platform: "HackerRank", handle: "@nicodelgaaado" },
               ].map((social, index) => (
                 <div
                   key={index}
