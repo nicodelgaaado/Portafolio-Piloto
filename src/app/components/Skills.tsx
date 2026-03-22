@@ -48,15 +48,15 @@ export default function Skills() {
   ];
   const experiences = [
     {
-      role: "Software Engineering Intern",
-      company: "Tech Company A",
-      period: "Summer 2025",
+      role: "Software Engineering Undergraduate",
+      company: "Universidad Cooperativa de Colombia",
+      period: "2023 - Present",
       description: "Developed features for customer-facing web applications.",
     },
     {
-      role: "Full-Stack Developer Intern",
-      company: "Startup B",
-      period: "Fall 2024",
+      role: "Freelance Full-Stack Developer",
+      company: "Various Clients",
+      period: "2023 - Present",
       description: "Built RESTful APIs and responsive frontend components.",
     },
     {
