@@ -16,30 +16,30 @@ export default function Projects() {
   const projects = [
     {
       title: "Statistical Analysis of AI Tool Usage",
-      tech: "R, tidyverse, ggplot2, dplyr, corrplot, Monte Carlo simulation",
-      description: "Statistical analysis project focused on AI tool usage patterns through descriptive statistics, inferential methods, probability models, regression, and Monte Carlo simulation.",
-      status: "Completed",
+      tech: "R, tidyverse, ggplot2, dplyr, corrplot",
+      description: "Statistical study of AI tool usage using descriptive analysis, regression, and simulation models.",
+      status: "Deployed",
       category: "Data Analysis",
     },
     {
       title: "Solar Panel Sizing Web App",
-      tech: "Python, FastAPI, React, Vite, JavaScript, CSS",
-      description: "Full-stack web application that estimates photovoltaic system size, installation cost, projected savings, and return on investment from monthly energy consumption.",
+      tech: "Python, FastAPI, React, Vite, CSS",
+      description: "Web app that estimates solar panel sizing, installation cost, savings, and return on investment.",
       status: "Deployed",
       category: "Full Stack",
     },
     {
-      title: "ProduSoft Workflow",
-      tech: "Next.js, TypeScript, Spring Boot, PostgreSQL, LangChain, Ollama",
-      description: "Production workflow platform for industrial work orders with operator and supervisor dashboards, AI-assisted support, transactional tracking, and serverless deployment.",
+      title: "Industrial Work Order Platform",
+      tech: "Next.js, TypeScript, Spring Boot, PostgreSQL",
+      description: "Industrial workflow platform for work orders, role-based dashboards, and AI-assisted operational support.",
       status: "Deployed",
       category: "Full Stack",
     },
     {
       title: "Music Player",
-      tech: "TypeScript, SCSS, HTML, JavaScript, audio controls, UI components",
-      description: "Frontend music player project with a dedicated playback interface, custom styling, and a browser-based listening experience.",
-      status: "Completed",
+      tech: "TypeScript, SCSS, HTML, JavaScript",
+      description: "Browser music player with custom controls, responsive UI, and a focused playback experience.",
+      status: "Deployed",
       category: "Frontend",
     },
   ] satisfies Project[];
@@ -76,8 +76,17 @@ export default function Projects() {
                 {project.status}
               </div>
             </div>
-            <div className="mb-4 font-mono text-sm opacity-70">{project.tech}</div>
-            <p className="mb-6 font-mono text-sm leading-relaxed">{project.description}</p>
+            <div className="mb-4 overflow-hidden whitespace-nowrap font-mono text-sm opacity-70">{project.tech}</div>
+            <p
+              className="mb-6 overflow-hidden font-mono text-sm leading-relaxed"
+              style={{
+                display: "-webkit-box",
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: "vertical",
+              }}
+            >
+              {project.description}
+            </p>
 
             {/* Placeholder for project image */}
             <div className="mb-4 flex h-36 items-center justify-center border-2 border-black sm:h-40">
