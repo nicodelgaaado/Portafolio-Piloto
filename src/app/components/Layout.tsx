@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import type { ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { MouseEvent, ReactNode } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
@@ -14,6 +14,7 @@ const navItems = [
 ];
 
 const socialItems = ["Mail", "Github", "LinkedIn"];
+const mobileMenuTransitionMs = 180;
 
 type LayoutProps = {
   children: ReactNode;
@@ -21,7 +22,9 @@ type LayoutProps = {
 
 export default function Layout({ children }: LayoutProps) {
   const pathname = usePathname();
+  const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pendingNavigationRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 640px)");
@@ -39,6 +42,43 @@ export default function Layout({ children }: LayoutProps) {
     };
   }, []);
 
+  useEffect(() => {
+    return () => {
+      if (pendingNavigationRef.current) {
+        clearTimeout(pendingNavigationRef.current);
+      }
+    };
+  }, []);
+
+  const handleMobileMenuToggle = () => {
+    if (pendingNavigationRef.current) {
+      clearTimeout(pendingNavigationRef.current);
+      pendingNavigationRef.current = null;
+    }
+
+    setIsMobileMenuOpen((current) => !current);
+  };
+
+  const handleMobileNavigation = (event: MouseEvent<HTMLAnchorElement>, path: string) => {
+    event.preventDefault();
+
+    if (pendingNavigationRef.current) {
+      clearTimeout(pendingNavigationRef.current);
+    }
+
+    setIsMobileMenuOpen(false);
+
+    if (pathname === path) {
+      pendingNavigationRef.current = null;
+      return;
+    }
+
+    pendingNavigationRef.current = setTimeout(() => {
+      router.push(path);
+      pendingNavigationRef.current = null;
+    }, mobileMenuTransitionMs);
+  };
+
   return (
     <div className="min-h-screen bg-white text-black">
       <header className="relative z-50 border-b-2 border-black bg-white">
@@ -54,7 +94,7 @@ export default function Layout({ children }: LayoutProps) {
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-navigation"
               aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-              onClick={() => setIsMobileMenuOpen((current) => !current)}
+              onClick={handleMobileMenuToggle}
             >
               {isMobileMenuOpen ? <X size={20} strokeWidth={2.25} /> : <Menu size={20} strokeWidth={2.25} />}
             </button>
@@ -80,32 +120,35 @@ export default function Layout({ children }: LayoutProps) {
           </div>
         </div>
 
-        {isMobileMenuOpen ? (
-          <div
-            id="mobile-navigation"
-            className="absolute inset-x-4 top-[calc(100%+0.75rem)] z-40 min-h-[19rem] rounded-[0.9rem] border border-black/35 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.14)] sm:hidden"
-          >
-            <nav className="p-5">
-              <ul className="flex w-full flex-col gap-5 pt-2">
-                {navItems.map((item) => (
-                  <li key={item.path}>
-                    <Link
-                      href={item.path}
-                      className={`inline-flex min-w-[8rem] items-center rounded-md px-4 py-3 font-mono text-sm uppercase tracking-[0.14em] transition-colors ${
-                        pathname === item.path
-                          ? "bg-black text-white"
-                          : "text-black/80 hover:bg-black hover:text-white"
-                      }`}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-        ) : null}
+        <div
+          id="mobile-navigation"
+          aria-hidden={!isMobileMenuOpen}
+          className={`absolute inset-x-4 top-[calc(100%+0.75rem)] z-40 min-h-[19rem] rounded-[0.9rem] border border-black/35 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.14)] transition-all duration-200 ease-out sm:hidden ${
+            isMobileMenuOpen
+              ? "translate-y-0 opacity-100"
+              : "pointer-events-none -translate-y-2 opacity-0"
+          }`}
+        >
+          <nav className="p-5">
+            <ul className="flex w-full flex-col gap-5 pt-2">
+              {navItems.map((item) => (
+                <li key={item.path}>
+                  <Link
+                    href={item.path}
+                    className={`flex w-full items-center justify-center rounded-md px-4 py-3 font-mono text-sm uppercase tracking-[0.14em] transition-colors ${
+                      pathname === item.path
+                        ? "bg-black text-white"
+                        : "text-black/80 hover:bg-black hover:text-white"
+                    }`}
+                    onClick={(event) => handleMobileNavigation(event, item.path)}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
       </header>
 
       <main>{children}</main>
