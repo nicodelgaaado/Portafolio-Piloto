@@ -25,6 +25,23 @@ export default function Home() {
     },
   ];
   const interests = ["Formula 1", "Tennis", "Music", "Traveling"];
+  const testimonials = [
+    {
+      name: "Random 1",
+      quote:
+        "Nicolas brings calm communication, strong ownership, and the technical discipline to turn ideas into reliable products.",
+    },
+    {
+      name: "Random 2",
+      quote:
+        "He stands out as an engineer who learns fast, solves problems methodically, and always supports the team with a positive attitude.",
+    },
+    {
+      name: "Random 3",
+      quote:
+        "Working with Nicolas means working with someone thoughtful, dependable, and committed to building clean, practical solutions.",
+    },
+  ];
 
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -147,6 +164,29 @@ export default function Home() {
               <div className="mb-2 text-3xl font-bold sm:text-4xl">{stat.number}</div>
               <div className="font-mono text-xs uppercase sm:text-sm">{stat.label}</div>
             </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-t-2 border-black py-12 sm:py-20">
+        <h2 className="mb-8 font-mono text-2xl font-bold uppercase sm:text-3xl">Testimonials</h2>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          {testimonials.map((testimonial) => (
+            <article key={testimonial.name} className="border-2 border-black p-5 sm:p-6">
+              <div className="mb-5 flex items-start gap-3">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-black">
+                  <span className="font-mono text-[10px] uppercase text-black/40">photo</span>
+                </div>
+                <div>
+                  <h3 className="font-mono text-base font-bold uppercase sm:text-lg">
+                    {testimonial.name}
+                  </h3>
+                </div>
+              </div>
+              <p className="font-mono text-sm leading-relaxed sm:text-[15px]">
+                {testimonial.quote}
+              </p>
+            </article>
           ))}
         </div>
       </section>
