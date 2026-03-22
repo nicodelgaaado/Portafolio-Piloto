@@ -161,9 +161,9 @@ export default function Home() {
         <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4 lg:gap-8">
           {[
             { number: "15+", label: "Projects" },
-            { number: "3", label: "Internships" },
+            { number: "3", label: "Experiences" },
             { number: "500+", label: "Git Commits" },
-            { number: "8", label: "Technologies" },
+            { number: "10", label: "Technologies" },
           ].map((stat, index) => (
             <div key={index} className="border-2 border-black p-5 text-center sm:p-8">
               <div className="mb-2 text-3xl font-bold sm:text-4xl">{stat.number}</div>

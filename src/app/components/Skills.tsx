@@ -57,7 +57,7 @@ export default function Skills() {
     {
       role: "Independent Software Consultant",
       company: "Various Companies",
-      period: "2024 - Present",
+      period: "2023 - Present",
       description:
         "Advising on software solutions, system structure, and implementation strategy for independent projects, helping translate requirements into practical and scalable technical outcomes.",
     },
@@ -77,7 +77,7 @@ export default function Skills() {
           Skills
         </h1>
         <p className="mt-6 font-mono text-base sm:text-lg">
-          Technical competencies and proficiency levels across various domains
+          A snapshot of my technical skills, certifications, and professional experience
         </p>
       </div>
 
