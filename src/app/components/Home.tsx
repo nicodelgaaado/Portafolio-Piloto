@@ -42,6 +42,11 @@ export default function Home() {
         "Working with Nicolas means working with someone thoughtful, dependable, and committed to building clean, practical solutions.",
     },
   ];
+  const contacts = [
+    { name: "Random 1", connection: "Software Engineer" },
+    { name: "Random 2", connection: "Product Designer" },
+    { name: "Random 3", connection: "Project Collaborator" },
+  ];
 
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -186,6 +191,29 @@ export default function Home() {
               <p className="font-mono text-sm leading-relaxed sm:text-[15px]">
                 {testimonial.quote}
               </p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-t-2 border-black py-12 sm:py-20">
+        <h2 className="mb-8 font-mono text-2xl font-bold uppercase sm:text-3xl">Contacts</h2>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          {contacts.map((contact) => (
+            <article key={contact.name} className="border-2 border-black p-5 sm:p-6">
+              <div className="mb-4 flex items-center gap-3">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-black">
+                  <span className="font-mono text-[10px] uppercase text-black/40">photo</span>
+                </div>
+                <div>
+                  <h3 className="font-mono text-base font-bold uppercase sm:text-lg">
+                    {contact.name}
+                  </h3>
+                  <p className="font-mono text-xs uppercase text-black/60 sm:text-sm">
+                    {contact.connection}
+                  </p>
+                </div>
+              </div>
             </article>
           ))}
         </div>
