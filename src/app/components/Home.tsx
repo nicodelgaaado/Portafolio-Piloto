@@ -7,6 +7,8 @@ export default function Home() {
     },
     {
       label: "LinkedIn",
+      href: "https://www.linkedin.com/in/nicodelgaaado/",
+      target: "_blank",
       className: "hover:bg-black hover:text-white",
     },
     {
