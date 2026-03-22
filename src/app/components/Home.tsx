@@ -75,10 +75,10 @@ export default function Home() {
                   Open to opportunities
                 </p>
               </div>
-              <div className="flex flex-wrap gap-3 pt-1 sm:gap-4">
+              <div className="flex flex-nowrap gap-2 pt-1 sm:gap-4">
                 {actionItems.map((item) => {
                   const sharedClassName =
-                    "border-2 border-black px-4 py-2 text-center font-mono text-xs uppercase transition-colors sm:px-5";
+                    "flex-1 whitespace-nowrap border-2 border-black px-2 py-2 text-center font-mono text-[10px] uppercase transition-colors sm:flex-none sm:px-5 sm:text-xs";
 
                   if (item.href) {
                     return (
