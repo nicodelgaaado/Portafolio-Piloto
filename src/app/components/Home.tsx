@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { MapPin, Sparkles } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -82,13 +83,16 @@ export default function Home() {
       <section className="border-b border-black/12 py-12 sm:py-20">
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-8 lg:gap-10">
-            <Avatar className="h-36 w-36 shrink-0 border border-black/12 shadow-[0_20px_50px_rgba(3,2,19,0.12)] sm:h-48 sm:w-48 lg:h-56 lg:w-56">
-              <AvatarImage
+            <div className="relative h-36 w-36 shrink-0 overflow-hidden rounded-full border border-black/12 shadow-[0_20px_50px_rgba(3,2,19,0.12)] sm:h-48 sm:w-48 lg:h-56 lg:w-56">
+              <Image
                 src="https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/profilepicture.webp"
                 alt="Portrait of Nicolas Delgado"
+                fill
+                priority
+                sizes="(min-width: 1024px) 14rem, (min-width: 640px) 12rem, 9rem"
+                className="object-cover"
               />
-              <AvatarFallback>ND</AvatarFallback>
-            </Avatar>
+            </div>
             <div className="space-y-5">
               <h1 className="whitespace-nowrap text-4xl font-bold leading-none sm:text-5xl lg:text-6xl">
                 Nicolas Delgado
