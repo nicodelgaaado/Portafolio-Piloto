@@ -22,7 +22,7 @@ type Project = {
 };
 
 export default function Projects() {
-  const projects = [
+  const projects: Project[] = [
     {
       title: "Movie Recommendation App",
       tech: "Next.js 16, React 19, TypeScript, Tailwind CSS v4, shadcn/ui",
@@ -59,7 +59,7 @@ export default function Projects() {
       githubUrl: "https://github.com/nicodelgaaado/Music-Player",
       liveDemoUrl: "https://music-player-pied-two.vercel.app/",
     },
-  ] satisfies Project[];
+  ];
 
   const [selectedFilter, setSelectedFilter] = useState<"All" | ProjectFilter>("All");
 
