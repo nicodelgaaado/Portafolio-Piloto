@@ -2,6 +2,7 @@ import Image from "next/image";
 
 export default function Skills() {
   const getLogoUrl = (logo: string) => `https://api.iconify.design/logos:${logo}.svg`;
+  const getBlueIbmLogoUrl = () => "https://api.iconify.design/simple-icons:ibm.svg?color=%230f62fe";
 
   const skillCategories = [
     {
@@ -46,9 +47,21 @@ export default function Skills() {
     },
   ];
   const certifications = [
-    { title: "Professional Certificate 1", issueDate: "2026" },
-    { title: "Professional Certificate 2", issueDate: "2026" },
-    { title: "Professional Certificate 3", issueDate: "2026" },
+    {
+      title: "IBM RAG and Agentic AI",
+      provider: "IBM via Coursera",
+      credentialUrl: "https://coursera.org/share/499f8e418208b151da1030ec9f61cac7",
+    },
+    {
+      title: "Building AI Agents",
+      provider: "IBM via Coursera",
+      credentialUrl: "https://coursera.org/share/4ad28c8c391360b08ccb09c4e3032b1b",
+    },
+    {
+      title: "Build AI Agents using MCP",
+      provider: "IBM via Coursera",
+      credentialUrl: "https://coursera.org/share/68fb68da4ccad69d4a12808171cbc833",
+    },
   ];
   const experiences = [
     {
@@ -125,27 +138,25 @@ export default function Skills() {
             {certifications.map((certification, index) => (
               <article key={index} className="border-2 border-black p-4 sm:p-5">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full border-2 border-black sm:h-16 sm:w-16">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-6 w-6"
-                  >
-                    <path d="m5 13 4 4L19 7" />
-                  </svg>
+                  <Image
+                    src={getBlueIbmLogoUrl()}
+                    alt={`${certification.provider} logo`}
+                    width={40}
+                    height={40}
+                    unoptimized
+                    className="h-8 w-8 object-contain sm:h-10 sm:w-10"
+                  />
                 </div>
                 <h3 className="mb-3 font-mono text-sm font-bold uppercase sm:text-[15px]">
                   {certification.title}
                 </h3>
                 <p className="mb-4 font-mono text-xs uppercase text-black/70 sm:text-sm">
-                  Issued {certification.issueDate}
+                  {certification.provider}
                 </p>
-                <button
-                  type="button"
+                <a
+                  href={certification.credentialUrl}
+                  target="_blank"
+                  rel="noreferrer"
                   className="inline-flex items-center gap-2 rounded-full border-2 border-black px-4 py-2 font-mono text-xs uppercase transition-colors hover:bg-black hover:text-white sm:text-sm"
                 >
                   Show credential
@@ -162,7 +173,7 @@ export default function Skills() {
                     <path d="M7 17 17 7" />
                     <path d="M7 7h10v10" />
                   </svg>
-                </button>
+                </a>
               </article>
             ))}
           </div>
