@@ -17,6 +17,8 @@ type Project = {
   description: string;
   status: string;
   filters: ProjectFilter[];
+  githubUrl: string;
+  liveDemoUrl: string;
 };
 
 export default function Projects() {
@@ -27,6 +29,8 @@ export default function Projects() {
       description: "Movie recommendation web app where users rate a curated queue of titles and receive ranked recommendations based on similarity matches from historical ratings data.",
       status: "Deployed",
       filters: ["Data-Driven", "Interactive UI"],
+      githubUrl: "https://github.com/nicodelgaaado/Movie-Matchmaker",
+      liveDemoUrl: "https://movie-matchmaker-alpha.vercel.app/",
     },
     {
       title: "Solar Panel Sizing App",
@@ -34,6 +38,8 @@ export default function Projects() {
       description: "Web app that estimates solar panel sizing, installation cost, savings, and return on investment.",
       status: "Deployed",
       filters: ["Data-Driven", "Productivity"],
+      githubUrl: "https://github.com/nicodelgaaado/Panel-Solar",
+      liveDemoUrl: "https://panel-solar.vercel.app/",
     },
     {
       title: "Work Order Platform",
@@ -41,6 +47,8 @@ export default function Projects() {
       description: "Industrial workflow platform for work orders, role-based dashboards, and AI-assisted operational support.",
       status: "Deployed",
       filters: ["Productivity", "Business Systems"],
+      githubUrl: "https://github.com/nicodelgaaado/ProduSoft",
+      liveDemoUrl: "https://produ-soft.vercel.app/",
     },
     {
       title: "Web Music Player",
@@ -48,6 +56,8 @@ export default function Projects() {
       description: "Browser music player with custom controls, responsive UI, and a focused playback experience.",
       status: "Deployed",
       filters: ["Interactive UI"],
+      githubUrl: "https://github.com/nicodelgaaado/Music-Player",
+      liveDemoUrl: "https://music-player-pied-two.vercel.app/",
     },
   ] satisfies Project[];
 
@@ -101,12 +111,22 @@ export default function Projects() {
             </div>
 
             <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
-              <div className="flex-1 cursor-pointer border-2 border-black px-4 py-2 text-center font-mono text-xs uppercase">
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="flex-1 border-2 border-black px-4 py-2 text-center font-mono text-xs uppercase transition-colors hover:bg-black hover:text-white"
+              >
                 View Code
-              </div>
-              <div className="flex-1 cursor-pointer border-2 border-black px-4 py-2 text-center font-mono text-xs uppercase">
+              </a>
+              <a
+                href={project.liveDemoUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="flex-1 border-2 border-black px-4 py-2 text-center font-mono text-xs uppercase transition-colors hover:bg-black hover:text-white"
+              >
                 Live Demo
-              </div>
+              </a>
             </div>
           </div>
         ))}
