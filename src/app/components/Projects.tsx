@@ -3,10 +3,10 @@
 import { useState } from "react";
 
 const projectFilters = [
-  "Data-Driven",
-  "Interactive UI",
-  "Productivity",
-  "Business Systems",
+  "Data",
+  "Design",
+  "Tools",
+  "Business",
 ] as const;
 
 type ProjectFilter = (typeof projectFilters)[number];
@@ -28,7 +28,7 @@ export default function Projects() {
       tech: "Next.js 16, React 19, TypeScript, Tailwind CSS v4, shadcn/ui",
       description: "Movie recommendation web app where users rate a curated queue of titles and receive ranked recommendations based on similarity matches from historical ratings data.",
       status: "Deployed",
-      filters: ["Data-Driven", "Interactive UI"],
+      filters: ["Data", "Design"],
       githubUrl: "https://github.com/nicodelgaaado/Movie-Matchmaker",
       liveDemoUrl: "https://movie-matchmaker-alpha.vercel.app/",
     },
@@ -37,7 +37,7 @@ export default function Projects() {
       tech: "Next.js 16, React 19, TypeScript, Tailwind CSS v4, shadcn/ui",
       description: "Web app that estimates solar panel sizing, installation cost, savings, and return on investment.",
       status: "Deployed",
-      filters: ["Data-Driven", "Productivity"],
+      filters: ["Data", "Tools"],
       githubUrl: "https://github.com/nicodelgaaado/Panel-Solar",
       liveDemoUrl: "https://panel-solar.vercel.app/",
     },
@@ -46,7 +46,7 @@ export default function Projects() {
       tech: "Next.js, TypeScript, Spring Boot, PostgreSQL",
       description: "Industrial workflow platform for work orders, role-based dashboards, and AI-assisted operational support.",
       status: "Deployed",
-      filters: ["Productivity", "Business Systems"],
+      filters: ["Tools", "Business"],
       githubUrl: "https://github.com/nicodelgaaado/ProduSoft",
       liveDemoUrl: "https://produ-soft.vercel.app/",
     },
@@ -55,7 +55,7 @@ export default function Projects() {
       tech: "TypeScript, SCSS, HTML, JavaScript",
       description: "Browser music player with custom controls, responsive UI, and a focused playback experience.",
       status: "Deployed",
-      filters: ["Interactive UI"],
+      filters: ["Design"],
       githubUrl: "https://github.com/nicodelgaaado/Music-Player",
       liveDemoUrl: "https://music-player-pied-two.vercel.app/",
     },
