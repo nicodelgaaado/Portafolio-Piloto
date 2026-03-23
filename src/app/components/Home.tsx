@@ -1,27 +1,38 @@
+import { MapPin, Sparkles } from "lucide-react";
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+
 export default function Home() {
   const actionItems = [
     {
       label: "Email Me",
       href: "mailto:nicolasfedericodelgado@gmail.com",
-      className: "bg-black text-white hover:bg-white hover:text-black",
+      variant: "default" as const,
+      className:
+        "border-transparent bg-black px-2 text-white hover:bg-black/92 hover:text-white sm:px-5",
     },
     {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/nicodelgaaado/",
       target: "_blank",
-      className: "hover:bg-black hover:text-white",
+      variant: "outline" as const,
+      className: "px-2 sm:px-5",
     },
     {
       label: "GitHub",
       href: "https://github.com/nicodelgaaado",
       target: "_blank",
-      className: "hover:bg-black hover:text-white",
+      variant: "outline" as const,
+      className: "px-2 sm:px-5",
     },
     {
       label: "Resume",
       href: "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/resume-nicolasdelgado.pdf",
       target: "_blank",
-      className: "hover:bg-black hover:text-white",
+      variant: "outline" as const,
+      className: "px-2 sm:px-5",
     },
   ];
   const interests = ["Formula 1", "Tennis", "Music", "Traveling"];
@@ -68,16 +79,16 @@ export default function Home() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6">
-      <section className="border-b-2 border-black py-12 sm:py-20">
+      <section className="border-b border-black/12 py-12 sm:py-20">
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-8 lg:gap-10">
-            <div className="h-36 w-36 shrink-0 overflow-hidden rounded-full border-2 border-black sm:h-48 sm:w-48 lg:h-56 lg:w-56">
-              <img
+            <Avatar className="h-36 w-36 shrink-0 border border-black/12 shadow-[0_20px_50px_rgba(3,2,19,0.12)] sm:h-48 sm:w-48 lg:h-56 lg:w-56">
+              <AvatarImage
                 src="https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/profilepicture.webp"
                 alt="Portrait of Nicolas Delgado"
-                className="h-full w-full object-cover"
               />
-            </div>
+              <AvatarFallback>ND</AvatarFallback>
+            </Avatar>
             <div className="space-y-5">
               <h1 className="whitespace-nowrap text-4xl font-bold leading-none sm:text-5xl lg:text-6xl">
                 Nicolas Delgado
@@ -87,74 +98,38 @@ export default function Home() {
               </p>
               <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-sm text-black/50">
                 <p className="flex items-center gap-1.5 text-black">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-3.5 w-3.5 shrink-0"
-                  >
-                    <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z" />
-                    <circle cx="12" cy="10" r="3" />
-                  </svg>
+                  <MapPin className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
                   Pasto, Colombia
                 </p>
                 <p className="flex items-center gap-1.5">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-3.5 w-3.5 shrink-0"
-                  >
-                    <path d="m12 3 1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3Z" />
-                    <path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15Z" />
-                  </svg>
+                  <Sparkles className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
                   Open to opportunities
                 </p>
               </div>
               <div className="flex flex-nowrap gap-2 pt-1 sm:gap-4">
-                {actionItems.map((item) => {
-                  const sharedClassName =
-                    "flex-1 whitespace-nowrap border-2 border-black px-2 py-2 text-center font-mono text-[10px] uppercase transition-colors sm:flex-none sm:px-5 sm:text-xs";
-
-                  if (item.href) {
-                    return (
-                      <a
-                        key={item.label}
-                        href={item.href}
-                        target={item.target}
-                        rel={item.target === "_blank" ? "noreferrer" : undefined}
-                        className={`${sharedClassName} ${item.className}`}
-                      >
-                        {item.label}
-                      </a>
-                    );
-                  }
-
-                  return (
-                    <button
-                      key={item.label}
-                      type="button"
-                      className={`${sharedClassName} ${item.className}`}
+                {actionItems.map((item) => (
+                  <Button
+                    key={item.label}
+                    asChild
+                    variant={item.variant}
+                    className={`h-auto flex-1 whitespace-nowrap py-2 text-center font-mono text-[10px] uppercase sm:flex-none sm:text-xs ${item.className}`}
+                  >
+                    <a
+                      href={item.href}
+                      target={item.target}
+                      rel={item.target === "_blank" ? "noreferrer" : undefined}
                     >
                       {item.label}
-                    </button>
-                  );
-                })}
+                    </a>
+                  </Button>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="border-b-2 border-black py-12 sm:py-20">
+      <section className="border-b border-black/12 py-12 sm:py-20">
         <h2 className="mb-8 font-mono text-2xl font-bold uppercase sm:text-3xl">About Me</h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
           {[
@@ -171,10 +146,12 @@ export default function Home() {
               content: "Open Source, Web3, Competitive Programming",
             },
           ].map((item, index) => (
-            <div key={index} className="border-2 border-black p-5 sm:p-6">
-              <h3 className="mb-4 font-mono text-lg font-bold uppercase">{item.title}</h3>
-              <p className="whitespace-pre-line font-mono text-sm">{item.content}</p>
-            </div>
+            <Card key={index} className="border-black/12 bg-white/95">
+              <CardContent className="p-5 sm:p-6">
+                <h3 className="mb-4 font-mono text-lg font-bold uppercase">{item.title}</h3>
+                <p className="whitespace-pre-line font-mono text-sm">{item.content}</p>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </section>
@@ -187,77 +164,79 @@ export default function Home() {
             { number: "500+", label: "Git Commits" },
             { number: "10", label: "Technologies" },
           ].map((stat, index) => (
-            <div key={index} className="border-2 border-black p-5 text-center sm:p-8">
-              <div className="mb-2 text-3xl font-bold sm:text-4xl">{stat.number}</div>
-              <div className="font-mono text-xs uppercase sm:text-sm">{stat.label}</div>
-            </div>
+            <Card key={index} className="border-black/12 bg-white/95">
+              <CardContent className="p-5 text-center sm:p-8">
+                <div className="mb-2 text-3xl font-bold sm:text-4xl">{stat.number}</div>
+                <div className="font-mono text-xs uppercase sm:text-sm">{stat.label}</div>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </section>
 
-      <section className="border-t-2 border-black py-12 sm:py-20">
+      <section className="border-t border-black/12 py-12 sm:py-20">
         <h2 className="mb-8 font-mono text-2xl font-bold uppercase sm:text-3xl">Testimonials</h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {testimonials.map((testimonial) => (
-            <article key={testimonial.name} className="border-2 border-black p-5 sm:p-6">
-              <div className="mb-5 flex items-start gap-3">
-                <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-black">
-                  <img
-                    src={testimonial.image}
-                    alt={`Portrait of ${testimonial.name}`}
-                    className="h-full w-full object-cover"
-                  />
+            <Card key={testimonial.name} className="border-black/12 bg-white/95">
+              <CardContent className="p-5 sm:p-6">
+                <div className="mb-5 flex items-start gap-3">
+                  <Avatar className="h-14 w-14 shrink-0 border border-black/12">
+                    <AvatarImage src={testimonial.image} alt={`Portrait of ${testimonial.name}`} />
+                    <AvatarFallback>{testimonial.name.slice(0, 2).toUpperCase()}</AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <h3 className="font-mono text-base font-bold uppercase sm:text-lg">
+                      {testimonial.name}
+                    </h3>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-mono text-base font-bold uppercase sm:text-lg">
-                    {testimonial.name}
-                  </h3>
-                </div>
-              </div>
-              <p className="font-mono text-sm leading-relaxed sm:text-[15px]">
-                {testimonial.quote}
-              </p>
-            </article>
+                <p className="font-mono text-sm leading-relaxed sm:text-[15px]">
+                  {testimonial.quote}
+                </p>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </section>
 
-      <section className="border-t-2 border-black py-12 sm:py-20">
+      <section className="border-t border-black/12 py-12 sm:py-20">
         <h2 className="mb-8 font-mono text-2xl font-bold uppercase sm:text-3xl">Contacts</h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {contacts.map((contact) => (
-            <article key={contact.name} className="border-2 border-black p-5 sm:p-6">
-              <div className="mb-4 flex items-center gap-3">
-                <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-black">
-                  <img
-                    src={contact.image}
-                    alt={`Portrait of ${contact.name}`}
-                    className="h-full w-full object-cover"
-                  />
+            <Card key={contact.name} className="border-black/12 bg-white/95">
+              <CardContent className="p-5 sm:p-6">
+                <div className="mb-4 flex items-center gap-3">
+                  <Avatar className="h-14 w-14 shrink-0 border border-black/12">
+                    <AvatarImage src={contact.image} alt={`Portrait of ${contact.name}`} />
+                    <AvatarFallback>{contact.name.slice(0, 2).toUpperCase()}</AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <h3 className="font-mono text-base font-bold uppercase sm:text-lg">
+                      {contact.name}
+                    </h3>
+                    <p className="font-mono text-xs uppercase text-black/60 sm:text-sm">
+                      {contact.connection}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-mono text-base font-bold uppercase sm:text-lg">
-                    {contact.name}
-                  </h3>
-                  <p className="font-mono text-xs uppercase text-black/60 sm:text-sm">
-                    {contact.connection}
-                  </p>
-                </div>
-              </div>
-            </article>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </section>
 
-      <section className="border-t-2 border-black py-12 sm:py-20">
+      <section className="border-t border-black/12 py-12 sm:py-20">
         <h2 className="mb-8 font-mono text-2xl font-bold uppercase sm:text-3xl">PASSIONS</h2>
         <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
           {interests.map((interest) => (
-            <div key={interest} className="border-2 border-black px-3 py-4 text-center sm:px-4 sm:py-5">
-              <div className="whitespace-nowrap font-mono text-[11px] font-bold uppercase sm:text-xs">
-                {interest}
-              </div>
-            </div>
+            <Card key={interest} className="border-black/12 bg-white/95">
+              <CardContent className="px-3 py-4 text-center sm:px-4 sm:py-5">
+                <div className="whitespace-nowrap font-mono text-[11px] font-bold uppercase sm:text-xs">
+                  {interest}
+                </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </section>

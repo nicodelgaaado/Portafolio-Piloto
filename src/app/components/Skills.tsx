@@ -1,4 +1,8 @@
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function Skills() {
   const getLogoUrl = (logo: string) => `https://api.iconify.design/logos:${logo}.svg`;
@@ -89,7 +93,7 @@ export default function Skills() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-20">
-      <div className="mb-10 border-b-2 border-black pb-6 sm:mb-12 sm:pb-8">
+      <div className="mb-10 border-b border-black/12 pb-6 sm:mb-12 sm:pb-8">
         <h1 className="text-4xl font-bold sm:text-5xl">
           Skills
         </h1>
@@ -98,7 +102,7 @@ export default function Skills() {
         </p>
       </div>
 
-      <div className="mb-10 space-y-6 border-b-2 border-black pb-10 sm:mb-12 sm:space-y-8 sm:pb-12">
+      <div className="mb-10 space-y-6 border-b border-black/12 pb-10 sm:mb-12 sm:space-y-8 sm:pb-12">
         {skillCategories.map((category, index) => (
           <section
             key={index}
@@ -136,45 +140,40 @@ export default function Skills() {
           <h2 className="mb-5 text-xl font-bold sm:mb-6 sm:text-2xl">Certifications</h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
             {certifications.map((certification, index) => (
-              <article key={index} className="border-2 border-black p-4 sm:p-5">
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full border-2 border-black sm:h-16 sm:w-16">
-                  <Image
-                    src={getBlueIbmLogoUrl()}
-                    alt={`${certification.provider} logo`}
-                    width={40}
-                    height={40}
-                    unoptimized
-                    className="h-8 w-8 object-contain sm:h-10 sm:w-10"
-                  />
-                </div>
-                <h3 className="mb-3 font-mono text-sm font-bold uppercase sm:text-[15px]">
-                  {certification.title}
-                </h3>
-                <p className="mb-4 font-mono text-xs uppercase text-black/70 sm:text-sm">
-                  {certification.provider}
-                </p>
-                <a
-                  href={certification.credentialUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border-2 border-black px-4 py-2 font-mono text-xs uppercase transition-colors hover:bg-black hover:text-white sm:text-sm"
-                >
-                  Show credential
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-4 w-4"
+              <Card key={index} className="border-black/12 bg-white/95">
+                <CardContent className="p-4 sm:p-5">
+                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-black/12 bg-white sm:h-16 sm:w-16">
+                    <Image
+                      src={getBlueIbmLogoUrl()}
+                      alt={`${certification.provider} logo`}
+                      width={40}
+                      height={40}
+                      unoptimized
+                      className="h-8 w-8 object-contain sm:h-10 sm:w-10"
+                    />
+                  </div>
+                  <h3 className="mb-3 font-mono text-sm font-bold uppercase sm:text-[15px]">
+                    {certification.title}
+                  </h3>
+                  <p className="mb-4 font-mono text-xs uppercase text-black/70 sm:text-sm">
+                    {certification.provider}
+                  </p>
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="h-auto rounded-full px-4 py-2 font-mono text-xs uppercase sm:text-sm"
                   >
-                    <path d="M7 17 17 7" />
-                    <path d="M7 7h10v10" />
-                  </svg>
-                </a>
-              </article>
+                    <a
+                      href={certification.credentialUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Show credential
+                      <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
+                    </a>
+                  </Button>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </section>
@@ -199,5 +198,4 @@ export default function Skills() {
       </div>
     </div>
   );
-  
 }
