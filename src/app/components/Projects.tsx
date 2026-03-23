@@ -2,14 +2,21 @@
 
 import { useState } from "react";
 
-type ProjectCategory = "Data Analysis" | "Full Stack" | "Frontend";
+const projectFilters = [
+  "Data-Driven",
+  "Interactive UI",
+  "Productivity",
+  "Business Systems",
+] as const;
+
+type ProjectFilter = (typeof projectFilters)[number];
 
 type Project = {
   title: string;
   tech: string;
   description: string;
   status: string;
-  category: ProjectCategory;
+  filters: ProjectFilter[];
 };
 
 export default function Projects() {
@@ -19,39 +26,39 @@ export default function Projects() {
       tech: "Next.js 16, React 19, TypeScript, Tailwind CSS v4, shadcn/ui",
       description: "Movie recommendation web app where users rate a curated queue of titles and receive ranked recommendations based on similarity matches from historical ratings data.",
       status: "Deployed",
-      category: "Full Stack",
+      filters: ["Data-Driven", "Interactive UI"],
     },
     {
       title: "Solar Panel Sizing App",
       tech: "Next.js 16, React 19, TypeScript, Tailwind CSS v4, shadcn/ui",
       description: "Web app that estimates solar panel sizing, installation cost, savings, and return on investment.",
       status: "Deployed",
-      category: "Full Stack",
+      filters: ["Data-Driven", "Productivity"],
     },
     {
       title: "Work Order Platform",
       tech: "Next.js, TypeScript, Spring Boot, PostgreSQL",
       description: "Industrial workflow platform for work orders, role-based dashboards, and AI-assisted operational support.",
       status: "Deployed",
-      category: "Full Stack",
+      filters: ["Productivity", "Business Systems"],
     },
     {
       title: "Web Music Player",
       tech: "TypeScript, SCSS, HTML, JavaScript",
       description: "Browser music player with custom controls, responsive UI, and a focused playback experience.",
       status: "Deployed",
-      category: "Frontend",
+      filters: ["Interactive UI"],
     },
   ] satisfies Project[];
 
-  const [selectedFilter, setSelectedFilter] = useState<"All" | ProjectCategory>("All");
+  const [selectedFilter, setSelectedFilter] = useState<"All" | ProjectFilter>("All");
 
-  const filters = ["All", ...new Set(projects.map((project) => project.category))] as Array<"All" | ProjectCategory>;
+  const filters = ["All", ...projectFilters] as Array<"All" | ProjectFilter>;
 
   const visibleProjects =
     selectedFilter === "All"
       ? projects
-      : projects.filter((project) => project.category === selectedFilter);
+      : projects.filter((project) => project.filters.includes(selectedFilter));
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-20">
