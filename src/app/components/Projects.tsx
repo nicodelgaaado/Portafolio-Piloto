@@ -15,28 +15,28 @@ type Project = {
 export default function Projects() {
   const projects = [
     {
-      title: "Statistical Analysis of AI Tool Usage",
-      tech: "R, tidyverse, ggplot2, dplyr, corrplot",
-      description: "Statistical study of AI tool usage using descriptive analysis, regression, and simulation models.",
+      title: "Movie Recommendation App",
+      tech: "Next.js 16, React 19, TypeScript, Tailwind CSS v4, shadcn/ui",
+      description: "Movie recommendation web app where users rate a curated queue of titles and receive ranked recommendations based on similarity matches from historical ratings data.",
       status: "Deployed",
-      category: "Data Analysis",
+      category: "Full Stack",
     },
     {
-      title: "Solar Panel Sizing Web App",
-      tech: "Python, FastAPI, React, Vite, CSS",
+      title: "Solar Panel Sizing App",
+      tech: "Next.js 16, React 19, TypeScript, Tailwind CSS v4, shadcn/ui",
       description: "Web app that estimates solar panel sizing, installation cost, savings, and return on investment.",
       status: "Deployed",
       category: "Full Stack",
     },
     {
-      title: "Industrial Work Order Platform",
+      title: "Work Order Platform",
       tech: "Next.js, TypeScript, Spring Boot, PostgreSQL",
       description: "Industrial workflow platform for work orders, role-based dashboards, and AI-assisted operational support.",
       status: "Deployed",
       category: "Full Stack",
     },
     {
-      title: "Music Player",
+      title: "Web Music Player",
       tech: "TypeScript, SCSS, HTML, JavaScript",
       description: "Browser music player with custom controls, responsive UI, and a focused playback experience.",
       status: "Deployed",
