@@ -59,10 +59,10 @@ export default function Home() {
         "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/people/sebastianmejia-photo.jpg",
     },
     {
-      name: "Juliana Velasquez",
-      connection: "Chair at Proantioquia",
+      name: "Saul Kattan",
+      connection: "Consultant",
       image:
-        "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/people/julianavelasquez-photo.jpg",
+        "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/people/saulkattan-photo.jpg",
     },
   ];
 
