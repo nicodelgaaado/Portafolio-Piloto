@@ -28,18 +28,15 @@ export default function Home() {
   const testimonials = [
     {
       name: "Random 1",
-      quote:
-        "Nicolas brings calm communication, strong ownership, and the technical discipline to turn ideas into reliable products.",
+      quote: "Nicolas stands out for his calm presence, clear communication, and reliability.",
     },
     {
       name: "Random 2",
-      quote:
-        "He stands out as an engineer who learns fast, solves problems methodically, and always supports the team with a positive attitude.",
+      quote: "He is thoughtful, easy to trust, and always brings a positive attitude towards others.",
     },
     {
       name: "Random 3",
-      quote:
-        "Working with Nicolas means working with someone thoughtful, dependable, and committed to building clean, practical solutions.",
+      quote: "Nicolas is someone people can count on because he is respectful, steady, and grounded.",
     },
   ];
   const contacts = [
