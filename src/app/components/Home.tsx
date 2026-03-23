@@ -29,19 +29,19 @@ export default function Home() {
     {
       name: "Nicolas Uribe",
       image:
-        "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/people/nicolasuribe-photo.jpg",
+        "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/nicolasuribe-photo.webp",
       quote: "Nicolas stands out for his calm presence, clear communication, and reliability.",
     },
     {
       name: "Daniel Gomez",
       image:
-        "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/people/danielgomez-photo.png",
+        "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/danielgomez-photo.webp",
       quote: "He is thoughtful, easy to trust, and always brings a positive attitude towards others.",
     },
     {
       name: "Luis Rodriguez",
       image:
-        "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/people/luisrodriguez-photo.jpg",
+        "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/luisrodriguez-photo.webp",
       quote: "Nicolas is someone people can count on because he is respectful, steady, and grounded.",
     },
   ];
@@ -50,19 +50,19 @@ export default function Home() {
       name: "Santiago Lafaurie",
       connection: "Founder at Hunty",
       image:
-        "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/people/santiago-lafaurie.jpg",
+        "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/santiagolafaurie-photo.webp",
     },
     {
       name: "Sebastian Mejia",
       connection: "Entrepreneur",
       image:
-        "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/people/sebastianmejia-photo.jpg",
+        "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/sebastianmejia-photo.webp",
     },
     {
       name: "Saul Kattan",
       connection: "Consultant",
       image:
-        "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/people/saulkattan-photo.jpg",
+        "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/saulkattan-photo.webp",
     },
   ];
 
@@ -73,7 +73,7 @@ export default function Home() {
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-8 lg:gap-10">
             <div className="h-36 w-36 shrink-0 overflow-hidden rounded-full border-2 border-black sm:h-48 sm:w-48 lg:h-56 lg:w-56">
               <img
-                src="https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/profile-picture.png"
+                src="https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/profilepicture.webp"
                 alt="Portrait of Nicolas Delgado"
                 className="h-full w-full object-cover"
               />
