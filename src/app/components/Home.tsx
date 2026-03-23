@@ -27,22 +27,43 @@ export default function Home() {
   const interests = ["Formula 1", "Tennis", "Music", "Traveling"];
   const testimonials = [
     {
-      name: "Random 1",
+      name: "Nicolas Uribe",
+      image:
+        "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/people/nicolasuribe-photo.jpg",
       quote: "Nicolas stands out for his calm presence, clear communication, and reliability.",
     },
     {
-      name: "Random 2",
+      name: "Daniel Gomez",
+      image:
+        "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/people/danielgomez-photo.png",
       quote: "He is thoughtful, easy to trust, and always brings a positive attitude towards others.",
     },
     {
-      name: "Random 3",
+      name: "Luis Rodriguez",
+      image:
+        "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/people/luisrodriguez-photo.jpg",
       quote: "Nicolas is someone people can count on because he is respectful, steady, and grounded.",
     },
   ];
   const contacts = [
-    { name: "Random 1", connection: "Software Engineer" },
-    { name: "Random 2", connection: "Product Designer" },
-    { name: "Random 3", connection: "Project Collaborator" },
+    {
+      name: "Santiago Lafaurie",
+      connection: "Founder at Hunty",
+      image:
+        "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/people/santiago-lafaurie.jpg",
+    },
+    {
+      name: "Sebastian Mejia",
+      connection: "Entrepreneur",
+      image:
+        "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/people/sebastianmejia-photo.jpg",
+    },
+    {
+      name: "Juliana Velasquez",
+      connection: "Chair at Proantioquia",
+      image:
+        "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/people/julianavelasquez-photo.jpg",
+    },
   ];
 
   return (
@@ -50,8 +71,12 @@ export default function Home() {
       <section className="border-b-2 border-black py-12 sm:py-20">
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-8 lg:gap-10">
-            <div className="flex h-36 w-36 shrink-0 items-center justify-center rounded-full border-2 border-black sm:h-48 sm:w-48 lg:h-56 lg:w-56">
-              <span className="font-mono text-sm uppercase text-black/40 sm:text-base">[profile picture]</span>
+            <div className="h-36 w-36 shrink-0 overflow-hidden rounded-full border-2 border-black sm:h-48 sm:w-48 lg:h-56 lg:w-56">
+              <img
+                src="https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/profile-picture.png"
+                alt="Portrait of Nicolas Delgado"
+                className="h-full w-full object-cover"
+              />
             </div>
             <div className="space-y-5">
               <h1 className="whitespace-nowrap text-4xl font-bold leading-none sm:text-5xl lg:text-6xl">
@@ -176,8 +201,12 @@ export default function Home() {
           {testimonials.map((testimonial) => (
             <article key={testimonial.name} className="border-2 border-black p-5 sm:p-6">
               <div className="mb-5 flex items-start gap-3">
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-black">
-                  <span className="font-mono text-[10px] uppercase text-black/40">photo</span>
+                <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-black">
+                  <img
+                    src={testimonial.image}
+                    alt={`Portrait of ${testimonial.name}`}
+                    className="h-full w-full object-cover"
+                  />
                 </div>
                 <div>
                   <h3 className="font-mono text-base font-bold uppercase sm:text-lg">
@@ -199,8 +228,12 @@ export default function Home() {
           {contacts.map((contact) => (
             <article key={contact.name} className="border-2 border-black p-5 sm:p-6">
               <div className="mb-4 flex items-center gap-3">
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-black">
-                  <span className="font-mono text-[10px] uppercase text-black/40">photo</span>
+                <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-black">
+                  <img
+                    src={contact.image}
+                    alt={`Portrait of ${contact.name}`}
+                    className="h-full w-full object-cover"
+                  />
                 </div>
                 <div>
                   <h3 className="font-mono text-base font-bold uppercase sm:text-lg">
