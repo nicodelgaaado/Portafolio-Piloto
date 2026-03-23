@@ -13,7 +13,11 @@ const navItems = [
   { path: "/contact", label: "Contact" },
 ];
 
-const socialItems = ["Mail", "Github", "LinkedIn"];
+const socialItems = [
+  { label: "Mail", href: "mailto:nicolasfedericodelgado@gmail.com" },
+  { label: "Github", href: "https://github.com/nicodelgaaado" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/nicodelgaaado" },
+];
 const mobileMenuTransitionMs = 180;
 
 type LayoutProps = {
@@ -159,12 +163,16 @@ export default function Layout({ children }: LayoutProps) {
             <p className="font-mono text-sm">(C) 2026 Nicolas Delgado</p>
             <div className="flex gap-4">
               {socialItems.map((social) => (
-                <div
-                  key={social}
-                  className="flex h-8 w-8 items-center justify-center border-2 border-black"
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target={social.href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel={social.href.startsWith("mailto:") ? undefined : "noreferrer"}
+                  aria-label={social.label}
+                  className="flex h-8 w-8 items-center justify-center border-2 border-black transition-colors hover:bg-black hover:text-white"
                 >
-                  <span className="font-mono text-xs">{social[0]}</span>
-                </div>
+                  <span className="font-mono text-xs">{social.label[0]}</span>
+                </a>
               ))}
             </div>
           </div>

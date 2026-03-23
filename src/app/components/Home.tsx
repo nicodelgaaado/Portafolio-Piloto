@@ -61,7 +61,7 @@ export default function Home() {
                 Nicolas Delgado
               </h1>
               <p className="max-w-3xl font-mono text-base leading-relaxed sm:text-lg">
-                CS Student at Universidad Cooperativa de Colombia
+                Full-Stack Software Development Engineer
               </p>
               <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-sm text-black/50">
                 <p className="flex items-center gap-1.5 text-black">
@@ -138,7 +138,7 @@ export default function Home() {
           {[
             {
               title: "Education",
-              content: "Universidad Cooperativa de Colombia\nComputer Science, B.S. - Expected Graduation: 2027",
+              content: "Universidad Cooperativa de Colombia\nSoftware Engineering, B.S.",
             },
             {
               title: "Focus Areas",
@@ -220,7 +220,7 @@ export default function Home() {
       </section>
 
       <section className="border-t-2 border-black py-12 sm:py-20">
-        <h2 className="mb-8 font-mono text-2xl font-bold uppercase sm:text-3xl">Interests</h2>
+        <h2 className="mb-8 font-mono text-2xl font-bold uppercase sm:text-3xl">PASSIONS</h2>
         <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
           {interests.map((interest) => (
             <div key={interest} className="border-2 border-black px-3 py-4 text-center sm:px-4 sm:py-5">

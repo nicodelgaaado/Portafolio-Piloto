@@ -2,56 +2,73 @@
 
 import { useState } from "react";
 
-type ProjectCategory = "Data Analysis" | "Full Stack" | "Frontend";
+const projectFilters = [
+  "Data-Driven",
+  "Interactive UI",
+  "Productivity",
+  "Business Systems",
+] as const;
+
+type ProjectFilter = (typeof projectFilters)[number];
 
 type Project = {
   title: string;
   tech: string;
   description: string;
   status: string;
-  category: ProjectCategory;
+  filters: ProjectFilter[];
+  githubUrl: string;
+  liveDemoUrl: string;
 };
 
 export default function Projects() {
-  const projects = [
+  const projects: Project[] = [
     {
-      title: "Statistical Analysis of AI Tool Usage",
-      tech: "R, tidyverse, ggplot2, dplyr, corrplot",
-      description: "Statistical study of AI tool usage using descriptive analysis, regression, and simulation models.",
+      title: "Movie Recommendation App",
+      tech: "Next.js 16, React 19, TypeScript, Tailwind CSS v4, shadcn/ui",
+      description: "Movie recommendation web app where users rate a curated queue of titles and receive ranked recommendations based on similarity matches from historical ratings data.",
       status: "Deployed",
-      category: "Data Analysis",
+      filters: ["Data-Driven", "Interactive UI"],
+      githubUrl: "https://github.com/nicodelgaaado/Movie-Matchmaker",
+      liveDemoUrl: "https://movie-matchmaker-alpha.vercel.app/",
     },
     {
-      title: "Solar Panel Sizing Web App",
-      tech: "Python, FastAPI, React, Vite, CSS",
+      title: "Solar Panel Sizing App",
+      tech: "Next.js 16, React 19, TypeScript, Tailwind CSS v4, shadcn/ui",
       description: "Web app that estimates solar panel sizing, installation cost, savings, and return on investment.",
       status: "Deployed",
-      category: "Full Stack",
+      filters: ["Data-Driven", "Productivity"],
+      githubUrl: "https://github.com/nicodelgaaado/Panel-Solar",
+      liveDemoUrl: "https://panel-solar.vercel.app/",
     },
     {
-      title: "Industrial Work Order Platform",
+      title: "Work Order Platform",
       tech: "Next.js, TypeScript, Spring Boot, PostgreSQL",
       description: "Industrial workflow platform for work orders, role-based dashboards, and AI-assisted operational support.",
       status: "Deployed",
-      category: "Full Stack",
+      filters: ["Productivity", "Business Systems"],
+      githubUrl: "https://github.com/nicodelgaaado/ProduSoft",
+      liveDemoUrl: "https://produ-soft.vercel.app/",
     },
     {
-      title: "Music Player",
+      title: "Web Music Player",
       tech: "TypeScript, SCSS, HTML, JavaScript",
       description: "Browser music player with custom controls, responsive UI, and a focused playback experience.",
       status: "Deployed",
-      category: "Frontend",
+      filters: ["Interactive UI"],
+      githubUrl: "https://github.com/nicodelgaaado/Music-Player",
+      liveDemoUrl: "https://music-player-pied-two.vercel.app/",
     },
-  ] satisfies Project[];
+  ];
 
-  const [selectedFilter, setSelectedFilter] = useState<"All" | ProjectCategory>("All");
+  const [selectedFilter, setSelectedFilter] = useState<"All" | ProjectFilter>("All");
 
-  const filters = ["All", ...new Set(projects.map((project) => project.category))] as Array<"All" | ProjectCategory>;
+  const filters = ["All", ...projectFilters] as Array<"All" | ProjectFilter>;
 
   const visibleProjects =
     selectedFilter === "All"
       ? projects
-      : projects.filter((project) => project.category === selectedFilter);
+      : projects.filter((project) => project.filters.includes(selectedFilter));
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-20">
@@ -94,12 +111,22 @@ export default function Projects() {
             </div>
 
             <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
-              <div className="flex-1 cursor-pointer border-2 border-black px-4 py-2 text-center font-mono text-xs uppercase">
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="flex-1 border-2 border-black px-4 py-2 text-center font-mono text-xs uppercase transition-colors hover:bg-black hover:text-white"
+              >
                 View Code
-              </div>
-              <div className="flex-1 cursor-pointer border-2 border-black px-4 py-2 text-center font-mono text-xs uppercase">
+              </a>
+              <a
+                href={project.liveDemoUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="flex-1 border-2 border-black px-4 py-2 text-center font-mono text-xs uppercase transition-colors hover:bg-black hover:text-white"
+              >
                 Live Demo
-              </div>
+              </a>
             </div>
           </div>
         ))}
