@@ -58,7 +58,7 @@ export default function Home() {
                 Nicolas Delgado
               </h1>
               <p className="max-w-3xl font-mono text-base leading-relaxed sm:text-lg">
-                Full-Stack Software Development Engineer
+                Full-Stack Software Engineer
               </p>
               <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-sm text-black/50">
                 <p className="flex items-center gap-1.5 text-black">
