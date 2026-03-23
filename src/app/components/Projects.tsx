@@ -3,6 +3,10 @@
 import Image from "next/image";
 import { useState } from "react";
 
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+
 const projectFilters = [
   "Data",
   "Design",
@@ -87,80 +91,81 @@ export default function Projects() {
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
         {visibleProjects.map((project) => (
-          <div
+          <Card
             key={project.title}
-            className="border-2 border-black p-5 transition-colors sm:p-6"
+            className="border-black/12 bg-white/95 transition-colors"
           >
-            <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-              <h3 className="text-lg font-bold sm:text-xl">{project.title}</h3>
-              <div className="w-fit border-2 border-black px-3 py-1 font-mono text-xs">
-                {project.status}
+            <CardContent className="p-5 sm:p-6">
+              <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                <h3 className="text-lg font-bold sm:text-xl">{project.title}</h3>
+                <Badge className="w-fit">{project.status}</Badge>
               </div>
-            </div>
-            <div className="mb-4 overflow-hidden whitespace-nowrap font-mono text-sm opacity-70">{project.tech}</div>
-            <p
-              className="mb-6 overflow-hidden font-mono text-sm leading-relaxed"
-              style={{
-                display: "-webkit-box",
-                WebkitLineClamp: 2,
-                WebkitBoxOrient: "vertical",
-              }}
-            >
-              {project.description}
-            </p>
-
-            <div className="relative mb-4 h-36 overflow-hidden border-2 border-black bg-white sm:h-40">
-              <Image
-                src={projectPreviewImage}
-                alt={`Vercel logo preview for ${project.title}`}
-                fill
-                sizes="(min-width: 1024px) 40rem, 100vw"
-                className="object-cover object-center"
-              />
-            </div>
-
-            <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="flex-1 border-2 border-black px-4 py-2 text-center font-mono text-xs uppercase transition-colors hover:bg-black hover:text-white"
+              <div className="mb-4 overflow-hidden whitespace-nowrap font-mono text-sm opacity-70">{project.tech}</div>
+              <p
+                className="mb-6 overflow-hidden font-mono text-sm leading-relaxed"
+                style={{
+                  display: "-webkit-box",
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: "vertical",
+                }}
               >
-                View Code
-              </a>
-              <a
-                href={project.liveDemoUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="flex-1 border-2 border-black px-4 py-2 text-center font-mono text-xs uppercase transition-colors hover:bg-black hover:text-white"
-              >
-                Live Demo
-              </a>
-            </div>
-          </div>
+                {project.description}
+              </p>
+
+              <div className="relative mb-4 h-36 overflow-hidden rounded-lg border border-black/12 bg-white sm:h-40">
+                <Image
+                  src={projectPreviewImage}
+                  alt={`Vercel logo preview for ${project.title}`}
+                  fill
+                  sizes="(min-width: 1024px) 40rem, 100vw"
+                  className="object-cover object-center"
+                />
+              </div>
+
+              <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
+                <Button
+                  asChild
+                  variant="outline"
+                  className="h-auto flex-1 px-4 py-2 font-mono text-xs uppercase"
+                >
+                  <a href={project.githubUrl} target="_blank" rel="noreferrer">
+                    View Code
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  className="h-auto flex-1 px-4 py-2 font-mono text-xs uppercase"
+                >
+                  <a href={project.liveDemoUrl} target="_blank" rel="noreferrer">
+                    Live Demo
+                  </a>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         ))}
       </div>
 
-      {/* Filter/Sort Section */}
-      <div className="mt-10 border-2 border-black p-4 sm:mt-12 sm:p-6">
-        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <span className="font-mono text-sm uppercase">Filter Projects</span>
-          <div className="flex flex-wrap gap-2 sm:gap-4">
-            {filters.map((filter) => (
-              <button
-                key={filter}
-                type="button"
-                onClick={() => setSelectedFilter(filter)}
-                className={`border-2 border-black px-3 py-2 font-mono text-[10px] uppercase transition-colors sm:px-4 sm:text-xs ${
-                  selectedFilter === filter ? "bg-black text-white" : "cursor-pointer hover:bg-black hover:text-white"
-                }`}
-              >
-                {filter}
-              </button>
-            ))}
+      <Card className="mt-10 border-black/12 bg-white/95 sm:mt-12">
+        <CardContent className="p-4 sm:p-6">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <span className="font-mono text-sm uppercase">Filter Projects</span>
+            <div className="flex flex-wrap gap-2 sm:gap-4">
+              {filters.map((filter) => (
+                <Button
+                  key={filter}
+                  type="button"
+                  onClick={() => setSelectedFilter(filter)}
+                  variant={selectedFilter === filter ? "default" : "outline"}
+                  className="h-auto px-3 py-2 font-mono text-[10px] uppercase sm:px-4 sm:text-xs"
+                >
+                  {filter}
+                </Button>
+              ))}
+            </div>
           </div>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }

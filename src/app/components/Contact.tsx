@@ -3,6 +3,11 @@
 import { useRef, useState } from "react";
 import type { ChangeEvent, FocusEvent, FormEvent } from "react";
 
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+
 const WEB3FORMS_ACCESS_KEY = "5342442e-a24c-45ca-ba64-76ed99bed7ba";
 const namePattern = /^[\p{L}\p{M}\s'.-]+$/u;
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -289,11 +294,9 @@ export default function Contact() {
   };
 
   const getFieldClassName = (field: ContactField) =>
-    `w-full border-2 p-3 font-mono focus:outline-none focus:ring-2 ${
-      errors[field]
-        ? "border-red-600 focus:ring-red-600"
-        : "border-black focus:ring-black"
-    }`;
+    errors[field]
+      ? "border-red-600 bg-red-50/60 focus:border-red-600 focus:shadow-[0_0_0_3px_rgba(220,38,38,0.12)]"
+      : "border-black/15";
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-20">
@@ -305,131 +308,133 @@ export default function Contact() {
       </div>
 
       <div>
-        <div className="border-2 border-black p-5 sm:p-8">
-          <h2 className="mb-6 font-mono text-xl font-bold uppercase sm:text-2xl">Send a Message</h2>
-          <form className="space-y-6" onSubmit={handleSubmit} noValidate>
-            <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
-            <input type="hidden" name="from_name" value="Portfolio Website" />
-            <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
+        <Card className="border-black/12 bg-white/95">
+          <CardContent className="p-5 sm:p-8">
+            <h2 className="mb-6 font-mono text-xl font-bold uppercase sm:text-2xl">Send a Message</h2>
+            <form className="space-y-6" onSubmit={handleSubmit} noValidate>
+              <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+              <input type="hidden" name="from_name" value="Portfolio Website" />
+              <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
 
-            <div>
-              <label htmlFor="contact-name" className="mb-2 block font-mono text-sm uppercase">
-                Name
-              </label>
-              <input
-                ref={setFieldRef("name")}
-                id="contact-name"
-                name="name"
-                type="text"
-                value={values.name}
-                onChange={handleChange("name")}
-                onBlur={handleBlur("name")}
-                aria-invalid={Boolean(errors.name)}
-                aria-describedby={errors.name ? "contact-name-error" : undefined}
-                className={getFieldClassName("name")}
-                placeholder="Your Name"
-              />
-              {errors.name && (
-                <p id="contact-name-error" className="mt-2 font-mono text-sm text-red-600">
-                  {errors.name}
+              <div>
+                <label htmlFor="contact-name" className="mb-2 block font-mono text-sm uppercase">
+                  Name
+                </label>
+                <Input
+                  ref={setFieldRef("name")}
+                  id="contact-name"
+                  name="name"
+                  type="text"
+                  value={values.name}
+                  onChange={handleChange("name")}
+                  onBlur={handleBlur("name")}
+                  aria-invalid={Boolean(errors.name)}
+                  aria-describedby={errors.name ? "contact-name-error" : undefined}
+                  className={getFieldClassName("name")}
+                  placeholder="Your Name"
+                />
+                {errors.name && (
+                  <p id="contact-name-error" className="mt-2 font-mono text-sm text-red-600">
+                    {errors.name}
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="contact-email" className="mb-2 block font-mono text-sm uppercase">
+                  Email
+                </label>
+                <Input
+                  ref={setFieldRef("email")}
+                  id="contact-email"
+                  name="email"
+                  type="email"
+                  value={values.email}
+                  onChange={handleChange("email")}
+                  onBlur={handleBlur("email")}
+                  aria-invalid={Boolean(errors.email)}
+                  aria-describedby={errors.email ? "contact-email-error" : undefined}
+                  className={getFieldClassName("email")}
+                  placeholder="your.email@example.com"
+                />
+                {errors.email && (
+                  <p id="contact-email-error" className="mt-2 font-mono text-sm text-red-600">
+                    {errors.email}
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="contact-subject" className="mb-2 block font-mono text-sm uppercase">
+                  Subject
+                </label>
+                <Input
+                  ref={setFieldRef("subject")}
+                  id="contact-subject"
+                  name="subject"
+                  type="text"
+                  value={values.subject}
+                  onChange={handleChange("subject")}
+                  onBlur={handleBlur("subject")}
+                  aria-invalid={Boolean(errors.subject)}
+                  aria-describedby={errors.subject ? "contact-subject-error" : undefined}
+                  className={getFieldClassName("subject")}
+                  placeholder="What's this about?"
+                />
+                {errors.subject && (
+                  <p id="contact-subject-error" className="mt-2 font-mono text-sm text-red-600">
+                    {errors.subject}
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="contact-message" className="mb-2 block font-mono text-sm uppercase">
+                  Message
+                </label>
+                <Textarea
+                  ref={setFieldRef("message")}
+                  id="contact-message"
+                  name="message"
+                  rows={6}
+                  value={values.message}
+                  onChange={handleChange("message")}
+                  onBlur={handleBlur("message")}
+                  aria-invalid={Boolean(errors.message)}
+                  aria-describedby={errors.message ? "contact-message-error" : undefined}
+                  className={`${getFieldClassName("message")} resize-none`}
+                  placeholder="Your message here..."
+                />
+                {errors.message && (
+                  <p id="contact-message-error" className="mt-2 font-mono text-sm text-red-600">
+                    {errors.message}
+                  </p>
+                )}
+              </div>
+
+              {submitStatus.type !== "idle" && (
+                <p
+                  className={`rounded-lg border p-3 font-mono text-sm ${
+                    submitStatus.type === "success"
+                      ? "border-black bg-black text-white"
+                      : "border-black/15 bg-black/[0.03] text-black"
+                  }`}
+                  role="status"
+                >
+                  {submitStatus.message}
                 </p>
               )}
-            </div>
 
-            <div>
-              <label htmlFor="contact-email" className="mb-2 block font-mono text-sm uppercase">
-                Email
-              </label>
-              <input
-                ref={setFieldRef("email")}
-                id="contact-email"
-                name="email"
-                type="email"
-                value={values.email}
-                onChange={handleChange("email")}
-                onBlur={handleBlur("email")}
-                aria-invalid={Boolean(errors.email)}
-                aria-describedby={errors.email ? "contact-email-error" : undefined}
-                className={getFieldClassName("email")}
-                placeholder="your.email@example.com"
-              />
-              {errors.email && (
-                <p id="contact-email-error" className="mt-2 font-mono text-sm text-red-600">
-                  {errors.email}
-                </p>
-              )}
-            </div>
-
-            <div>
-              <label htmlFor="contact-subject" className="mb-2 block font-mono text-sm uppercase">
-                Subject
-              </label>
-              <input
-                ref={setFieldRef("subject")}
-                id="contact-subject"
-                name="subject"
-                type="text"
-                value={values.subject}
-                onChange={handleChange("subject")}
-                onBlur={handleBlur("subject")}
-                aria-invalid={Boolean(errors.subject)}
-                aria-describedby={errors.subject ? "contact-subject-error" : undefined}
-                className={getFieldClassName("subject")}
-                placeholder="What's this about?"
-              />
-              {errors.subject && (
-                <p id="contact-subject-error" className="mt-2 font-mono text-sm text-red-600">
-                  {errors.subject}
-                </p>
-              )}
-            </div>
-
-            <div>
-              <label htmlFor="contact-message" className="mb-2 block font-mono text-sm uppercase">
-                Message
-              </label>
-              <textarea
-                ref={setFieldRef("message")}
-                id="contact-message"
-                name="message"
-                rows={6}
-                value={values.message}
-                onChange={handleChange("message")}
-                onBlur={handleBlur("message")}
-                aria-invalid={Boolean(errors.message)}
-                aria-describedby={errors.message ? "contact-message-error" : undefined}
-                className={`${getFieldClassName("message")} resize-none`}
-                placeholder="Your message here..."
-              />
-              {errors.message && (
-                <p id="contact-message-error" className="mt-2 font-mono text-sm text-red-600">
-                  {errors.message}
-                </p>
-              )}
-            </div>
-
-            {submitStatus.type !== "idle" && (
-              <p
-                className={`border-2 p-3 font-mono text-sm ${
-                  submitStatus.type === "success"
-                    ? "border-black bg-black text-white"
-                    : "border-black text-black"
-                }`}
-                role="status"
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="h-auto w-full px-6 py-3 font-mono uppercase sm:py-4"
               >
-                {submitStatus.message}
-              </p>
-            )}
-
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full border-2 border-black px-6 py-3 font-mono uppercase transition-colors hover:bg-black hover:text-white disabled:cursor-not-allowed disabled:opacity-60 sm:py-4"
-            >
-              {isSubmitting ? "Sending..." : "Send Message"}
-            </button>
-          </form>
-        </div>
+                {isSubmitting ? "Sending..." : "Send Message"}
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
