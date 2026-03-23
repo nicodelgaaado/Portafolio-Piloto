@@ -74,18 +74,37 @@ export default function Contact() {
             <h2 className="mb-6 font-mono text-xl font-bold uppercase sm:text-2xl">Connect</h2>
             <div className="space-y-3">
               {[
-                { platform: "GitHub", handle: "@nicodelgaaado" },
-                { platform: "LinkedIn", handle: "@nicodelgaaado" },
-                { platform: "LeetCode", handle: "@nicodelgaaado" },
-                { platform: "HackerRank", handle: "@nicodelgaaado" },
+                {
+                  platform: "GitHub",
+                  handle: "@nicodelgaaado",
+                  href: "https://github.com/nicodelgaaado",
+                },
+                {
+                  platform: "LinkedIn",
+                  handle: "@nicodelgaaado",
+                  href: "https://www.linkedin.com/in/nicodelgaaado/",
+                },
+                {
+                  platform: "LeetCode",
+                  handle: "@nicodelgaaado",
+                  href: "https://leetcode.com/u/nicodelgaaado/",
+                },
+                {
+                  platform: "HackerRank",
+                  handle: "@nicodelgaaado",
+                  href: "https://www.hackerrank.com/profile/nicodelgaaado",
+                },
               ].map((social, index) => (
-                <div
+                <a
                   key={index}
+                  href={social.href}
+                  target="_blank"
+                  rel="noreferrer"
                   className="flex cursor-pointer flex-col items-start justify-between gap-1 border-2 border-black p-4 transition-colors hover:bg-black hover:text-white sm:flex-row sm:items-center sm:gap-2"
                 >
                   <span className="font-mono font-bold">{social.platform}</span>
                   <span className="font-mono text-sm">{social.handle}</span>
-                </div>
+                </a>
               ))}
             </div>
           </div>
