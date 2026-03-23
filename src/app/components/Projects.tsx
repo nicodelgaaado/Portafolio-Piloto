@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 const projectFilters = [
@@ -19,6 +20,9 @@ type Project = {
   filters: ProjectFilter[];
   githubUrl: string;
   liveDemoUrl: string;
+  imageUrl: string;
+  imageAlt: string;
+  imagePosition?: string;
 };
 
 export default function Projects() {
@@ -31,6 +35,9 @@ export default function Projects() {
       filters: ["Data", "Design"],
       githubUrl: "https://github.com/nicodelgaaado/Movie-Matchmaker",
       liveDemoUrl: "https://movie-matchmaker-alpha.vercel.app/",
+      imageUrl: "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/moviewebapp-snapshot.png",
+      imageAlt: "Screenshot of the Movie Recommendation App",
+      imagePosition: "center top",
     },
     {
       title: "Solar Panel Sizing App",
@@ -40,6 +47,9 @@ export default function Projects() {
       filters: ["Data", "Tools"],
       githubUrl: "https://github.com/nicodelgaaado/Panel-Solar",
       liveDemoUrl: "https://panel-solar.vercel.app/",
+      imageUrl: "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/solarpanel-snapshot.png",
+      imageAlt: "Screenshot of the Solar Panel Sizing App",
+      imagePosition: "center top",
     },
     {
       title: "Work Order Platform",
@@ -49,6 +59,9 @@ export default function Projects() {
       filters: ["Tools", "Business"],
       githubUrl: "https://github.com/nicodelgaaado/ProduSoft",
       liveDemoUrl: "https://produ-soft.vercel.app/",
+      imageUrl: "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/produsoftii-snapshot.png",
+      imageAlt: "Screenshot of the Work Order Platform",
+      imagePosition: "center top",
     },
     {
       title: "Web Music Player",
@@ -58,6 +71,9 @@ export default function Projects() {
       filters: ["Design"],
       githubUrl: "https://github.com/nicodelgaaado/Music-Player",
       liveDemoUrl: "https://music-player-pied-two.vercel.app/",
+      imageUrl: "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/musicplayer-snapshot.png",
+      imageAlt: "Screenshot of the Web Music Player",
+      imagePosition: "center center",
     },
   ];
 
@@ -105,9 +121,15 @@ export default function Projects() {
               {project.description}
             </p>
 
-            {/* Placeholder for project image */}
-            <div className="mb-4 flex h-36 items-center justify-center border-2 border-black sm:h-40">
-              <span className="font-mono text-xs">[Project Screenshot]</span>
+            <div className="relative mb-4 h-36 overflow-hidden border-2 border-black bg-neutral-100 sm:h-40">
+              <Image
+                src={project.imageUrl}
+                alt={project.imageAlt}
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
+                style={{ objectPosition: project.imagePosition ?? "center" }}
+              />
             </div>
 
             <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">

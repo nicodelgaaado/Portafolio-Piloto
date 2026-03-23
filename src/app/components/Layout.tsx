@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import type { MouseEvent, ReactNode } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Github, Linkedin, Mail, Menu, X } from "lucide-react";
 
 const navItems = [
   { path: "/", label: "Home" },
@@ -14,9 +14,21 @@ const navItems = [
 ];
 
 const socialItems = [
-  { label: "Mail", href: "mailto:nicolasfedericodelgado@gmail.com" },
-  { label: "Github", href: "https://github.com/nicodelgaaado" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/nicodelgaaado" },
+  {
+    label: "Mail",
+    href: "mailto:nicolasfedericodelgado@gmail.com",
+    icon: Mail,
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/nicodelgaaado",
+    icon: Github,
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/nicodelgaaado",
+    icon: Linkedin,
+  },
 ];
 const mobileMenuTransitionMs = 180;
 
@@ -169,9 +181,9 @@ export default function Layout({ children }: LayoutProps) {
                   target={social.href.startsWith("mailto:") ? undefined : "_blank"}
                   rel={social.href.startsWith("mailto:") ? undefined : "noreferrer"}
                   aria-label={social.label}
-                  className="flex h-8 w-8 items-center justify-center border-2 border-black transition-colors hover:bg-black hover:text-white"
+                  className="flex h-8 w-8 items-center justify-center text-black/80 transition-colors hover:text-black"
                 >
-                  <span className="font-mono text-xs">{social.label[0]}</span>
+                  <social.icon size={19} strokeWidth={2} />
                 </a>
               ))}
             </div>
