@@ -1,43 +1,47 @@
+import Image from "next/image";
+
 export default function Skills() {
+  const getLogoUrl = (logo: string) => `https://api.iconify.design/logos:${logo}.svg`;
+
   const skillCategories = [
     {
       category: "Frontend Development",
       skills: [
-        { name: "React" },
-        { name: "Angular" },
-        { name: "TypeScript" },
-        { name: "Tailwind CSS" },
-        { name: "Next.js" },
+        { name: "React", logo: "react" },
+        { name: "Angular", logo: "angular-icon" },
+        { name: "TypeScript", logo: "typescript-icon" },
+        { name: "Tailwind CSS", logo: "tailwindcss-icon" },
+        { name: "Next.js", logo: "nextjs-icon" },
       ],
     },
     {
       category: "Backend Development",
       skills: [
-        { name: "Java" },
-        { name: "Python" },
-        { name: "Node.js" },
-        { name: "Django" },
-        { name: "GraphQL" },
+        { name: "Java", logo: "java" },
+        { name: "Python", logo: "python" },
+        { name: "Node.js", logo: "nodejs-icon" },
+        { name: "Django", logo: "django-icon" },
+        { name: "GraphQL", logo: "graphql" },
       ],
     },
     {
       category: "Database & Tools",
       skills: [
-        { name: "PostgreSQL" },
-        { name: "MongoDB" },
-        { name: "Redis" },
-        { name: "Docker" },
-        { name: "Git" },
+        { name: "PostgreSQL", logo: "postgresql" },
+        { name: "MongoDB", logo: "mongodb-icon" },
+        { name: "Redis", logo: "redis" },
+        { name: "Docker", logo: "docker-icon" },
+        { name: "Git", logo: "git-icon" },
       ],
     },
     {
       category: "Cloud Computing",
       skills: [
-        { name: "AWS" },
-        { name: "Microsoft Azure" },
-        { name: "Google Cloud" },
-        { name: "Oracle" },
-        { name: "Kubernetes" },
+        { name: "AWS", logo: "aws" },
+        { name: "Microsoft Azure", logo: "microsoft-azure" },
+        { name: "Google Cloud", logo: "google-cloud" },
+        { name: "Oracle", logo: "oracle" },
+        { name: "Kubernetes", logo: "kubernetes" },
       ],
     },
   ];
@@ -95,14 +99,18 @@ export default function Skills() {
               {category.skills.map((skill, skillIndex) => (
                 <article
                   key={skillIndex}
-                  className="flex min-w-0 flex-col items-center justify-start"
+                  className="flex min-w-0 items-center justify-center"
+                  title={skill.name}
+                  aria-label={skill.name}
                 >
-                  <div className="flex h-12 w-12 items-center justify-center border-2 border-black bg-white sm:h-16 sm:w-16">
-                    <div className="h-full w-full"></div>
-                  </div>
-                  <h3 className="mt-3 text-center font-mono text-[10px] font-bold uppercase leading-tight sm:text-xs">
-                    {skill.name}
-                  </h3>
+                  <Image
+                    src={getLogoUrl(skill.logo)}
+                    alt={skill.name}
+                    width={64}
+                    height={64}
+                    unoptimized
+                    className="h-12 w-12 object-contain sm:h-16 sm:w-16"
+                  />
                 </article>
               ))}
             </div>
