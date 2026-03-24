@@ -34,7 +34,7 @@ export default function Projects() {
   const projects: Project[] = [
     {
       title: "Movie Recommendation App",
-      tech: "Next.js 16, React 19, TypeScript, Tailwind CSS v4, shadcn/ui",
+      tech: "Next.js 16, React 19, TypeScript, Tailwind CSS",
       description: "Movie recommendation web app where users rate a curated queue of titles and receive ranked recommendations based on similarity matches from historical ratings data.",
       status: "Deployed",
       filters: ["Data", "Design"],
@@ -43,7 +43,7 @@ export default function Projects() {
     },
     {
       title: "Solar Panel Sizing App",
-      tech: "Next.js 16, React 19, TypeScript, Tailwind CSS v4, shadcn/ui",
+      tech: "Next.js 16, React 19, TypeScript, Tailwind CSS",
       description: "Web app that estimates solar panel sizing, installation cost, savings, and return on investment.",
       status: "Deployed",
       filters: ["Data", "Tools"],
@@ -101,7 +101,9 @@ export default function Projects() {
                 <h3 className="text-lg font-bold sm:text-xl">{project.title}</h3>
                 <Badge className="w-fit">{project.status}</Badge>
               </div>
-              <div className="mb-4 overflow-hidden whitespace-nowrap font-mono text-sm opacity-70">{project.tech}</div>
+              <div className="mb-4 font-mono text-sm leading-relaxed break-words opacity-70">
+                {project.tech}
+              </div>
               <p
                 className="mb-6 overflow-hidden font-mono text-sm leading-relaxed"
                 style={{
