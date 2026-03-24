@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { ArrowUpRight } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -138,6 +139,7 @@ export default function Projects() {
                 >
                   <a href={project.liveDemoUrl} target="_blank" rel="noreferrer">
                     Live Demo
+                    <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
                   </a>
                 </Button>
               </div>
