@@ -178,7 +178,7 @@ export default function Layout({ children }: LayoutProps) {
       <footer className="mt-20 border-t border-black/12">
         <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
           <div className="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
-            <p className="font-mono text-sm">(C) 2026 Nicolas Delgado</p>
+            <p className="font-mono text-sm">© 2026 Nicolas Delgado</p>
             <div className="flex items-center gap-2">
               <Separator orientation="vertical" className="hidden h-6 sm:block" />
               {socialItems.map((social) => (
