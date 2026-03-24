@@ -150,14 +150,14 @@ export default function Projects() {
         <CardContent className="p-4 sm:p-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <span className="font-mono text-sm uppercase">Filter Projects</span>
-            <div className="flex flex-wrap gap-2 sm:gap-4">
+            <div className="grid grid-cols-5 gap-1.5 sm:flex sm:flex-wrap sm:gap-4">
               {filters.map((filter) => (
                 <Button
                   key={filter}
                   type="button"
                   onClick={() => setSelectedFilter(filter)}
                   variant={selectedFilter === filter ? "default" : "outline"}
-                  className="h-auto px-3 py-2 font-mono text-[10px] uppercase sm:px-4 sm:text-xs"
+                  className="h-auto w-full min-w-0 px-0 py-2 font-mono text-[9px] uppercase sm:w-auto sm:px-4 sm:text-xs"
                 >
                   {filter}
                 </Button>
