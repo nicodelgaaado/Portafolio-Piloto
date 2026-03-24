@@ -105,7 +105,7 @@ export default function Home() {
                   <MapPin className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
                   Pasto, Colombia
                 </p>
-                <p className="flex items-center gap-1.5">
+                <p className="flex items-center gap-1.5 text-amber-700">
                   <Sparkles className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
                   Open to opportunities
                 </p>
