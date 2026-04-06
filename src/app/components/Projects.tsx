@@ -7,6 +7,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 const projectFilters = [
   "Data",
@@ -78,6 +79,7 @@ export default function Projects() {
     selectedFilter === "All"
       ? projects
       : projects.filter((project) => project.filters.includes(selectedFilter));
+  const isFilteredView = selectedFilter !== "All";
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-20">
@@ -94,49 +96,69 @@ export default function Projects() {
         {visibleProjects.map((project) => (
           <Card
             key={project.title}
-            className="border-border bg-card/95 transition-colors"
+            className={cn(
+              "border-border bg-card/95 transition-colors",
+              isFilteredView && "lg:h-full",
+            )}
           >
-            <CardContent className="p-5 sm:p-6">
-              <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+            <CardContent
+              className={cn(
+                "p-5 sm:p-6",
+                isFilteredView && "lg:flex lg:h-full lg:flex-col",
+              )}
+            >
+              <div
+                className={cn(
+                  "mb-4 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between",
+                  isFilteredView && "lg:min-h-14",
+                )}
+              >
                 <h3 className="text-lg font-bold sm:text-xl">{project.title}</h3>
                 <Badge className="w-fit">{project.status}</Badge>
               </div>
-              <div className="mb-4 font-mono text-sm leading-relaxed break-words opacity-70">
+              <div
+                className={cn(
+                  "mb-4 font-mono text-sm leading-relaxed break-words opacity-70",
+                  isFilteredView && "lg:min-h-11",
+                )}
+              >
                 {project.tech}
               </div>
               <p className="mb-6 font-mono text-sm leading-relaxed">
                 {project.description}
               </p>
 
-              <div className="relative mb-4 h-36 overflow-hidden rounded-lg border border-border bg-card sm:h-40">
-                <Image
-                  src={projectPreviewImage}
-                  alt={`Vercel logo preview for ${project.title}`}
-                  fill
-                  sizes="(min-width: 1024px) 40rem, 100vw"
-                  className="object-cover object-center"
-                />
-              </div>
+              <div className={cn(isFilteredView && "lg:mt-auto")}>
+                <div className="relative mb-4 h-36 overflow-hidden rounded-lg border border-border bg-card sm:h-40">
+                  <Image
+                    src={projectPreviewImage}
+                    alt={`Vercel logo preview for ${project.title}`}
+                    fill
+                    sizes="(min-width: 1024px) 40rem, 100vw"
+                    className="object-cover object-center"
+                  />
+                </div>
 
-              <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
-                <Button
-                  asChild
-                  variant="outline"
-                  className="h-auto flex-1 px-4 py-2 font-mono text-xs uppercase"
-                >
-                  <a href={project.githubUrl} target="_blank" rel="noreferrer">
-                    View Code
-                  </a>
-                </Button>
-                <Button
-                  asChild
-                  className="h-auto flex-1 px-4 py-2 font-mono text-xs uppercase"
-                >
-                  <a href={project.liveDemoUrl} target="_blank" rel="noreferrer">
-                    Live Demo
-                    <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
-                  </a>
-                </Button>
+                <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="h-auto flex-1 px-4 py-2 font-mono text-xs uppercase"
+                  >
+                    <a href={project.githubUrl} target="_blank" rel="noreferrer">
+                      View Code
+                    </a>
+                  </Button>
+                  <Button
+                    asChild
+                    className="h-auto flex-1 px-4 py-2 font-mono text-xs uppercase"
+                  >
+                    <a href={project.liveDemoUrl} target="_blank" rel="noreferrer">
+                      Live Demo
+                      <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
+                    </a>
+                  </Button>
+                </div>
               </div>
             </CardContent>
           </Card>
