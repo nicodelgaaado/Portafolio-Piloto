@@ -23,6 +23,8 @@ type WeglotApi = {
   initialize: (options: {
     api_key: string;
     hide_switcher?: boolean;
+    wait_transition?: boolean;
+    cache?: boolean;
   }) => void;
   getCurrentLang: () => string;
   switchTo: (code: SupportedLanguage) => void;
@@ -96,11 +98,25 @@ export function WeglotProvider({ children }: WeglotProviderProps) {
   const pathname = usePathname();
   const [currentLanguage, setCurrentLanguage] = useState<SupportedLanguage>(ORIGINAL_LANGUAGE);
   const [isReady, setIsReady] = useState(false);
-  const activeLanguageRef = useRef<SupportedLanguage>(ORIGINAL_LANGUAGE);
+  const desiredLanguageRef = useRef<SupportedLanguage>(ORIGINAL_LANGUAGE);
   const syncRouteRef = useRef<((targetLanguage?: SupportedLanguage) => void) | null>(null);
+  const syncFrameRef = useRef<number | null>(null);
+  const syncTimeoutRef = useRef<number | null>(null);
 
-  const updateCurrentLanguage = (language: SupportedLanguage) => {
-    activeLanguageRef.current = language;
+  const clearPendingRouteSync = () => {
+    if (syncFrameRef.current !== null) {
+      window.cancelAnimationFrame(syncFrameRef.current);
+      syncFrameRef.current = null;
+    }
+
+    if (syncTimeoutRef.current !== null) {
+      window.clearTimeout(syncTimeoutRef.current);
+      syncTimeoutRef.current = null;
+    }
+  };
+
+  const commitCurrentLanguage = (language: SupportedLanguage) => {
+    desiredLanguageRef.current = language;
     setCurrentLanguage(language);
   };
 
@@ -111,21 +127,30 @@ export function WeglotProvider({ children }: WeglotProviderProps) {
 
     let isActive = true;
 
+    const readCurrentLanguage = () => {
+      if (!window.Weglot) {
+        return ORIGINAL_LANGUAGE;
+      }
+
+      const nextLanguage = window.Weglot.getCurrentLang();
+      return isSupportedLanguage(nextLanguage) ? nextLanguage : ORIGINAL_LANGUAGE;
+    };
+
     const syncLanguage = (targetLanguage?: SupportedLanguage) => {
       if (!isActive || !window.Weglot) {
         return;
       }
 
-      const resolvedLanguage = targetLanguage ?? activeLanguageRef.current;
-      const currentWeglotLanguage = window.Weglot.getCurrentLang();
+      const resolvedLanguage = targetLanguage ?? desiredLanguageRef.current;
 
-      if (resolvedLanguage !== ORIGINAL_LANGUAGE && currentWeglotLanguage !== resolvedLanguage) {
-        window.Weglot.switchTo(resolvedLanguage);
+      if (resolvedLanguage === TRANSLATED_LANGUAGE) {
+        window.Weglot.switchTo(TRANSLATED_LANGUAGE);
+        return;
       }
 
-      const nextLanguage = window.Weglot.getCurrentLang();
-      updateCurrentLanguage(isSupportedLanguage(nextLanguage) ? nextLanguage : ORIGINAL_LANGUAGE);
-      setIsReady(true);
+      if (window.Weglot.getCurrentLang() !== ORIGINAL_LANGUAGE) {
+        window.Weglot.switchTo(ORIGINAL_LANGUAGE);
+      }
     };
 
     const handleLanguageChanged = (newLanguage?: string) => {
@@ -133,7 +158,7 @@ export function WeglotProvider({ children }: WeglotProviderProps) {
         return;
       }
 
-      updateCurrentLanguage(isSupportedLanguage(newLanguage) ? newLanguage : ORIGINAL_LANGUAGE);
+      commitCurrentLanguage(isSupportedLanguage(newLanguage) ? newLanguage : readCurrentLanguage());
     };
 
     const syncRouteLanguage = (targetLanguage?: SupportedLanguage) => {
@@ -141,11 +166,12 @@ export function WeglotProvider({ children }: WeglotProviderProps) {
         return;
       }
 
-      const desiredLanguage = targetLanguage ?? activeLanguageRef.current;
+      const desiredLanguage = targetLanguage ?? desiredLanguageRef.current;
 
-      window.requestAnimationFrame(() => {
+      clearPendingRouteSync();
+      syncFrameRef.current = window.requestAnimationFrame(() => {
         syncLanguage(desiredLanguage);
-        window.setTimeout(() => syncLanguage(desiredLanguage), 120);
+        syncTimeoutRef.current = window.setTimeout(() => syncLanguage(desiredLanguage), 180);
       });
     };
 
@@ -160,13 +186,17 @@ export function WeglotProvider({ children }: WeglotProviderProps) {
         window.Weglot.initialize({
           api_key: weglotApiKey,
           hide_switcher: true,
+          wait_transition: true,
+          cache: true,
         });
         window.__portfolioWeglotInitialized = true;
       }
 
       window.Weglot.on("languageChanged", handleLanguageChanged);
       syncRouteRef.current = syncRouteLanguage;
-      window.requestAnimationFrame(() => syncLanguage());
+      commitCurrentLanguage(readCurrentLanguage());
+      setIsReady(true);
+      syncRouteLanguage(readCurrentLanguage());
     };
 
     initializeWeglot().catch(() => {
@@ -177,6 +207,7 @@ export function WeglotProvider({ children }: WeglotProviderProps) {
 
     return () => {
       isActive = false;
+      clearPendingRouteSync();
       syncRouteRef.current = null;
       window.Weglot?.off?.("languageChanged", handleLanguageChanged);
     };
@@ -187,7 +218,7 @@ export function WeglotProvider({ children }: WeglotProviderProps) {
       return;
     }
 
-    syncRouteRef.current?.(activeLanguageRef.current);
+    syncRouteRef.current?.(desiredLanguageRef.current);
   }, [isReady, pathname]);
 
   const value = useMemo<WeglotContextValue>(
@@ -201,9 +232,11 @@ export function WeglotProvider({ children }: WeglotProviderProps) {
         }
 
         const nextLanguage =
-          currentLanguage === ORIGINAL_LANGUAGE ? TRANSLATED_LANGUAGE : ORIGINAL_LANGUAGE;
+          desiredLanguageRef.current === ORIGINAL_LANGUAGE
+            ? TRANSLATED_LANGUAGE
+            : ORIGINAL_LANGUAGE;
 
-        updateCurrentLanguage(nextLanguage);
+        desiredLanguageRef.current = nextLanguage;
         window.Weglot.switchTo(nextLanguage);
       },
     }),
