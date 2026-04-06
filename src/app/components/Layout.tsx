@@ -15,6 +15,7 @@ import { Separator } from "@/components/ui/separator";
 const navItems = [
   { path: "/", label: "Home" },
   { path: "/projects", label: "Projects" },
+  { path: "/experience", label: "Experience" },
   { path: "/skills", label: "Skills" },
   { path: "/contact", label: "Contact" },
 ];
