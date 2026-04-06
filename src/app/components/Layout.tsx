@@ -47,12 +47,36 @@ export default function Layout({ children }: LayoutProps) {
   const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pendingNavigationRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const mobileMenuButtonRef = useRef<HTMLButtonElement | null>(null);
+  const mobileNavigationRef = useRef<HTMLDivElement | null>(null);
+
+  const focusMobileMenuButton = () => {
+    const activeElement = document.activeElement;
+
+    if (activeElement instanceof HTMLElement && mobileNavigationRef.current?.contains(activeElement)) {
+      mobileMenuButtonRef.current?.focus();
+    }
+  };
+
+  const closeMobileMenu = () => {
+    focusMobileMenuButton();
+    setIsMobileMenuOpen(false);
+  };
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 640px)");
 
     const handleViewportChange = (event: MediaQueryListEvent) => {
       if (event.matches) {
+        const activeElement = document.activeElement;
+
+        if (
+          activeElement instanceof HTMLElement &&
+          mobileNavigationRef.current?.contains(activeElement)
+        ) {
+          mobileMenuButtonRef.current?.focus();
+        }
+
         setIsMobileMenuOpen(false);
       }
     };
@@ -88,7 +112,7 @@ export default function Layout({ children }: LayoutProps) {
       clearTimeout(pendingNavigationRef.current);
     }
 
-    setIsMobileMenuOpen(false);
+    closeMobileMenu();
 
     if (pathname === path) {
       pendingNavigationRef.current = null;
@@ -135,6 +159,7 @@ export default function Layout({ children }: LayoutProps) {
                 <HeaderThemeToggle />
 
                 <Button
+                  ref={mobileMenuButtonRef}
                   type="button"
                   variant="ghost"
                   size="icon"
@@ -156,6 +181,7 @@ export default function Layout({ children }: LayoutProps) {
         </div>
 
         <div
+          ref={mobileNavigationRef}
           id="mobile-navigation"
           aria-hidden={!isMobileMenuOpen}
           className={`absolute inset-x-4 top-[calc(100%+0.75rem)] z-40 transition-all duration-200 ease-out sm:hidden ${
