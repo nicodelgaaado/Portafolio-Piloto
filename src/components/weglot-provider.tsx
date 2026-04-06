@@ -2,13 +2,14 @@
 
 import {
   createContext,
-  startTransition,
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
+import { usePathname } from "next/navigation";
 
 const ORIGINAL_LANGUAGE = "en";
 const TRANSLATED_LANGUAGE = "es";
@@ -92,8 +93,16 @@ type WeglotProviderProps = {
 };
 
 export function WeglotProvider({ children }: WeglotProviderProps) {
+  const pathname = usePathname();
   const [currentLanguage, setCurrentLanguage] = useState<SupportedLanguage>(ORIGINAL_LANGUAGE);
   const [isReady, setIsReady] = useState(false);
+  const activeLanguageRef = useRef<SupportedLanguage>(ORIGINAL_LANGUAGE);
+  const syncRouteRef = useRef<((targetLanguage?: SupportedLanguage) => void) | null>(null);
+
+  const updateCurrentLanguage = (language: SupportedLanguage) => {
+    activeLanguageRef.current = language;
+    setCurrentLanguage(language);
+  };
 
   useEffect(() => {
     if (!weglotApiKey) {
@@ -102,16 +111,20 @@ export function WeglotProvider({ children }: WeglotProviderProps) {
 
     let isActive = true;
 
-    const syncLanguage = () => {
+    const syncLanguage = (targetLanguage?: SupportedLanguage) => {
       if (!isActive || !window.Weglot) {
         return;
       }
 
-      const nextLanguage = window.Weglot.getCurrentLang();
+      const resolvedLanguage = targetLanguage ?? activeLanguageRef.current;
+      const currentWeglotLanguage = window.Weglot.getCurrentLang();
 
-      startTransition(() => {
-        setCurrentLanguage(isSupportedLanguage(nextLanguage) ? nextLanguage : ORIGINAL_LANGUAGE);
-      });
+      if (resolvedLanguage !== ORIGINAL_LANGUAGE && currentWeglotLanguage !== resolvedLanguage) {
+        window.Weglot.switchTo(resolvedLanguage);
+      }
+
+      const nextLanguage = window.Weglot.getCurrentLang();
+      updateCurrentLanguage(isSupportedLanguage(nextLanguage) ? nextLanguage : ORIGINAL_LANGUAGE);
       setIsReady(true);
     };
 
@@ -120,8 +133,19 @@ export function WeglotProvider({ children }: WeglotProviderProps) {
         return;
       }
 
-      startTransition(() => {
-        setCurrentLanguage(isSupportedLanguage(newLanguage) ? newLanguage : ORIGINAL_LANGUAGE);
+      updateCurrentLanguage(isSupportedLanguage(newLanguage) ? newLanguage : ORIGINAL_LANGUAGE);
+    };
+
+    const syncRouteLanguage = (targetLanguage?: SupportedLanguage) => {
+      if (!isActive) {
+        return;
+      }
+
+      const desiredLanguage = targetLanguage ?? activeLanguageRef.current;
+
+      window.requestAnimationFrame(() => {
+        syncLanguage(desiredLanguage);
+        window.setTimeout(() => syncLanguage(desiredLanguage), 120);
       });
     };
 
@@ -141,7 +165,8 @@ export function WeglotProvider({ children }: WeglotProviderProps) {
       }
 
       window.Weglot.on("languageChanged", handleLanguageChanged);
-      window.requestAnimationFrame(syncLanguage);
+      syncRouteRef.current = syncRouteLanguage;
+      window.requestAnimationFrame(() => syncLanguage());
     };
 
     initializeWeglot().catch(() => {
@@ -152,9 +177,18 @@ export function WeglotProvider({ children }: WeglotProviderProps) {
 
     return () => {
       isActive = false;
+      syncRouteRef.current = null;
       window.Weglot?.off?.("languageChanged", handleLanguageChanged);
     };
   }, []);
+
+  useEffect(() => {
+    if (!weglotApiKey || !isReady) {
+      return;
+    }
+
+    syncRouteRef.current?.(activeLanguageRef.current);
+  }, [isReady, pathname]);
 
   const value = useMemo<WeglotContextValue>(
     () => ({
@@ -169,9 +203,7 @@ export function WeglotProvider({ children }: WeglotProviderProps) {
         const nextLanguage =
           currentLanguage === ORIGINAL_LANGUAGE ? TRANSLATED_LANGUAGE : ORIGINAL_LANGUAGE;
 
-        startTransition(() => {
-          setCurrentLanguage(nextLanguage);
-        });
+        updateCurrentLanguage(nextLanguage);
         window.Weglot.switchTo(nextLanguage);
       },
     }),
