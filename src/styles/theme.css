@@ -1,6 +1,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  color-scheme: light;
   --font-size: 16px;
   --background: #faf9f6;
   --foreground: oklch(0.145 0 0);
@@ -42,6 +43,7 @@
 }
 
 .dark {
+  color-scheme: dark;
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.145 0 0);
@@ -60,6 +62,8 @@
   --destructive-foreground: oklch(0.637 0.237 25.331);
   --border: oklch(0.269 0 0);
   --input: oklch(0.269 0 0);
+  --input-background: oklch(0.205 0 0);
+  --switch-background: oklch(0.369 0 0);
   --ring: oklch(0.439 0 0);
   --font-weight-medium: 500;
   --font-weight-normal: 400;
@@ -132,6 +136,12 @@
     background-image:
       radial-gradient(circle at top, rgba(3, 2, 19, 0.05), transparent 32%),
       linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0));
+  }
+
+  .dark body {
+    background-image:
+      radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 36%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0));
   }
 
   /**

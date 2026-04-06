@@ -11,8 +11,7 @@ export default function Home() {
       label: "Email Me",
       href: "mailto:nicolasfedericodelgado@gmail.com",
       variant: "default" as const,
-      className:
-        "border-transparent bg-black px-2 text-white hover:bg-black/92 hover:text-white sm:px-5",
+      className: "px-2 sm:px-5",
     },
     {
       label: "LinkedIn",
@@ -80,10 +79,10 @@ export default function Home() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6">
-      <section className="border-b border-black/12 py-12 sm:py-20">
+      <section className="border-b border-border py-12 sm:py-20">
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-8 lg:gap-10">
-            <div className="relative h-36 w-36 shrink-0 overflow-hidden rounded-full border border-black/12 shadow-[0_20px_50px_rgba(3,2,19,0.12)] sm:h-48 sm:w-48 lg:h-56 lg:w-56">
+            <div className="relative h-36 w-36 shrink-0 overflow-hidden rounded-full border border-border shadow-[0_20px_50px_rgba(3,2,19,0.12)] sm:h-48 sm:w-48 lg:h-56 lg:w-56">
               <Image
                 src="https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/profilepicture.webp"
                 alt="Portrait of Nicolas Delgado"
@@ -100,12 +99,12 @@ export default function Home() {
               <p className="max-w-3xl font-mono text-base leading-relaxed sm:text-lg">
                 Full-Stack Software Engineer
               </p>
-              <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-sm text-black/50">
-                <p className="flex items-center gap-1.5 text-black">
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-sm text-muted-foreground">
+                <p className="flex items-center gap-1.5 text-foreground">
                   <MapPin className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
                   Pasto, Colombia
                 </p>
-                <p className="flex items-center gap-1.5 text-amber-700">
+                <p className="flex items-center gap-1.5 text-amber-700 dark:text-amber-300">
                   <Sparkles className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
                   Open to opportunities
                 </p>
@@ -133,7 +132,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-b border-black/12 py-12 sm:py-20">
+      <section className="border-b border-border py-12 sm:py-20">
         <h2 className="mb-8 font-mono text-2xl font-bold uppercase sm:text-3xl">About Me</h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
           {[
@@ -150,7 +149,7 @@ export default function Home() {
               content: "Open Source, Web3, Competitive Programming",
             },
           ].map((item, index) => (
-            <Card key={index} className="border-black/12 bg-white/95">
+            <Card key={index} className="border-border bg-card/95">
               <CardContent className="p-5 sm:p-6">
                 <h3 className="mb-4 font-mono text-lg font-bold uppercase">{item.title}</h3>
                 <p className="whitespace-pre-line font-mono text-sm">{item.content}</p>
@@ -168,7 +167,7 @@ export default function Home() {
             { number: "500+", label: "Git Commits" },
             { number: "10", label: "Technologies" },
           ].map((stat, index) => (
-            <Card key={index} className="border-black/12 bg-white/95">
+            <Card key={index} className="border-border bg-card/95">
               <CardContent className="p-5 text-center sm:p-8">
                 <div className="mb-2 text-3xl font-bold sm:text-4xl">{stat.number}</div>
                 <div className="font-mono text-xs uppercase sm:text-sm">{stat.label}</div>
@@ -178,14 +177,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t border-black/12 py-12 sm:py-20">
+      <section className="border-t border-border py-12 sm:py-20">
         <h2 className="mb-8 font-mono text-2xl font-bold uppercase sm:text-3xl">Testimonials</h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {testimonials.map((testimonial) => (
-            <Card key={testimonial.name} className="border-black/12 bg-white/95">
+            <Card key={testimonial.name} className="border-border bg-card/95">
               <CardContent className="p-5 sm:p-6">
                 <div className="mb-5 flex items-start gap-3">
-                  <Avatar className="h-14 w-14 shrink-0 border border-black/12">
+                  <Avatar className="h-14 w-14 shrink-0 border border-border">
                     <AvatarImage src={testimonial.image} alt={`Portrait of ${testimonial.name}`} />
                     <AvatarFallback>{testimonial.name.slice(0, 2).toUpperCase()}</AvatarFallback>
                   </Avatar>
@@ -204,14 +203,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t border-black/12 py-12 sm:py-20">
+      <section className="border-t border-border py-12 sm:py-20">
         <h2 className="mb-8 font-mono text-2xl font-bold uppercase sm:text-3xl">Contacts</h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {contacts.map((contact) => (
-            <Card key={contact.name} className="border-black/12 bg-white/95">
+            <Card key={contact.name} className="border-border bg-card/95">
               <CardContent className="p-5 sm:p-6">
                 <div className="mb-4 flex items-center gap-3">
-                  <Avatar className="h-14 w-14 shrink-0 border border-black/12">
+                  <Avatar className="h-14 w-14 shrink-0 border border-border">
                     <AvatarImage src={contact.image} alt={`Portrait of ${contact.name}`} />
                     <AvatarFallback>{contact.name.slice(0, 2).toUpperCase()}</AvatarFallback>
                   </Avatar>
@@ -219,7 +218,7 @@ export default function Home() {
                     <h3 className="font-mono text-base font-bold uppercase sm:text-lg">
                       {contact.name}
                     </h3>
-                    <p className="font-mono text-xs uppercase text-black/60 sm:text-sm">
+                    <p className="font-mono text-xs uppercase text-muted-foreground sm:text-sm">
                       {contact.connection}
                     </p>
                   </div>
@@ -230,11 +229,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t border-black/12 py-12 sm:py-20">
+      <section className="border-t border-border py-12 sm:py-20">
         <h2 className="mb-8 font-mono text-2xl font-bold uppercase sm:text-3xl">PASSIONS</h2>
         <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
           {interests.map((interest) => (
-            <Card key={interest} className="border-black/12 bg-white/95">
+            <Card key={interest} className="border-border bg-card/95">
               <CardContent className="px-3 py-4 text-center sm:px-4 sm:py-5">
                 <div className="whitespace-nowrap font-mono text-[11px] font-bold uppercase sm:text-xs">
                   {interest}

@@ -6,6 +6,8 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Github, Linkedin, Mail, Menu, X } from "lucide-react";
 
+import { HeaderLanguageToggle } from "@/components/header-language-toggle";
+import { HeaderThemeToggle } from "@/components/header-theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -100,45 +102,56 @@ export default function Layout({ children }: LayoutProps) {
   };
 
   return (
-    <div className="min-h-screen bg-transparent text-black">
-      <header className="relative z-50 border-b border-black/12 bg-white/90 backdrop-blur-sm">
+    <div className="min-h-screen bg-transparent text-foreground">
+      <header className="relative z-50 border-b border-border bg-background/90 backdrop-blur-sm">
         <div className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center">
               <span className="font-mono uppercase tracking-wider">Portfolio</span>
             </div>
 
-            <Button
-              type="button"
-              variant="ghost"
-              size="icon"
-              className="sm:hidden"
-              aria-expanded={isMobileMenuOpen}
-              aria-controls="mobile-navigation"
-              aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-              onClick={handleMobileMenuToggle}
-            >
-              {isMobileMenuOpen ? <X size={20} strokeWidth={2.25} /> : <Menu size={20} strokeWidth={2.25} />}
-            </Button>
+            <div className="flex items-center gap-2 sm:gap-4">
+              <nav className="hidden sm:block">
+                <ul className="flex flex-wrap items-center gap-6">
+                  {navItems.map((item) => (
+                    <li key={item.path}>
+                      <Link
+                        href={item.path}
+                        className={`font-mono text-xs uppercase tracking-wide sm:text-sm ${
+                          pathname === item.path
+                            ? "font-bold text-foreground"
+                            : "text-foreground/75 transition-colors hover:text-foreground"
+                        }`}
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
 
-            <nav className="hidden sm:block">
-              <ul className="flex flex-wrap gap-6">
-                {navItems.map((item) => (
-                  <li key={item.path}>
-                    <Link
-                      href={item.path}
-                      className={`font-mono text-xs uppercase tracking-wide sm:text-sm ${
-                        pathname === item.path
-                          ? "font-bold"
-                          : "opacity-80 transition-opacity hover:opacity-100"
-                      }`}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+              <div className="flex items-center gap-2">
+                <HeaderLanguageToggle />
+                <HeaderThemeToggle />
+
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="icon"
+                  className="h-9 w-9 rounded-full border border-border/80 bg-background/70 text-foreground/75 shadow-[0_10px_24px_rgba(3,2,19,0.08)] backdrop-blur-sm hover:bg-accent hover:text-foreground sm:hidden"
+                  aria-expanded={isMobileMenuOpen}
+                  aria-controls="mobile-navigation"
+                  aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                  onClick={handleMobileMenuToggle}
+                >
+                  {isMobileMenuOpen ? (
+                    <X size={18} strokeWidth={2.25} />
+                  ) : (
+                    <Menu size={18} strokeWidth={2.25} />
+                  )}
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -151,7 +164,7 @@ export default function Layout({ children }: LayoutProps) {
               : "pointer-events-none -translate-y-2 opacity-0"
           }`}
         >
-          <Card className="min-h-[19rem] border-black/15 bg-white/96 p-5 shadow-[0_18px_45px_rgba(3,2,19,0.12)]">
+          <Card className="min-h-[19rem] border-border bg-card/96 p-5 shadow-[0_18px_45px_rgba(3,2,19,0.12)]">
             <nav>
               <ul className="flex w-full flex-col gap-5 pt-2">
                 {navItems.map((item) => (
@@ -175,10 +188,10 @@ export default function Layout({ children }: LayoutProps) {
 
       <main>{children}</main>
 
-      <footer className="mt-20 border-t border-black/12">
+      <footer className="mt-20 border-t border-border">
         <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
           <div className="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
-            <p className="font-mono text-sm">© 2026 Nicolas Delgado</p>
+            <p className="font-mono text-sm">&copy; 2026 Nicolas Delgado</p>
             <div className="flex items-center gap-2">
               <Separator orientation="vertical" className="hidden h-6 sm:block" />
               {socialItems.map((social) => (
@@ -187,7 +200,7 @@ export default function Layout({ children }: LayoutProps) {
                   asChild
                   variant="ghost"
                   size="icon"
-                  className="text-black/80 hover:text-black"
+                  className="text-foreground/80 hover:text-foreground"
                 >
                   <a
                     href={social.href}
