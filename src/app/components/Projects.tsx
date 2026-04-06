@@ -94,7 +94,7 @@ export default function Projects() {
         {visibleProjects.map((project) => (
           <Card
             key={project.title}
-            className="border-black/12 bg-white/95 transition-colors"
+            className="border-border bg-card/95 transition-colors"
           >
             <CardContent className="p-5 sm:p-6">
               <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
@@ -115,7 +115,7 @@ export default function Projects() {
                 {project.description}
               </p>
 
-              <div className="relative mb-4 h-36 overflow-hidden rounded-lg border border-black/12 bg-white sm:h-40">
+              <div className="relative mb-4 h-36 overflow-hidden rounded-lg border border-border bg-card sm:h-40">
                 <Image
                   src={projectPreviewImage}
                   alt={`Vercel logo preview for ${project.title}`}
@@ -150,7 +150,7 @@ export default function Projects() {
         ))}
       </div>
 
-      <Card className="mt-10 border-black/12 bg-white/95 sm:mt-12">
+      <Card className="mt-10 border-border bg-card/95 sm:mt-12">
         <CardContent className="p-4 sm:p-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <span className="font-mono text-sm uppercase">Filter Projects</span>

@@ -295,8 +295,8 @@ export default function Contact() {
 
   const getFieldClassName = (field: ContactField) =>
     errors[field]
-      ? "border-red-600 bg-red-50/60 focus:border-red-600 focus:shadow-[0_0_0_3px_rgba(220,38,38,0.12)]"
-      : "border-black/15";
+      ? "border-red-600 bg-red-50/60 focus:border-red-600 focus:shadow-[0_0_0_3px_rgba(220,38,38,0.12)] dark:border-red-500 dark:bg-red-950/20 dark:focus:border-red-500"
+      : "";
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-20">
@@ -308,7 +308,7 @@ export default function Contact() {
       </div>
 
       <div>
-        <Card className="border-black/12 bg-white/95">
+        <Card className="border-border bg-card/95">
           <CardContent className="p-5 sm:p-8">
             <h2 className="mb-6 font-mono text-xl font-bold uppercase sm:text-2xl">Send a Message</h2>
             <form className="space-y-6" onSubmit={handleSubmit} noValidate>
@@ -416,8 +416,8 @@ export default function Contact() {
                 <p
                   className={`rounded-lg border p-3 font-mono text-sm ${
                     submitStatus.type === "success"
-                      ? "border-black bg-black text-white"
-                      : "border-black/15 bg-black/[0.03] text-black"
+                      ? "border-primary bg-primary text-primary-foreground"
+                      : "border-border bg-secondary/70 text-secondary-foreground"
                   }`}
                   role="status"
                 >
