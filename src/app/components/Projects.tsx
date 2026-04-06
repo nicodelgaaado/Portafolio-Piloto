@@ -107,28 +107,22 @@ export default function Projects() {
                 isFilteredView && "lg:flex lg:h-full lg:flex-col",
               )}
             >
-              <div
-                className={cn(
-                  "mb-4 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between",
-                  isFilteredView && "lg:min-h-14",
-                )}
-              >
-                <h3 className="text-lg font-bold sm:text-xl">{project.title}</h3>
-                <Badge className="w-fit">{project.status}</Badge>
+              <div>
+                <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                  <h3 className="text-lg font-bold sm:text-xl">{project.title}</h3>
+                  <Badge className="w-fit">{project.status}</Badge>
+                </div>
+                <div className="mb-4 font-mono text-sm leading-relaxed break-words opacity-70">
+                  {project.tech}
+                </div>
+                <p className="mb-6 font-mono text-sm leading-relaxed">
+                  {project.description}
+                </p>
               </div>
-              <div
-                className={cn(
-                  "mb-4 font-mono text-sm leading-relaxed break-words opacity-70",
-                  isFilteredView && "lg:min-h-11",
-                )}
-              >
-                {project.tech}
-              </div>
-              <p className="mb-6 font-mono text-sm leading-relaxed">
-                {project.description}
-              </p>
 
-              <div className={cn(isFilteredView && "lg:mt-auto")}>
+              {isFilteredView ? <div className="hidden lg:block lg:flex-1" aria-hidden="true" /> : null}
+
+              <div>
                 <div className="relative mb-4 h-36 overflow-hidden rounded-lg border border-border bg-card sm:h-40">
                   <Image
                     src={projectPreviewImage}
