@@ -104,14 +104,7 @@ export default function Projects() {
               <div className="mb-4 font-mono text-sm leading-relaxed break-words opacity-70">
                 {project.tech}
               </div>
-              <p
-                className="mb-6 overflow-hidden font-mono text-sm leading-relaxed"
-                style={{
-                  display: "-webkit-box",
-                  WebkitLineClamp: 2,
-                  WebkitBoxOrient: "vertical",
-                }}
-              >
+              <p className="mb-6 font-mono text-sm leading-relaxed">
                 {project.description}
               </p>
 
