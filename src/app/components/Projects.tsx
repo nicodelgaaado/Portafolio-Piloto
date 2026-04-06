@@ -92,6 +92,27 @@ export default function Projects() {
         </p>
       </div>
 
+      <Card className="mb-10 border-border bg-card/95 sm:mb-12">
+        <CardContent className="p-4 sm:p-6">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <span className="font-mono text-sm uppercase">Filter Projects</span>
+            <div className="grid grid-cols-5 gap-1.5 sm:flex sm:flex-wrap sm:gap-4">
+              {filters.map((filter) => (
+                <Button
+                  key={filter}
+                  type="button"
+                  onClick={() => setSelectedFilter(filter)}
+                  variant={selectedFilter === filter ? "default" : "outline"}
+                  className="h-auto w-full min-w-0 px-0 py-2 font-mono text-[9px] uppercase sm:w-auto sm:px-4 sm:text-xs"
+                >
+                  {filter}
+                </Button>
+              ))}
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
         {visibleProjects.map((project) => (
           <Card
@@ -158,27 +179,6 @@ export default function Projects() {
           </Card>
         ))}
       </div>
-
-      <Card className="mt-10 border-border bg-card/95 sm:mt-12">
-        <CardContent className="p-4 sm:p-6">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <span className="font-mono text-sm uppercase">Filter Projects</span>
-            <div className="grid grid-cols-5 gap-1.5 sm:flex sm:flex-wrap sm:gap-4">
-              {filters.map((filter) => (
-                <Button
-                  key={filter}
-                  type="button"
-                  onClick={() => setSelectedFilter(filter)}
-                  variant={selectedFilter === filter ? "default" : "outline"}
-                  className="h-auto w-full min-w-0 px-0 py-2 font-mono text-[9px] uppercase sm:w-auto sm:px-4 sm:text-xs"
-                >
-                  {filter}
-                </Button>
-              ))}
-            </div>
-          </div>
-        </CardContent>
-      </Card>
     </div>
   );
 }
