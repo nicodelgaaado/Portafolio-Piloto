@@ -35,7 +35,7 @@ export default function Projects() {
     {
       title: "Movie Recommendation App",
       tech: "Next.js 16, React 19, TypeScript, Tailwind CSS",
-      description: "Movie recommendation web app where users rate a curated queue of titles and receive ranked recommendations based on similarity matches from historical ratings data.",
+      description: "Movie recommendation web app where users rate a curated queue of titles and receive ranked recommendations.",
       status: "Deployed",
       filters: ["Data", "Design"],
       githubUrl: "https://github.com/nicodelgaaado/Movie-Matchmaker",
