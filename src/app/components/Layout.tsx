@@ -132,7 +132,12 @@ export default function Layout({ children }: LayoutProps) {
         <div className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center">
-              <span className="font-mono uppercase tracking-wider">Portfolio</span>
+              <Link
+                href="/"
+                className="font-mono uppercase tracking-wider transition-opacity hover:opacity-70"
+              >
+                Nicolas
+              </Link>
             </div>
 
             <div className="flex items-center gap-2 sm:gap-4">
