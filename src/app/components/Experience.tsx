@@ -56,7 +56,7 @@ export default function Experience() {
           Experience
         </h1>
         <p className="mt-6 font-mono text-base sm:text-lg">
-          A snapshot of my certifications and professional experience across academic, consulting, and freelance work
+          A snapshot of my certifications and professional experience
         </p>
       </div>
 
