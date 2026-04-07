@@ -46,7 +46,7 @@ const experiences = [
   },
 ];
 
-const getBlueIbmLogoUrl = () => "https://api.iconify.design/simple-icons:ibm.svg?color=%230f62fe";
+const IBM_LOGO_URL = "https://api.iconify.design/simple-icons:ibm.svg?color=%230f62fe";
 
 export default function Experience() {
   return (
@@ -67,9 +67,9 @@ export default function Experience() {
             {certifications.map((certification) => (
               <Card key={certification.title} className="surface-soft-hover">
                 <CardContent className="p-4 sm:p-5">
-                  <div className="surface-inset mb-4 flex h-14 w-14 items-center justify-center rounded-full sm:h-16 sm:w-16">
+                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm dark:border-slate-700/70 dark:bg-white sm:h-16 sm:w-16">
                     <Image
-                      src={getBlueIbmLogoUrl()}
+                      src={IBM_LOGO_URL}
                       alt={`${certification.provider} logo`}
                       width={40}
                       height={40}
