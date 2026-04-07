@@ -83,7 +83,7 @@ export default function Home() {
         <div className="flex flex-col items-center gap-8 text-center">
           <div className="flex w-full max-w-4xl flex-col items-center gap-6 sm:gap-8 lg:gap-10">
             <div className="relative h-36 w-36 shrink-0 sm:h-48 sm:w-48 lg:h-56 lg:w-56">
-              <div className="absolute inset-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full bg-card shadow-[0_18px_35px_rgba(3,2,19,0.2),0_35px_70px_rgba(3,2,19,0.14)] sm:h-56 sm:w-56 lg:h-64 lg:w-64">
+              <div className="surface-elevated absolute inset-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full sm:h-56 sm:w-56 lg:h-64 lg:w-64">
                 <Image
                   src="https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/profilepicture.webp"
                   alt="Portrait of Nicolas Delgado"
@@ -151,7 +151,7 @@ export default function Home() {
               content: "Open Source, Web3, Competitive Programming",
             },
           ].map((item, index) => (
-            <Card key={index} className="border-border bg-card/95">
+            <Card key={index}>
               <CardContent className="p-5 sm:p-6">
                 <h3 className="mb-4 font-mono text-lg font-bold uppercase">{item.title}</h3>
                 <p className="whitespace-pre-line font-mono text-sm">{item.content}</p>
@@ -169,7 +169,7 @@ export default function Home() {
             { number: "500+", label: "Git Commits" },
             { number: "10", label: "Technologies" },
           ].map((stat, index) => (
-            <Card key={index} className="border-border bg-card/95">
+            <Card key={index}>
               <CardContent className="p-5 text-center sm:p-8">
                 <div className="mb-2 text-3xl font-bold sm:text-4xl">{stat.number}</div>
                 <div className="font-mono text-xs uppercase sm:text-sm">{stat.label}</div>
@@ -183,7 +183,7 @@ export default function Home() {
         <h2 className="mb-8 font-mono text-2xl font-bold uppercase sm:text-3xl">Testimonials</h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {testimonials.map((testimonial) => (
-            <Card key={testimonial.name} className="border-border bg-card/95">
+            <Card key={testimonial.name}>
               <CardContent className="p-5 sm:p-6">
                 <div className="mb-5 flex items-start gap-3">
                   <Avatar className="h-14 w-14 shrink-0 border border-border">
@@ -209,7 +209,7 @@ export default function Home() {
         <h2 className="mb-8 font-mono text-2xl font-bold uppercase sm:text-3xl">Contacts</h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {contacts.map((contact) => (
-            <Card key={contact.name} className="border-border bg-card/95">
+            <Card key={contact.name}>
               <CardContent className="p-5 sm:p-6">
                 <div className="mb-4 flex items-center gap-3">
                   <Avatar className="h-14 w-14 shrink-0 border border-border">
@@ -235,7 +235,7 @@ export default function Home() {
         <h2 className="mb-8 font-mono text-2xl font-bold uppercase sm:text-3xl">PASSIONS</h2>
         <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
           {interests.map((interest) => (
-            <Card key={interest} className="border-border bg-card/95">
+            <Card key={interest}>
               <CardContent className="px-3 py-4 text-center sm:px-4 sm:py-5">
                 <div className="whitespace-nowrap font-mono text-[11px] font-bold uppercase sm:text-xs">
                   {interest}

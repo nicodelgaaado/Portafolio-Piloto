@@ -4,8 +4,12 @@
   color-scheme: light;
   --font-size: 16px;
   --background: #faf9f6;
+  --background-secondary: #f3f1eb;
   --foreground: oklch(0.145 0 0);
+  --text-primary: var(--foreground);
   --card: #ffffff;
+  --surface: var(--card);
+  --surface-hover: #f7f4ee;
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
@@ -15,13 +19,15 @@
   --secondary-foreground: #030213;
   --muted: #efede8;
   --muted-foreground: #5e5c67;
+  --text-muted: var(--muted-foreground);
   --accent: #f3f1eb;
   --accent-foreground: #030213;
   --destructive: #d4183d;
   --destructive-foreground: #ffffff;
   --border: rgba(3, 2, 19, 0.12);
+  --border-subtle: var(--border);
   --input: transparent;
-  --input-background: #f3f1ec;
+  --input-background: var(--background-secondary);
   --switch-background: #cbced4;
   --font-weight-medium: 500;
   --font-weight-normal: 400;
@@ -44,25 +50,31 @@
 
 .dark {
   color-scheme: dark;
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
+  --background: #0b0b0c;
+  --background-secondary: #111318;
+  --foreground: #f5f7fa;
+  --text-primary: #f5f7fa;
+  --card: #15171b;
+  --surface: #15171b;
+  --surface-hover: #1b1f26;
+  --card-foreground: #f5f7fa;
+  --popover: #15171b;
+  --popover-foreground: #f5f7fa;
   --primary: oklch(0.985 0 0);
   --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --secondary: var(--background-secondary);
+  --secondary-foreground: var(--text-primary);
+  --muted: var(--background-secondary);
+  --muted-foreground: #a7b0be;
+  --text-muted: #a7b0be;
+  --accent: var(--background-secondary);
+  --accent-foreground: var(--text-primary);
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --input-background: oklch(0.205 0 0);
+  --border: #262a31;
+  --border-subtle: #262a31;
+  --input: #262a31;
+  --input-background: var(--background-secondary);
   --switch-background: oklch(0.369 0 0);
   --ring: oklch(0.439 0 0);
   --font-weight-medium: 500;
@@ -86,8 +98,13 @@
   --font-sans: var(--font-portfolio), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-portfolio), ui-sans-serif, system-ui, sans-serif;
   --color-background: var(--background);
+  --color-background-secondary: var(--background-secondary);
   --color-foreground: var(--foreground);
+  --color-text-primary: var(--text-primary);
+  --color-text-muted: var(--text-muted);
   --color-card: var(--card);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
@@ -102,6 +119,7 @@
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
+  --color-border-subtle: var(--border-subtle);
   --color-input: var(--input);
   --color-input-background: var(--input-background);
   --color-switch-background: var(--switch-background);
@@ -191,5 +209,27 @@
     font-size: var(--text-base);
     font-weight: var(--font-weight-normal);
     line-height: 1.5;
+  }
+}
+
+@layer utilities {
+  .surface-elevated {
+    @apply border border-border-subtle bg-surface text-card-foreground shadow-[0_4px_20px_rgba(0,0,0,0.12)] transition-[background-color,border-color,box-shadow];
+  }
+
+  .dark .surface-elevated {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  }
+
+  .surface-interactive {
+    @apply transition-[background-color,border-color,box-shadow];
+  }
+
+  .surface-interactive:hover {
+    background-color: var(--surface-hover);
+  }
+
+  .surface-inset {
+    @apply border border-border-subtle bg-background-secondary;
   }
 }

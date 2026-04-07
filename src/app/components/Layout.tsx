@@ -196,7 +196,7 @@ export default function Layout({ children }: LayoutProps) {
               : "pointer-events-none -translate-y-2 opacity-0"
           }`}
         >
-          <Card className="min-h-[19rem] border-border bg-card/96 p-5 shadow-[0_18px_45px_rgba(3,2,19,0.12)]">
+          <Card className="min-h-[19rem] p-5">
             <nav>
               <ul className="flex w-full flex-col gap-5 pt-2">
                 {navItems.map((item) => (

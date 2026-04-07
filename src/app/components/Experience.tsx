@@ -65,9 +65,9 @@ export default function Experience() {
           <h2 className="mb-5 text-xl font-bold sm:mb-6 sm:text-2xl">Certifications</h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             {certifications.map((certification) => (
-              <Card key={certification.title} className="border-border bg-card/95">
+              <Card key={certification.title}>
                 <CardContent className="p-4 sm:p-5">
-                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-border bg-card sm:h-16 sm:w-16">
+                  <div className="surface-inset mb-4 flex h-14 w-14 items-center justify-center rounded-full sm:h-16 sm:w-16">
                     <Image
                       src={getBlueIbmLogoUrl()}
                       alt={`${certification.provider} logo`}

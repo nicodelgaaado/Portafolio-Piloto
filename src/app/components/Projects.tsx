@@ -108,7 +108,7 @@ export default function Projects() {
         </p>
       </div>
 
-      <Card className="mb-10 border-border bg-card/95 sm:mb-12">
+      <Card className="mb-10 sm:mb-12">
         <CardContent className="p-4 sm:p-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <span className="font-mono text-sm uppercase">Filter Projects</span>
@@ -139,7 +139,6 @@ export default function Projects() {
           <Card
             key={project.title}
             className={cn(
-              "border-border bg-card/95 transition-colors",
               isFilteredView && "lg:h-full",
             )}
           >
@@ -165,7 +164,7 @@ export default function Projects() {
               {isFilteredView ? <div className="hidden lg:block lg:flex-1" aria-hidden="true" /> : null}
 
               <div>
-                <div className="relative mb-4 aspect-[16/10] overflow-hidden rounded-lg border border-border bg-card">
+                <div className="surface-inset relative mb-4 aspect-[16/10] overflow-hidden rounded-lg">
                   <Image
                     src={project.imageSrc}
                     alt={project.imageAlt}

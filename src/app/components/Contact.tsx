@@ -308,7 +308,7 @@ export default function Contact() {
       </div>
 
       <div>
-        <Card className="border-border bg-card/95">
+        <Card>
           <CardContent className="p-5 sm:p-8">
             <h2 className="mb-6 font-mono text-xl font-bold uppercase sm:text-2xl">Send a Message</h2>
             <form className="space-y-6" onSubmit={handleSubmit} noValidate>
