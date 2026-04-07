@@ -5,131 +5,14 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
-type PassionIllustrationProps = {
-  className?: string;
-};
+function iconifyUrl(icon: string, color?: string) {
+  const baseUrl = `https://api.iconify.design/${icon.replace(":", "/")}.svg`;
 
-function FormulaOneIllustration({ className }: PassionIllustrationProps) {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 72 36"
-      className={className}
-      fill="none"
-      focusable="false"
-    >
-      <circle cx="20" cy="27" r="6" fill="#161616" />
-      <circle cx="52" cy="27" r="6" fill="#161616" />
-      <circle cx="20" cy="27" r="2.2" fill="#5B5B5B" />
-      <circle cx="52" cy="27" r="2.2" fill="#5B5B5B" />
-      <path
-        d="M5 25h10.8l9.5-5.5h10.3l4.7-8.1h10l3.4 3.1h7.4V20h-5.2L52 24H35.8l-8.4 3.7H5z"
-        fill="#C8102E"
-      />
-      <path d="M26.3 20h12.8l4.1-6.8h4.7l-2.9 6.8H54V22H34.4l-8.1 3H16.9z" fill="#FF4C5F" />
-      <path d="M39.9 11.4h8.6l4.1 3.5H44z" fill="#9E0C24" />
-      <path d="M31.9 14.5h6.1l2 4.8h-8.7z" fill="#1F1F1F" />
-      <path d="M57.5 14.7h7.1V21h-7.1z" fill="#7A7A7A" />
-      <path d="M5 22.4h11.7l6.2-2.8h-11z" fill="#8E0E22" />
-      <path d="M14.7 24.2h10.4" stroke="#FFD17A" strokeWidth="1.4" strokeLinecap="round" opacity="0.9" />
-    </svg>
-  );
-}
+  if (!color) {
+    return baseUrl;
+  }
 
-function TennisIllustration({ className }: PassionIllustrationProps) {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 32 32"
-      className={className}
-      fill="none"
-      focusable="false"
-    >
-      <ellipse
-        cx="14.2"
-        cy="11.6"
-        rx="7.6"
-        ry="9"
-        transform="rotate(-18 14.2 11.6)"
-        fill="#25282D"
-      />
-      <ellipse
-        cx="14.2"
-        cy="11.6"
-        rx="5.3"
-        ry="6.7"
-        transform="rotate(-18 14.2 11.6)"
-        fill="#F4F6F8"
-      />
-      <path
-        d="m10.4 6.7 7.4 10.4M8.3 10.8l11 5.4M13.2 4.5l2.9 15.2"
-        stroke="#C8CDD3"
-        strokeWidth="1"
-        strokeLinecap="round"
-        opacity="0.9"
-      />
-      <path
-        d="m17.7 18.2 6 8.8"
-        stroke="#2D3137"
-        strokeWidth="2.8"
-        strokeLinecap="round"
-      />
-      <path d="m20.6 22.5 4.4 6.2" stroke="#4A5664" strokeWidth="1.6" strokeLinecap="round" />
-      <path d="m22.4 24.7 2.4-1.3" stroke="#B88E5C" strokeWidth="1.8" strokeLinecap="round" />
-      <path d="m23.8 26.7 1.5-.8" stroke="#B88E5C" strokeWidth="1.8" strokeLinecap="round" opacity="0.82" />
-      <circle cx="25.8" cy="29.1" r="1.2" fill="#111827" />
-    </svg>
-  );
-}
-
-function MusicIllustration({ className }: PassionIllustrationProps) {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 32 32"
-      className={className}
-      fill="none"
-      focusable="false"
-    >
-      <circle cx="16" cy="16" r="11.5" fill="#171717" />
-      <circle cx="16" cy="16" r="8.3" stroke="#373737" strokeWidth="1.3" />
-      <circle cx="16" cy="16" r="5.4" stroke="#4A4A4A" strokeWidth="1.1" opacity="0.9" />
-      <circle cx="16" cy="16" r="2.9" fill="#A66A2C" />
-      <circle cx="16" cy="16" r="1" fill="#F6E9D4" />
-      <path d="M10.6 8.8a12 12 0 0 1 10.8-2.2" stroke="#717171" strokeWidth="1.2" strokeLinecap="round" opacity="0.7" />
-    </svg>
-  );
-}
-
-function GulfstreamIllustration({ className }: PassionIllustrationProps) {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 72 36"
-      className={className}
-      fill="none"
-      focusable="false"
-    >
-      <path
-        d="M6 20.8 28.4 18 48.8 10.3c3.4-1.3 7.2-.2 9.3 2.8l4.2 5.8 3.7 1.3v2.9H51.2l-8.8 5h-5l3.4-5H29l-11.5 4.4h-5.1l5.3-4.4H6z"
-        fill="#F4F7FB"
-      />
-      <path
-        d="M6 20.8 28.4 18 48.8 10.3c3.4-1.3 7.2-.2 9.3 2.8l4.2 5.8 3.7 1.3v2.9H51.2l-8.8 5h-5l3.4-5H29l-11.5 4.4h-5.1l5.3-4.4H6z"
-        stroke="#94A3B8"
-        strokeWidth="1.2"
-        strokeLinejoin="round"
-      />
-      <path d="M47.8 10.6 52 5h4l-1.3 6.4z" fill="#E2E8F0" stroke="#94A3B8" strokeWidth="1" />
-      <path d="M33 17.2h17.6" stroke="#5F89B3" strokeWidth="1.6" strokeLinecap="round" />
-      <path d="M52.8 17.5h5.5" stroke="#374151" strokeWidth="1.2" strokeLinecap="round" opacity="0.9" />
-      <circle cx="38.2" cy="15.4" r="1" fill="#334155" />
-      <circle cx="42" cy="14.6" r="1" fill="#334155" />
-      <circle cx="45.8" cy="13.9" r="1" fill="#334155" />
-      <circle cx="49.5" cy="13.1" r="1" fill="#334155" />
-      <path d="M54.9 15.8 57 18.9" stroke="#64748B" strokeWidth="1.1" strokeLinecap="round" />
-    </svg>
-  );
+  return `${baseUrl}?color=${encodeURIComponent(color)}`;
 }
 
 export default function Home() {
@@ -163,10 +46,10 @@ export default function Home() {
     },
   ];
   const interests = [
-    { label: "Formula 1", Illustration: FormulaOneIllustration },
-    { label: "Tennis", Illustration: TennisIllustration },
-    { label: "Music", Illustration: MusicIllustration },
-    { label: "Traveling", Illustration: GulfstreamIllustration },
+    { label: "Formula 1", icon: "ion:car-sport", imageClassName: "object-contain" },
+    { label: "Tennis", icon: "ion:ios-tennisball", color: "#8FD14F", imageClassName: "object-contain" },
+    { label: "Music", icon: "ion:ios-musical-notes", color: "#E25555", imageClassName: "object-contain" },
+    { label: "Traveling", icon: "ion:ios-airplane", color: "#B7C3D6", imageClassName: "scale-[1.22] object-contain" },
   ];
   const testimonials = [
     {
@@ -366,12 +249,19 @@ export default function Home() {
       <section className="border-t border-border py-12 sm:py-20">
         <h2 className="mb-8 font-mono text-2xl font-bold uppercase sm:text-3xl">PASSIONS</h2>
         <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
-          {interests.map(({ label, Illustration }) => (
+          {interests.map(({ label, icon, color, imageClassName }) => (
             <Card key={label} className="surface-soft-hover">
               <CardContent className="px-3 py-4 text-center sm:px-4 sm:py-5">
                 <div className="flex items-center justify-center gap-2">
-                  <span className="h-5 w-7 shrink-0 text-foreground/80 sm:h-5 sm:w-8">
-                    <Illustration className="h-full w-full" />
+                  <span className="relative h-5 w-7 shrink-0 sm:h-5 sm:w-8">
+                    <Image
+                      src={iconifyUrl(icon, color)}
+                      alt=""
+                      fill
+                      unoptimized
+                      sizes="(min-width: 640px) 2rem, 1.75rem"
+                      className={imageClassName}
+                    />
                   </span>
                   <div className="whitespace-nowrap font-mono text-[11px] font-bold uppercase sm:text-xs">
                     {label}
