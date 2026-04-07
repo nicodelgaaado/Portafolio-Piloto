@@ -185,7 +185,7 @@ export default function Home() {
           {testimonials.map((testimonial) => (
             <Card key={testimonial.name}>
               <CardContent className="p-5 sm:p-6">
-                <div className="mb-5 flex items-start gap-3">
+                <div className="mb-5 flex items-center gap-3">
                   <Avatar className="h-14 w-14 shrink-0 border border-border">
                     <AvatarImage src={testimonial.image} alt={`Portrait of ${testimonial.name}`} />
                     <AvatarFallback>{testimonial.name.slice(0, 2).toUpperCase()}</AvatarFallback>
