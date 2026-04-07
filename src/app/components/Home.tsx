@@ -151,7 +151,7 @@ export default function Home() {
               content: "Open Source, Web3, Competitive Programming",
             },
           ].map((item, index) => (
-            <Card key={index}>
+            <Card key={index} className="surface-soft-hover">
               <CardContent className="p-5 sm:p-6">
                 <h3 className="mb-4 font-mono text-lg font-bold uppercase">{item.title}</h3>
                 <p className="whitespace-pre-line font-mono text-sm">{item.content}</p>
@@ -169,7 +169,7 @@ export default function Home() {
             { number: "500+", label: "Git Commits" },
             { number: "10", label: "Technologies" },
           ].map((stat, index) => (
-            <Card key={index}>
+            <Card key={index} className="surface-soft-hover">
               <CardContent className="p-5 text-center sm:p-8">
                 <div className="mb-2 text-3xl font-bold sm:text-4xl">{stat.number}</div>
                 <div className="font-mono text-xs uppercase sm:text-sm">{stat.label}</div>
@@ -183,7 +183,7 @@ export default function Home() {
         <h2 className="mb-8 font-mono text-2xl font-bold uppercase sm:text-3xl">Testimonials</h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {testimonials.map((testimonial) => (
-            <Card key={testimonial.name}>
+            <Card key={testimonial.name} className="surface-soft-hover">
               <CardContent className="p-5 sm:p-6">
                 <div className="mb-5 flex items-center gap-3">
                   <Avatar className="h-14 w-14 shrink-0 border border-border">
@@ -209,7 +209,7 @@ export default function Home() {
         <h2 className="mb-8 font-mono text-2xl font-bold uppercase sm:text-3xl">Contacts</h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {contacts.map((contact) => (
-            <Card key={contact.name}>
+            <Card key={contact.name} className="surface-soft-hover">
               <CardContent className="p-5 sm:p-6">
                 <div className="mb-4 flex items-center gap-3">
                   <Avatar className="h-14 w-14 shrink-0 border border-border">
@@ -235,7 +235,7 @@ export default function Home() {
         <h2 className="mb-8 font-mono text-2xl font-bold uppercase sm:text-3xl">PASSIONS</h2>
         <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
           {interests.map((interest) => (
-            <Card key={interest}>
+            <Card key={interest} className="surface-soft-hover">
               <CardContent className="px-3 py-4 text-center sm:px-4 sm:py-5">
                 <div className="whitespace-nowrap font-mono text-[11px] font-bold uppercase sm:text-xs">
                   {interest}

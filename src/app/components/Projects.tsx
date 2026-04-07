@@ -139,6 +139,7 @@ export default function Projects() {
           <Card
             key={project.title}
             className={cn(
+              "surface-soft-hover",
               isFilteredView && "lg:h-full",
             )}
           >
