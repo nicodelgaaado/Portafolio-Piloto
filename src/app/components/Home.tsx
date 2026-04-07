@@ -59,7 +59,7 @@ export default function Home() {
   const contacts = [
     {
       name: "Santiago Lafaurie",
-      connection: "Founder at Hunty",
+      connection: "Founder",
       image:
         "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/santiagolafaurie-photo.webp",
     },
@@ -191,7 +191,7 @@ export default function Home() {
                     <AvatarFallback>{testimonial.name.slice(0, 2).toUpperCase()}</AvatarFallback>
                   </Avatar>
                   <div>
-                    <h3 className="font-mono text-base font-bold uppercase sm:text-lg">
+                    <h3 className="font-mono text-base font-bold sm:text-lg">
                       {testimonial.name}
                     </h3>
                   </div>
@@ -217,10 +217,10 @@ export default function Home() {
                     <AvatarFallback>{contact.name.slice(0, 2).toUpperCase()}</AvatarFallback>
                   </Avatar>
                   <div>
-                    <h3 className="font-mono text-base font-bold uppercase sm:text-lg">
+                    <h3 className="font-mono text-base font-bold sm:text-lg">
                       {contact.name}
                     </h3>
-                    <p className="font-mono text-xs uppercase text-muted-foreground sm:text-sm">
+                    <p className="font-mono text-xs text-muted-foreground sm:text-sm">
                       {contact.connection}
                     </p>
                   </div>
