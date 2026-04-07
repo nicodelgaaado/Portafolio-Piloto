@@ -39,7 +39,7 @@ const projects: Project[] = [
     filters: ["Data", "Design"],
     githubUrl: "https://github.com/nicodelgaaado/Movie-Matchmaker",
     liveDemoUrl: "https://movie-matchmaker-alpha.vercel.app/",
-    imageSrc: "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/vercel-logo.webp",
+    imageSrc: "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/thumbnail-1.webp",
     imageAlt: "Screenshot of the Movie Recommendation App interface.",
   },
   {
@@ -50,7 +50,7 @@ const projects: Project[] = [
     filters: ["Data", "Tools"],
     githubUrl: "https://github.com/nicodelgaaado/Panel-Solar",
     liveDemoUrl: "https://panel-solar.vercel.app/",
-    imageSrc: "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/vercel-logo.webp",
+    imageSrc: "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/thumbnail-2.webp",
     imageAlt: "Screenshot of the Solar Panel Sizing App interface.",
   },
   {
@@ -61,7 +61,7 @@ const projects: Project[] = [
     filters: ["Tools", "Business"],
     githubUrl: "https://github.com/nicodelgaaado/ProduSoft",
     liveDemoUrl: "https://produ-soft.vercel.app/",
-    imageSrc: "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/vercel-logo.webp",
+    imageSrc: "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/thumbnail-3-v2.webp",
     imageAlt: "Screenshot of the Work Order Platform interface.",
   },
   {
@@ -72,7 +72,7 @@ const projects: Project[] = [
     filters: ["Design"],
     githubUrl: "https://github.com/nicodelgaaado/Music-Player",
     liveDemoUrl: "https://music-player-pied-two.vercel.app/",
-    imageSrc: "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/vercel-logo.webp",
+    imageSrc: "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/thumbnail-4.webp",
     imageAlt: "Screenshot of the Web Music Player interface.",
   },
 ];
