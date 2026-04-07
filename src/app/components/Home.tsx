@@ -80,8 +80,8 @@ export default function Home() {
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6">
       <section className="border-b border-border py-12 sm:py-20">
-        <div className="flex flex-col gap-8">
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-8 lg:gap-10">
+        <div className="flex flex-col items-center gap-8 text-center">
+          <div className="flex w-full max-w-4xl flex-col items-center gap-6 sm:gap-8 lg:gap-10">
             <div className="relative h-36 w-36 shrink-0 overflow-hidden rounded-full border border-border shadow-[0_20px_50px_rgba(3,2,19,0.12)] sm:h-48 sm:w-48 lg:h-56 lg:w-56">
               <Image
                 src="https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/profilepicture.webp"
@@ -93,13 +93,13 @@ export default function Home() {
               />
             </div>
             <div className="space-y-5">
-              <h1 className="whitespace-nowrap text-4xl font-bold leading-none sm:text-5xl lg:text-6xl">
+              <h1 className="text-balance text-4xl font-bold leading-none sm:text-5xl lg:text-6xl">
                 Nicolas Delgado
               </h1>
-              <p className="max-w-3xl font-mono text-base leading-relaxed sm:text-lg">
+              <p className="mx-auto max-w-3xl font-mono text-base leading-relaxed sm:text-lg">
                 Full-Stack Software Engineer
               </p>
-              <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-sm text-muted-foreground">
+              <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 font-mono text-sm text-muted-foreground">
                 <p className="flex items-center gap-1.5 text-foreground">
                   <MapPin className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
                   Pasto, Colombia
@@ -109,13 +109,13 @@ export default function Home() {
                   Open to opportunities
                 </p>
               </div>
-              <div className="flex flex-nowrap gap-2 pt-1 sm:gap-4">
+              <div className="flex flex-wrap justify-center gap-2 pt-1 sm:gap-4">
                 {actionItems.map((item) => (
                   <Button
                     key={item.label}
                     asChild
                     variant={item.variant}
-                    className={`h-auto flex-1 whitespace-nowrap py-2 text-center font-mono text-[10px] uppercase sm:flex-none sm:text-xs ${item.className}`}
+                    className={`h-auto whitespace-nowrap py-2 text-center font-mono text-[10px] uppercase sm:text-xs ${item.className}`}
                   >
                     <a
                       href={item.href}
