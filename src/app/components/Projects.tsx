@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
@@ -72,6 +72,7 @@ export default function Projects() {
   ];
 
   const [selectedFilter, setSelectedFilter] = useState<"All" | ProjectFilter>("All");
+  const filterButtonRefs = useRef<Partial<Record<"All" | ProjectFilter, HTMLButtonElement | null>>>({});
 
   const filters = ["All", ...projectFilters] as Array<"All" | ProjectFilter>;
 
@@ -80,6 +81,14 @@ export default function Projects() {
       ? projects
       : projects.filter((project) => project.filters.includes(selectedFilter));
   const isFilteredView = selectedFilter !== "All";
+
+  useEffect(() => {
+    filterButtonRefs.current[selectedFilter]?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "center",
+    });
+  }, [selectedFilter]);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-20">
@@ -96,18 +105,23 @@ export default function Projects() {
         <CardContent className="p-4 sm:p-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <span className="font-mono text-sm uppercase">Filter Projects</span>
-            <div className="grid grid-cols-5 gap-1.5 sm:flex sm:flex-wrap sm:gap-4">
-              {filters.map((filter) => (
-                <Button
-                  key={filter}
-                  type="button"
-                  onClick={() => setSelectedFilter(filter)}
-                  variant={selectedFilter === filter ? "default" : "outline"}
-                  className="h-auto w-full min-w-0 px-0 py-2 font-mono text-[9px] uppercase sm:w-auto sm:px-4 sm:text-xs"
-                >
-                  {filter}
-                </Button>
-              ))}
+            <div className="-mx-2 px-2 sm:mx-0 sm:px-0">
+              <div className="scrollbar-hidden flex min-w-full snap-x snap-proximity items-center gap-2 overflow-x-auto whitespace-nowrap scroll-smooth py-1 sm:flex-wrap sm:justify-end sm:overflow-visible sm:whitespace-normal">
+                {filters.map((filter) => (
+                  <Button
+                    key={filter}
+                    ref={(element) => {
+                      filterButtonRefs.current[filter] = element;
+                    }}
+                    type="button"
+                    onClick={() => setSelectedFilter(filter)}
+                    variant={selectedFilter === filter ? "default" : "outline"}
+                    className="h-auto shrink-0 snap-center px-3 py-2 font-mono text-[11px] uppercase sm:px-4 sm:text-xs"
+                  >
+                    {filter}
+                  </Button>
+                ))}
+              </div>
             </div>
           </div>
         </CardContent>
