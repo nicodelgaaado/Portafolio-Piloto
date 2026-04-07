@@ -48,7 +48,7 @@ export default function Home() {
   const interests = [
     { label: "Formula 1", icon: "noto:racing-car", imageClassName: "object-contain" },
     { label: "Tennis", icon: "ion:ios-tennisball", color: "#8FD14F", imageClassName: "object-contain" },
-    { label: "Music", icon: "ion:ios-musical-notes", color: "#E25555", imageClassName: "object-contain" },
+    { label: "Music", icon: "ion:ios-musical-notes", color: "#AF52DE", imageClassName: "object-contain" },
     { label: "Traveling", icon: "ion:ios-airplane", color: "#B7C3D6", imageClassName: "scale-[1.22] object-contain" },
   ];
   const testimonials = [
