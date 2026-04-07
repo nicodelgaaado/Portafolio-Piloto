@@ -30,10 +30,6 @@ type Project = {
   imageAlt: string;
 };
 
-const supabaseAssetBase =
-  "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed";
-const projectScreenshotPlaceholder = `${supabaseAssetBase}/vercel-logo.webp`;
-
 const projects: Project[] = [
   {
     title: "Movie Recommendation App",
@@ -43,8 +39,8 @@ const projects: Project[] = [
     filters: ["Data", "Design"],
     githubUrl: "https://github.com/nicodelgaaado/Movie-Matchmaker",
     liveDemoUrl: "https://movie-matchmaker-alpha.vercel.app/",
-    imageSrc: projectScreenshotPlaceholder,
-    imageAlt: "Screenshot placeholder for the Movie Recommendation App project. Replace with its Supabase screenshot URL.",
+    imageSrc: "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/vercel-logo.webp",
+    imageAlt: "Screenshot of the Movie Recommendation App interface.",
   },
   {
     title: "Solar Panel Sizing App",
@@ -54,8 +50,8 @@ const projects: Project[] = [
     filters: ["Data", "Tools"],
     githubUrl: "https://github.com/nicodelgaaado/Panel-Solar",
     liveDemoUrl: "https://panel-solar.vercel.app/",
-    imageSrc: projectScreenshotPlaceholder,
-    imageAlt: "Screenshot placeholder for the Solar Panel Sizing App project. Replace with its Supabase screenshot URL.",
+    imageSrc: "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/vercel-logo.webp",
+    imageAlt: "Screenshot of the Solar Panel Sizing App interface.",
   },
   {
     title: "Work Order Platform",
@@ -65,8 +61,8 @@ const projects: Project[] = [
     filters: ["Tools", "Business"],
     githubUrl: "https://github.com/nicodelgaaado/ProduSoft",
     liveDemoUrl: "https://produ-soft.vercel.app/",
-    imageSrc: projectScreenshotPlaceholder,
-    imageAlt: "Screenshot placeholder for the Work Order Platform project. Replace with its Supabase screenshot URL.",
+    imageSrc: "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/vercel-logo.webp",
+    imageAlt: "Screenshot of the Work Order Platform interface.",
   },
   {
     title: "Web Music Player",
@@ -76,8 +72,8 @@ const projects: Project[] = [
     filters: ["Design"],
     githubUrl: "https://github.com/nicodelgaaado/Music-Player",
     liveDemoUrl: "https://music-player-pied-two.vercel.app/",
-    imageSrc: projectScreenshotPlaceholder,
-    imageAlt: "Screenshot placeholder for the Web Music Player project. Replace with its Supabase screenshot URL.",
+    imageSrc: "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/vercel-logo.webp",
+    imageAlt: "Screenshot of the Web Music Player interface.",
   },
 ];
 
