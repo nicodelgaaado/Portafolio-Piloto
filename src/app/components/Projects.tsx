@@ -26,51 +26,62 @@ type Project = {
   filters: ProjectFilter[];
   githubUrl: string;
   liveDemoUrl: string;
+  imageSrc: string;
+  imageAlt: string;
 };
 
-const projectPreviewImage =
-  "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/vercel-logo.webp";
+const supabaseAssetBase =
+  "https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed";
+const projectScreenshotPlaceholder = `${supabaseAssetBase}/vercel-logo.webp`;
+
+const projects: Project[] = [
+  {
+    title: "Movie Recommendation App",
+    tech: "Next.js 16, React 19, TypeScript, Tailwind CSS",
+    description: "Movie recommendation web app where users rate a curated queue of titles and receive ranked recommendations.",
+    status: "Deployed",
+    filters: ["Data", "Design"],
+    githubUrl: "https://github.com/nicodelgaaado/Movie-Matchmaker",
+    liveDemoUrl: "https://movie-matchmaker-alpha.vercel.app/",
+    imageSrc: projectScreenshotPlaceholder,
+    imageAlt: "Screenshot placeholder for the Movie Recommendation App project. Replace with its Supabase screenshot URL.",
+  },
+  {
+    title: "Solar Panel Sizing App",
+    tech: "Next.js 16, React 19, TypeScript, Tailwind CSS",
+    description: "Web app that estimates solar panel sizing, installation cost, savings, and return on investment.",
+    status: "Deployed",
+    filters: ["Data", "Tools"],
+    githubUrl: "https://github.com/nicodelgaaado/Panel-Solar",
+    liveDemoUrl: "https://panel-solar.vercel.app/",
+    imageSrc: projectScreenshotPlaceholder,
+    imageAlt: "Screenshot placeholder for the Solar Panel Sizing App project. Replace with its Supabase screenshot URL.",
+  },
+  {
+    title: "Work Order Platform",
+    tech: "Next.js, TypeScript, Spring Boot, PostgreSQL",
+    description: "Industrial workflow platform for work orders, role-based dashboards, and AI-assisted operational support.",
+    status: "Deployed",
+    filters: ["Tools", "Business"],
+    githubUrl: "https://github.com/nicodelgaaado/ProduSoft",
+    liveDemoUrl: "https://produ-soft.vercel.app/",
+    imageSrc: projectScreenshotPlaceholder,
+    imageAlt: "Screenshot placeholder for the Work Order Platform project. Replace with its Supabase screenshot URL.",
+  },
+  {
+    title: "Web Music Player",
+    tech: "TypeScript, SCSS, HTML, JavaScript",
+    description: "Browser music player with custom controls, responsive UI, and a focused playback experience.",
+    status: "Deployed",
+    filters: ["Design"],
+    githubUrl: "https://github.com/nicodelgaaado/Music-Player",
+    liveDemoUrl: "https://music-player-pied-two.vercel.app/",
+    imageSrc: projectScreenshotPlaceholder,
+    imageAlt: "Screenshot placeholder for the Web Music Player project. Replace with its Supabase screenshot URL.",
+  },
+];
 
 export default function Projects() {
-  const projects: Project[] = [
-    {
-      title: "Movie Recommendation App",
-      tech: "Next.js 16, React 19, TypeScript, Tailwind CSS",
-      description: "Movie recommendation web app where users rate a curated queue of titles and receive ranked recommendations.",
-      status: "Deployed",
-      filters: ["Data", "Design"],
-      githubUrl: "https://github.com/nicodelgaaado/Movie-Matchmaker",
-      liveDemoUrl: "https://movie-matchmaker-alpha.vercel.app/",
-    },
-    {
-      title: "Solar Panel Sizing App",
-      tech: "Next.js 16, React 19, TypeScript, Tailwind CSS",
-      description: "Web app that estimates solar panel sizing, installation cost, savings, and return on investment.",
-      status: "Deployed",
-      filters: ["Data", "Tools"],
-      githubUrl: "https://github.com/nicodelgaaado/Panel-Solar",
-      liveDemoUrl: "https://panel-solar.vercel.app/",
-    },
-    {
-      title: "Work Order Platform",
-      tech: "Next.js, TypeScript, Spring Boot, PostgreSQL",
-      description: "Industrial workflow platform for work orders, role-based dashboards, and AI-assisted operational support.",
-      status: "Deployed",
-      filters: ["Tools", "Business"],
-      githubUrl: "https://github.com/nicodelgaaado/ProduSoft",
-      liveDemoUrl: "https://produ-soft.vercel.app/",
-    },
-    {
-      title: "Web Music Player",
-      tech: "TypeScript, SCSS, HTML, JavaScript",
-      description: "Browser music player with custom controls, responsive UI, and a focused playback experience.",
-      status: "Deployed",
-      filters: ["Design"],
-      githubUrl: "https://github.com/nicodelgaaado/Music-Player",
-      liveDemoUrl: "https://music-player-pied-two.vercel.app/",
-    },
-  ];
-
   const [selectedFilter, setSelectedFilter] = useState<"All" | ProjectFilter>("All");
   const filterButtonRefs = useRef<Partial<Record<"All" | ProjectFilter, HTMLButtonElement | null>>>({});
 
@@ -158,12 +169,12 @@ export default function Projects() {
               {isFilteredView ? <div className="hidden lg:block lg:flex-1" aria-hidden="true" /> : null}
 
               <div>
-                <div className="relative mb-4 h-36 overflow-hidden rounded-lg border border-border bg-card sm:h-40">
+                <div className="relative mb-4 aspect-[16/10] overflow-hidden rounded-lg border border-border bg-card">
                   <Image
-                    src={projectPreviewImage}
-                    alt={`Vercel logo preview for ${project.title}`}
+                    src={project.imageSrc}
+                    alt={project.imageAlt}
                     fill
-                    sizes="(min-width: 1024px) 40rem, 100vw"
+                    sizes="(min-width: 1024px) 34rem, (min-width: 640px) calc(100vw - 3rem), calc(100vw - 2rem)"
                     className="object-cover object-center"
                   />
                 </div>
