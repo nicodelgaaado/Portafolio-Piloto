@@ -83,7 +83,7 @@ export default function Home() {
         <div className="flex flex-col items-center gap-8 text-center">
           <div className="flex w-full max-w-4xl flex-col items-center gap-6 sm:gap-8 lg:gap-10">
             <div className="relative h-36 w-36 shrink-0 sm:h-48 sm:w-48 lg:h-56 lg:w-56">
-              <div className="surface-elevated absolute inset-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full sm:h-56 sm:w-56 lg:h-64 lg:w-64">
+              <div className="absolute inset-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full bg-surface shadow-[inset_0_-14px_24px_rgba(3,2,19,0.18),inset_0_1px_0_rgba(255,255,255,0.35)] dark:shadow-[inset_0_-16px_28px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.08)] sm:h-56 sm:w-56 lg:h-64 lg:w-64">
                 <Image
                   src="https://dtiiihvipieempqflzmj.supabase.co/storage/v1/object/public/assets/webp-compressed/profilepicture.webp"
                   alt="Portrait of Nicolas Delgado"
