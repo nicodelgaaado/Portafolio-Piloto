@@ -9,7 +9,7 @@
   --text-primary: var(--foreground);
   --card: #ffffff;
   --surface: var(--card);
-  --surface-hover: #f7f4ee;
+  --surface-hover: #fcfbf8;
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
@@ -56,7 +56,7 @@
   --text-primary: #f5f7fa;
   --card: #15171b;
   --surface: #15171b;
-  --surface-hover: #1b1f26;
+  --surface-hover: #171a20;
   --card-foreground: #f5f7fa;
   --popover: #15171b;
   --popover-foreground: #f5f7fa;
