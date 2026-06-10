@@ -32,7 +32,7 @@ The content is intentionally portfolio-oriented rather than blog-oriented or CMS
 
 - `lucide-react` for UI icons across navigation, actions, and supporting visual cues.
 - `next/image` for optimized rendering of remote portfolio assets.
-- Supabase-hosted media assets for portraits, resume hosting, and other imagery.
+- Cloudflare R2-hosted media assets for portraits, resume hosting, and other imagery.
 - Iconify-hosted SVG logos for the skills section.
 - Web3Forms for contact form submission handling.
 
@@ -53,5 +53,5 @@ This combination gives the portfolio both presentation value and enough interact
 - Mobile navigation behavior is handled on the client with explicit state management and transition-aware route changes.
 - The projects view uses local state to filter visible cards without introducing unnecessary backend complexity.
 - The contact form applies client-side validation rules for name, email, subject, and message before sending data to Web3Forms.
-- Remote image domains are explicitly configured in Next.js to support Supabase assets and Iconify logos.
+- Remote image domains are explicitly configured in Next.js to support Cloudflare R2 assets and Iconify logos.
 - The Next.js React Compiler option is enabled in the project configuration.
