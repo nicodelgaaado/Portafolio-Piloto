@@ -133,12 +133,12 @@ export default function Layout({ children }: LayoutProps) {
             <div className="flex items-center">
               <Link
                 href="/"
-                className="group flex items-center gap-2.5 transition-opacity hover:opacity-80"
+                className="group flex items-baseline gap-2 transition-opacity hover:opacity-80"
               >
-                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary font-mono text-sm font-bold text-primary-foreground">
-                  N
-                </span>
                 <span className="text-sm font-semibold tracking-tight">Nicolas Delgado</span>
+                <span className="hidden font-mono text-xs text-muted-foreground sm:inline">
+                  Software Engineer
+                </span>
               </Link>
             </div>
 
@@ -229,7 +229,7 @@ export default function Layout({ children }: LayoutProps) {
             <div className="flex flex-col gap-1">
               <span className="text-sm font-semibold tracking-tight">Nicolas Delgado</span>
               <p className="text-sm text-muted-foreground">
-                &copy; {new Date().getFullYear()} — Built with Next.js &amp; Tailwind CSS
+                &copy; {new Date().getFullYear()} — All rights reserved
               </p>
             </div>
             <div className="flex items-center gap-1">
