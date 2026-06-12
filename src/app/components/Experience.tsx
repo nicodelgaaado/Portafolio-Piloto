@@ -50,43 +50,40 @@ const IBM_LOGO_URL = "https://api.iconify.design/simple-icons:ibm.svg?color=%230
 
 export default function Experience() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-20">
-      <div className="mb-10 border-b border-border pb-6 sm:mb-12 sm:pb-8">
-        <h1 className="text-4xl font-bold sm:text-5xl">
-          Experience
-        </h1>
-        <p className="mt-6 font-mono text-base sm:text-lg">
-          A snapshot of my certifications and professional experience
+    <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
+      <div className="mb-12 sm:mb-16">
+        <span className="eyebrow">Background</span>
+        <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Experience</h1>
+        <p className="mt-4 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">
+          A snapshot of my certifications and professional experience.
         </p>
       </div>
 
-      <div className="space-y-10 sm:space-y-12">
+      <div className="space-y-14 sm:space-y-20">
         <section>
-          <h2 className="mb-5 text-xl font-bold sm:mb-6 sm:text-2xl">Certifications</h2>
+          <h2 className="mb-6 text-2xl font-bold tracking-tight">Certifications</h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             {certifications.map((certification) => (
-              <Card key={certification.title} className="surface-soft-hover">
-                <CardContent className="p-4 sm:p-5">
-                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm dark:border-slate-700/70 dark:bg-white sm:h-16 sm:w-16">
+              <Card key={certification.title} className="surface-soft-hover border-border-subtle">
+                <CardContent className="flex h-full flex-col p-6">
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-white shadow-sm">
                     <Image
                       src={IBM_LOGO_URL}
                       alt={`${certification.provider} logo`}
-                      width={40}
-                      height={40}
+                      width={32}
+                      height={32}
                       unoptimized
-                      className="h-8 w-8 object-contain sm:h-10 sm:w-10"
+                      className="h-7 w-7 object-contain"
                     />
                   </div>
-                  <h3 className="mb-3 font-mono text-sm font-bold uppercase sm:text-[15px]">
-                    {certification.title}
-                  </h3>
-                  <p className="mb-4 font-mono text-xs uppercase text-muted-foreground sm:text-sm">
+                  <h3 className="text-base font-semibold tracking-tight">{certification.title}</h3>
+                  <p className="mt-1 font-mono text-xs uppercase tracking-wider text-muted-foreground">
                     {certification.provider}
                   </p>
                   <Button
                     asChild
                     variant="outline"
-                    className="h-auto rounded-full px-4 py-2 font-mono text-xs uppercase sm:text-sm"
+                    className="mt-5 h-auto w-fit rounded-full px-4 py-2 text-xs font-medium"
                   >
                     <a href={certification.credentialUrl} target="_blank" rel="noreferrer">
                       Show credential
@@ -100,20 +97,30 @@ export default function Experience() {
         </section>
 
         <section>
-          <h2 className="mb-5 text-xl font-bold sm:mb-6 sm:text-2xl">Experience</h2>
-          <div className="space-y-6 sm:space-y-8">
-            {experiences.map((experience) => (
-              <article key={experience.role} className="relative border-l-4 border-foreground pl-5 sm:pl-6">
-                <div className="absolute -left-[11px] top-1 h-4 w-4 bg-foreground"></div>
-                <h3 className="text-lg font-bold sm:text-xl">{experience.role}</h3>
-                <p className="mb-2 font-mono text-sm uppercase text-muted-foreground sm:text-[15px]">
-                  {experience.company} | {experience.period}
-                </p>
-                <p className="max-w-3xl font-mono text-sm leading-relaxed sm:text-[15px]">
-                  {experience.description}
-                </p>
-              </article>
-            ))}
+          <h2 className="mb-8 text-2xl font-bold tracking-tight">Work &amp; Education</h2>
+          <div className="relative ml-1.5 border-l border-border pl-8 sm:pl-10">
+            <div className="space-y-10">
+              {experiences.map((experience) => (
+                <article key={experience.role} className="relative">
+                  <span
+                    className="absolute -left-[2.45rem] top-1.5 flex h-3.5 w-3.5 items-center justify-center sm:-left-[3.07rem]"
+                    aria-hidden="true"
+                  >
+                    <span className="h-3.5 w-3.5 rounded-full border-2 border-primary bg-background" />
+                  </span>
+                  <p className="mb-1 font-mono text-xs uppercase tracking-wider text-primary">
+                    {experience.period}
+                  </p>
+                  <h3 className="text-lg font-semibold tracking-tight sm:text-xl">{experience.role}</h3>
+                  <p className="mb-2 text-sm font-medium text-muted-foreground">
+                    {experience.company}
+                  </p>
+                  <p className="max-w-3xl text-pretty leading-relaxed text-muted-foreground">
+                    {experience.description}
+                  </p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
       </div>

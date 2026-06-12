@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { Card, CardContent } from "@/components/ui/card";
+
 export default function Skills() {
   const getLogoUrl = (logo: string) => `https://api.iconify.design/logos:${logo}.svg`;
 
@@ -47,46 +49,43 @@ export default function Skills() {
   ];
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-20">
-      <div className="mb-10 border-b border-border pb-6 sm:mb-12 sm:pb-8">
-        <h1 className="text-4xl font-bold sm:text-5xl">
-          Skills
-        </h1>
-        <p className="mt-6 font-mono text-base sm:text-lg">
-          A snapshot of my technical skills across frontend, backend, databases, tools, and cloud platforms
+    <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
+      <div className="mb-12 sm:mb-16">
+        <span className="eyebrow">Toolbox</span>
+        <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Skills</h1>
+        <p className="mt-4 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">
+          A snapshot of my technical skills across frontend, backend, databases, tools, and cloud
+          platforms.
         </p>
       </div>
 
-      <div className="space-y-6 sm:space-y-8">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {skillCategories.map((category) => (
-          <section
-            key={category.category}
-            className="pb-6 sm:pb-8"
-          >
-            <div className="mb-5 sm:mb-6">
-              <h2 className="text-xl font-bold sm:text-2xl">{category.category}</h2>
-            </div>
-
-            <div className="grid grid-cols-5 gap-2 sm:gap-4">
-              {category.skills.map((skill) => (
-                <article
-                  key={skill.name}
-                  className="flex min-w-0 items-center justify-center"
-                  title={skill.name}
-                  aria-label={skill.name}
-                >
-                  <Image
-                    src={getLogoUrl(skill.logo)}
-                    alt={skill.name}
-                    width={64}
-                    height={64}
-                    unoptimized
-                    className="h-12 w-12 object-contain sm:h-16 sm:w-16"
-                  />
-                </article>
-              ))}
-            </div>
-          </section>
+          <Card key={category.category} className="surface-soft-hover border-border-subtle">
+            <CardContent className="p-6 sm:p-7">
+              <h2 className="mb-5 font-mono text-xs font-semibold uppercase tracking-wider text-primary">
+                {category.category}
+              </h2>
+              <div className="flex flex-wrap gap-2.5">
+                {category.skills.map((skill) => (
+                  <span
+                    key={skill.name}
+                    className="inline-flex items-center gap-2 rounded-full border border-border-subtle bg-background-secondary px-3.5 py-2 text-sm font-medium"
+                  >
+                    <Image
+                      src={getLogoUrl(skill.logo)}
+                      alt=""
+                      width={20}
+                      height={20}
+                      unoptimized
+                      className="h-5 w-5 object-contain"
+                    />
+                    {skill.name}
+                  </span>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
         ))}
       </div>
     </div>

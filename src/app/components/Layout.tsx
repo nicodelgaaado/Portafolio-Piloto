@@ -10,7 +10,6 @@ import { HeaderLanguageToggle } from "@/components/header-language-toggle";
 import { HeaderThemeToggle } from "@/components/header-theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 
 const navItems = [
   { path: "/", label: "Home" },
@@ -128,29 +127,33 @@ export default function Layout({ children }: LayoutProps) {
 
   return (
     <div className="min-h-screen bg-transparent text-foreground">
-      <header className="relative z-50 border-b border-border bg-background/90 backdrop-blur-sm">
-        <div className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
+      <header className="sticky top-0 z-50 border-b border-border/70 bg-background/80 backdrop-blur-md">
+        <div className="mx-auto max-w-6xl px-4 py-3.5 sm:px-6">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center">
               <Link
                 href="/"
-                className="font-mono uppercase tracking-wider transition-opacity hover:opacity-70"
+                className="group flex items-center gap-2.5 transition-opacity hover:opacity-80"
               >
-                Nicolas
+                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary font-mono text-sm font-bold text-primary-foreground">
+                  N
+                </span>
+                <span className="text-sm font-semibold tracking-tight">Nicolas Delgado</span>
               </Link>
             </div>
 
-            <div className="flex items-center gap-2 sm:gap-4">
+            <div className="flex items-center gap-2 sm:gap-3">
               <nav className="hidden sm:block">
-                <ul className="flex flex-wrap items-center gap-6">
+                <ul className="flex items-center gap-1 rounded-full border border-border/70 bg-background-secondary/60 p-1">
                   {navItems.map((item) => (
                     <li key={item.path}>
                       <Link
                         href={item.path}
-                        className={`font-mono text-xs uppercase tracking-wide sm:text-sm ${
+                        aria-current={pathname === item.path ? "page" : undefined}
+                        className={`block rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors ${
                           pathname === item.path
-                            ? "font-bold text-foreground"
-                            : "text-foreground/75 transition-colors hover:text-foreground"
+                            ? "bg-primary text-primary-foreground"
+                            : "text-muted-foreground hover:bg-accent-soft hover:text-foreground"
                         }`}
                       >
                         {item.label}
@@ -169,7 +172,7 @@ export default function Layout({ children }: LayoutProps) {
                   type="button"
                   variant="ghost"
                   size="icon"
-                  className="h-9 w-9 rounded-full border border-border/80 bg-background/70 text-foreground/75 shadow-[0_10px_24px_rgba(3,2,19,0.08)] backdrop-blur-sm hover:bg-accent hover:text-foreground sm:hidden"
+                  className="h-9 w-9 rounded-full border border-border/70 bg-background-secondary/60 text-muted-foreground hover:bg-accent-soft hover:text-foreground sm:hidden"
                   aria-expanded={isMobileMenuOpen}
                   aria-controls="mobile-navigation"
                   aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -196,15 +199,15 @@ export default function Layout({ children }: LayoutProps) {
               : "pointer-events-none -translate-y-2 opacity-0"
           }`}
         >
-          <Card className="min-h-[19rem] p-5">
+          <Card className="p-3">
             <nav>
-              <ul className="flex w-full flex-col gap-5 pt-2">
+              <ul className="flex w-full flex-col gap-1.5">
                 {navItems.map((item) => (
                   <li key={item.path}>
                     <Button
                       asChild
                       variant={pathname === item.path ? "default" : "ghost"}
-                      className="flex h-auto w-full items-center justify-center rounded-lg px-4 py-3 font-mono text-sm uppercase tracking-[0.14em]"
+                      className="flex h-auto w-full items-center justify-start rounded-xl px-4 py-3 text-sm font-medium"
                     >
                       <Link href={item.path} onClick={(event) => handleMobileNavigation(event, item.path)}>
                         {item.label}
@@ -220,19 +223,23 @@ export default function Layout({ children }: LayoutProps) {
 
       <main>{children}</main>
 
-      <footer className="mt-20 border-t border-border">
-        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-          <div className="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
-            <p className="font-mono text-sm">&copy; 2026 Nicolas Delgado</p>
-            <div className="flex items-center gap-2">
-              <Separator orientation="vertical" className="hidden h-6 sm:block" />
+      <footer className="mt-24 border-t border-border/70">
+        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+          <div className="flex flex-col items-center justify-between gap-6 text-center sm:flex-row sm:text-left">
+            <div className="flex flex-col gap-1">
+              <span className="text-sm font-semibold tracking-tight">Nicolas Delgado</span>
+              <p className="text-sm text-muted-foreground">
+                &copy; {new Date().getFullYear()} — Built with Next.js &amp; Tailwind CSS
+              </p>
+            </div>
+            <div className="flex items-center gap-1">
               {socialItems.map((social) => (
                 <Button
                   key={social.label}
                   asChild
                   variant="ghost"
                   size="icon"
-                  className="text-foreground/80 hover:text-foreground"
+                  className="rounded-full text-muted-foreground hover:bg-accent-soft hover:text-foreground"
                 >
                   <a
                     href={social.href}
@@ -240,7 +247,7 @@ export default function Layout({ children }: LayoutProps) {
                     rel={social.href.startsWith("mailto:") ? undefined : "noreferrer"}
                     aria-label={social.label}
                   >
-                    <social.icon size={19} strokeWidth={2} />
+                    <social.icon size={18} strokeWidth={2} />
                   </a>
                 </Button>
               ))}

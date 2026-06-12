@@ -98,88 +98,84 @@ export default function Projects() {
   }, [selectedFilter]);
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-20">
+    <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
       <div className="mb-10 sm:mb-12">
-        <h1 className="text-4xl font-bold sm:text-5xl">
-          Projects
-        </h1>
-        <p className="mt-6 font-mono text-base sm:text-lg">
-          A collection of my work showcasing various technologies and problem-solving approaches
+        <span className="eyebrow">Selected Work</span>
+        <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Projects</h1>
+        <p className="mt-4 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">
+          A collection of my work showcasing various technologies and problem-solving approaches.
         </p>
       </div>
 
-      <Card className="mb-10 sm:mb-12">
-        <CardContent className="p-4 sm:p-6">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <span className="font-mono text-sm uppercase">Filter Projects</span>
-            <div className="-mx-2 px-2 sm:mx-0 sm:px-0">
-              <div className="scrollbar-hidden flex min-w-full snap-x snap-proximity items-center gap-2 overflow-x-auto whitespace-nowrap scroll-smooth py-1 sm:flex-wrap sm:justify-end sm:overflow-visible sm:whitespace-normal">
-                {filters.map((filter) => (
-                  <Button
-                    key={filter}
-                    ref={(element) => {
-                      filterButtonRefs.current[filter] = element;
-                    }}
-                    type="button"
-                    onClick={() => setSelectedFilter(filter)}
-                    variant={selectedFilter === filter ? "default" : "outline"}
-                    className="h-auto shrink-0 snap-center px-3 py-2 font-mono text-[11px] uppercase sm:px-4 sm:text-xs"
-                  >
-                    {filter}
-                  </Button>
-                ))}
-              </div>
-            </div>
+      <div className="mb-10 flex flex-col gap-4 sm:mb-12 sm:flex-row sm:items-center sm:justify-between">
+        <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
+          Filter Projects
+        </span>
+        <div className="-mx-2 px-2 sm:mx-0 sm:px-0">
+          <div className="scrollbar-hidden flex min-w-full snap-x snap-proximity items-center gap-2 overflow-x-auto whitespace-nowrap scroll-smooth py-1 sm:flex-wrap sm:justify-end sm:overflow-visible sm:whitespace-normal">
+            {filters.map((filter) => (
+              <Button
+                key={filter}
+                ref={(element) => {
+                  filterButtonRefs.current[filter] = element;
+                }}
+                type="button"
+                onClick={() => setSelectedFilter(filter)}
+                variant={selectedFilter === filter ? "default" : "outline"}
+                className="h-auto shrink-0 snap-center rounded-full px-4 py-2 text-xs font-medium"
+              >
+                {filter}
+              </Button>
+            ))}
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
         {visibleProjects.map((project) => (
           <Card
             key={project.title}
             className={cn(
-              "surface-soft-hover",
+              "surface-soft-hover overflow-hidden border-border-subtle p-0",
               isFilteredView && "lg:h-full",
             )}
           >
             <CardContent
               className={cn(
-                "p-5 sm:p-6",
+                "p-0",
                 isFilteredView && "lg:flex lg:h-full lg:flex-col",
               )}
             >
-              <div>
-                <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                  <h3 className="text-lg font-bold sm:text-xl">{project.title}</h3>
-                  <Badge className="w-fit">{project.status}</Badge>
-                </div>
-                <div className="mb-4 font-mono text-sm leading-relaxed break-words opacity-70">
-                  {project.tech}
-                </div>
-                <p className="mb-6 font-mono text-sm leading-relaxed">
-                  {project.description}
-                </p>
+              <div className="surface-inset relative aspect-[16/9] overflow-hidden border-0 border-b">
+                <Image
+                  src={project.imageSrc}
+                  alt={project.imageAlt}
+                  fill
+                  sizes="(min-width: 1024px) 34rem, (min-width: 640px) calc(100vw - 3rem), calc(100vw - 2rem)"
+                  className="object-cover object-center"
+                />
+                <Badge className="absolute right-3 top-3 backdrop-blur-sm">{project.status}</Badge>
               </div>
 
-              {isFilteredView ? <div className="hidden lg:block lg:flex-1" aria-hidden="true" /> : null}
-
-              <div>
-                <div className="surface-inset relative mb-4 aspect-[16/10] overflow-hidden rounded-lg">
-                  <Image
-                    src={project.imageSrc}
-                    alt={project.imageAlt}
-                    fill
-                    sizes="(min-width: 1024px) 34rem, (min-width: 640px) calc(100vw - 3rem), calc(100vw - 2rem)"
-                    className="object-cover object-center"
-                  />
+              <div
+                className={cn(
+                  "flex flex-col p-5 sm:p-6",
+                  isFilteredView && "lg:flex-1",
+                )}
+              >
+                <h3 className="text-lg font-semibold tracking-tight sm:text-xl">{project.title}</h3>
+                <div className="mt-2 font-mono text-xs leading-relaxed break-words text-primary">
+                  {project.tech}
                 </div>
+                <p className="mt-3 text-pretty leading-relaxed text-muted-foreground">
+                  {project.description}
+                </p>
 
-                <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
+                <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:gap-4">
                   <Button
                     asChild
                     variant="outline"
-                    className="h-auto flex-1 px-4 py-2 font-mono text-xs uppercase"
+                    className="h-auto flex-1 rounded-full px-4 py-2.5 text-xs font-medium"
                   >
                     <a href={project.githubUrl} target="_blank" rel="noreferrer">
                       View Code
@@ -187,7 +183,7 @@ export default function Projects() {
                   </Button>
                   <Button
                     asChild
-                    className="h-auto flex-1 px-4 py-2 font-mono text-xs uppercase"
+                    className="h-auto flex-1 rounded-full px-4 py-2.5 text-xs font-medium"
                   >
                     <a href={project.liveDemoUrl} target="_blank" rel="noreferrer">
                       Live Demo

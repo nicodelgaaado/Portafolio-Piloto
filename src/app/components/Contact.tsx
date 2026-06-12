@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import type { ChangeEvent, FocusEvent, FormEvent } from "react";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -295,29 +296,79 @@ export default function Contact() {
 
   const getFieldClassName = (field: ContactField) =>
     errors[field]
-      ? "border-red-600 bg-red-50/60 focus:border-red-600 focus:shadow-[0_0_0_3px_rgba(220,38,38,0.12)] dark:border-red-500 dark:bg-red-950/20 dark:focus:border-red-500"
+      ? "border-destructive focus-visible:border-destructive focus-visible:ring-destructive/30"
       : "";
 
+  const contactDetails = [
+    {
+      label: "Email",
+      value: "nicolasfedericodelgado@gmail.com",
+      href: "mailto:nicolasfedericodelgado@gmail.com",
+      icon: Mail,
+    },
+    {
+      label: "GitHub",
+      value: "github.com/nicodelgaaado",
+      href: "https://github.com/nicodelgaaado",
+      icon: Github,
+    },
+    {
+      label: "LinkedIn",
+      value: "linkedin.com/in/nicodelgaaado",
+      href: "https://www.linkedin.com/in/nicodelgaaado",
+      icon: Linkedin,
+    },
+  ];
+
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-20">
-      <div className="mb-8 sm:mb-10">
-        <h1 className="text-4xl font-bold sm:text-5xl">Get In Touch</h1>
-        <p className="mt-6 font-mono text-base sm:text-lg">
-          Let&apos;s collaborate on your next project or discuss opportunities
+    <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
+      <div className="mb-12 sm:mb-16">
+        <span className="eyebrow">Contact</span>
+        <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Get in touch</h1>
+        <p className="mt-4 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">
+          Let&apos;s collaborate on your next project or discuss opportunities.
         </p>
       </div>
 
-      <div>
-        <Card>
-          <CardContent className="p-5 sm:p-8">
-            <h2 className="mb-6 font-mono text-xl font-bold uppercase sm:text-2xl">Send a Message</h2>
-            <form className="space-y-6" onSubmit={handleSubmit} noValidate>
+      <div className="grid gap-8 lg:grid-cols-[1fr_1.3fr] lg:gap-12">
+        <div className="flex flex-col gap-4">
+          <p className="text-pretty leading-relaxed text-muted-foreground">
+            Whether you have a project in mind, a question, or just want to say hello, my inbox is
+            always open. I&apos;ll do my best to get back to you.
+          </p>
+          <div className="mt-2 flex flex-col gap-3">
+            {contactDetails.map((detail) => (
+              <a
+                key={detail.label}
+                href={detail.href}
+                target={detail.href.startsWith("mailto:") ? undefined : "_blank"}
+                rel={detail.href.startsWith("mailto:") ? undefined : "noreferrer"}
+                className="surface-soft-hover group flex items-center gap-4 rounded-xl border border-border-subtle bg-surface p-4"
+              >
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--accent-soft)] text-primary">
+                  <detail.icon className="h-5 w-5" strokeWidth={2} />
+                </span>
+                <span className="min-w-0">
+                  <span className="block font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                    {detail.label}
+                  </span>
+                  <span className="block truncate text-sm font-medium">{detail.value}</span>
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <Card className="border-border-subtle">
+          <CardContent className="p-6 sm:p-8">
+            <h2 className="mb-6 text-xl font-semibold tracking-tight">Send a message</h2>
+            <form className="space-y-5" onSubmit={handleSubmit} noValidate>
               <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
               <input type="hidden" name="from_name" value="Portfolio Website" />
               <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
 
               <div>
-                <label htmlFor="contact-name" className="mb-2 block font-mono text-sm uppercase">
+                <label htmlFor="contact-name" className="mb-2 block text-sm font-medium">
                   Name
                 </label>
                 <Input
@@ -331,17 +382,17 @@ export default function Contact() {
                   aria-invalid={Boolean(errors.name)}
                   aria-describedby={errors.name ? "contact-name-error" : undefined}
                   className={getFieldClassName("name")}
-                  placeholder="Your Name"
+                  placeholder="Your name"
                 />
                 {errors.name && (
-                  <p id="contact-name-error" className="mt-2 font-mono text-sm text-red-600">
+                  <p id="contact-name-error" className="mt-2 text-sm text-destructive">
                     {errors.name}
                   </p>
                 )}
               </div>
 
               <div>
-                <label htmlFor="contact-email" className="mb-2 block font-mono text-sm uppercase">
+                <label htmlFor="contact-email" className="mb-2 block text-sm font-medium">
                   Email
                 </label>
                 <Input
@@ -358,14 +409,14 @@ export default function Contact() {
                   placeholder="your.email@example.com"
                 />
                 {errors.email && (
-                  <p id="contact-email-error" className="mt-2 font-mono text-sm text-red-600">
+                  <p id="contact-email-error" className="mt-2 text-sm text-destructive">
                     {errors.email}
                   </p>
                 )}
               </div>
 
               <div>
-                <label htmlFor="contact-subject" className="mb-2 block font-mono text-sm uppercase">
+                <label htmlFor="contact-subject" className="mb-2 block text-sm font-medium">
                   Subject
                 </label>
                 <Input
@@ -382,14 +433,14 @@ export default function Contact() {
                   placeholder="What's this about?"
                 />
                 {errors.subject && (
-                  <p id="contact-subject-error" className="mt-2 font-mono text-sm text-red-600">
+                  <p id="contact-subject-error" className="mt-2 text-sm text-destructive">
                     {errors.subject}
                   </p>
                 )}
               </div>
 
               <div>
-                <label htmlFor="contact-message" className="mb-2 block font-mono text-sm uppercase">
+                <label htmlFor="contact-message" className="mb-2 block text-sm font-medium">
                   Message
                 </label>
                 <Textarea
@@ -406,7 +457,7 @@ export default function Contact() {
                   placeholder="Your message here..."
                 />
                 {errors.message && (
-                  <p id="contact-message-error" className="mt-2 font-mono text-sm text-red-600">
+                  <p id="contact-message-error" className="mt-2 text-sm text-destructive">
                     {errors.message}
                   </p>
                 )}
@@ -414,10 +465,10 @@ export default function Contact() {
 
               {submitStatus.type !== "idle" && (
                 <p
-                  className={`rounded-lg border p-3 font-mono text-sm ${
+                  className={`rounded-lg border p-3 text-sm ${
                     submitStatus.type === "success"
-                      ? "border-primary bg-primary text-primary-foreground"
-                      : "border-border bg-secondary/70 text-secondary-foreground"
+                      ? "border-primary/30 bg-[var(--accent-soft)] text-primary"
+                      : "border-destructive/30 bg-destructive/10 text-destructive"
                   }`}
                   role="status"
                 >
@@ -428,7 +479,7 @@ export default function Contact() {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="h-auto w-full px-6 py-3 font-mono uppercase sm:py-4"
+                className="h-auto w-full rounded-full px-6 py-3 text-sm font-medium"
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
